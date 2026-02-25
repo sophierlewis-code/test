@@ -327,6 +327,104 @@
     .contact-bar { gap: 22px; }
     h1 { font-size: clamp(3rem, 10vw, 5rem); }
   }
+
+  /* CONTACT FORM & INFO STYLES */
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    margin-top: 40px;
+  }
+
+  /* Form Styling */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--light-green);
+  }
+
+  .contact-form input, 
+  .contact-form textarea {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid rgba(15, 43, 15, 0.2);
+    background: transparent;
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.1rem;
+    color: var(--forest-dark);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .contact-form input:focus, 
+  .contact-form textarea:focus {
+    border-bottom: 1px solid var(--sage);
+  }
+
+  .submit-btn {
+    align-self: flex-start;
+    background: var(--forest-mid);
+    color: var(--paper);
+    padding: 14px 40px;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+  }
+
+  .submit-btn:hover {
+    background: var(--header-green);
+  }
+
+  /* Contact Info Styling */
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .info-block h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--light-green);
+    margin-bottom: 8px;
+  }
+
+  .info-block p, .info-block a {
+    font-size: 1.15rem;
+    color: var(--forest-dark);
+    text-decoration: none;
+    line-height: 1.6;
+  }
+
+  .info-block a:hover {
+    color: var(--sage);
+  }
+
+  @media (max-width: 900px) {
+    .contact-container { grid-template-columns: 1fr; gap: 60px; }
+  }
 </style>
 </head>
 <body>
