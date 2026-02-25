@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,14 +51,6 @@
     pointer-events: none;
   }
 
-  header::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--forest-mid), var(--sage), transparent);
-  }
-
   .header-inner {
     max-width: 1600px;
     margin: 0 auto;
@@ -89,10 +79,7 @@
     animation: fadeUp 0.8s ease 0.25s forwards;
   }
 
-  h1 em {
-    font-style: italic;
-    color: var(--forest-dark);
-  }
+  h1 em { font-style: italic; color: var(--forest-dark); }
 
   .tagline {
     margin-top: 36px;
@@ -123,11 +110,6 @@
     border-bottom: 1px solid rgba(15,43,15,0.35);
     padding-bottom: 2px;
     transition: color 0.2s, border-color 0.2s;
-  }
-
-  .contact-bar a:hover {
-    color: var(--header-green);
-    border-color: var(--header-green);
   }
 
   /* SECTIONS */
@@ -168,20 +150,10 @@
     letter-spacing: -0.02em;
   }
 
-  h2 em { font-style: italic; color: var(--forest-dark); }
-
-  p {
-    font-size: 1.3rem;
-    color: var(--forest-dark);
-    margin-bottom: 22px;
-    max-width: 960px;
-    line-height: 1.9;
-  }
-
-  /* SERVICES */
+  /* SERVICES GRID */
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
     gap: 32px;
     margin-top: 24px;
   }
@@ -189,7 +161,7 @@
   .service-card {
     background: var(--mist);
     border: 1px solid rgba(61,140,53,0.13);
-    padding: 40px 36px 34px;
+    padding: 45px 40px;
     position: relative;
     transition: transform 0.2s, box-shadow 0.2s;
   }
@@ -209,29 +181,46 @@
 
   .service-card h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.55rem;
+    font-size: 1.6rem;
     font-weight: 800;
     color: var(--header-green);
-    margin-bottom: 14px;
-    letter-spacing: -0.01em;
-    line-height: 1.15;
+    margin-bottom: 18px;
   }
 
-  .service-card p {
-    font-size: 1.2rem;
+  .service-intro {
+    font-size: 1.1rem !important;
+    font-style: italic;
+    color: var(--forest-mid);
+    margin-bottom: 24px !important;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  .output-list { list-style: none; padding: 0; margin: 0; }
+
+  .output-list li {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
     color: var(--forest-dark);
-    margin: 0;
-    line-height: 1.9;
-    max-width: none;
-    font-weight: 400;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(90, 170, 80, 0.1);
   }
 
-  /* EXPERIENCE */
-  .experience-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  .output-list li:last-child { border-bottom: none; }
+
+  .output-list li strong {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--light-green);
+    margin-bottom: 4px;
   }
+
+  /* EXPERIENCE, EDUCATION & PUBLICATIONS */
+  .experience-list { display: flex; flex-direction: column; }
 
   .exp-item {
     padding: 44px 0;
@@ -258,8 +247,6 @@
     font-weight: 800;
     color: var(--header-green);
     margin-bottom: 12px;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
   }
 
   .exp-desc {
@@ -267,19 +254,19 @@
     color: var(--forest-dark);
     margin: 0 0 14px;
     line-height: 1.85;
-    max-width: none;
   }
 
-  .exp-desc:last-child { margin-bottom: 0; }
-
-  /* REGIONS */
-  .regions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 16px;
+  .pub-link {
+    color: var(--header-green);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(61,140,53,0.3);
+    transition: all 0.2s;
   }
 
+  .pub-link:hover { border-bottom-color: var(--header-green); }
+
+  /* SHARED UI */
+  .regions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
   .region-tag {
     background: var(--forest-mid);
     color: var(--sage);
@@ -290,14 +277,8 @@
     text-transform: uppercase;
   }
 
-  /* DIVIDER */
-  .divider {
-    border: none;
-    border-top: 1px solid rgba(61,140,53,0.12);
-    margin: 0 100px;
-  }
+  .divider { border: none; border-top: 1px solid rgba(61,140,53,0.12); margin: 0 100px; }
 
-  /* FOOTER */
   footer {
     background: var(--forest-mid);
     color: rgba(232,240,230,0.65);
@@ -305,17 +286,10 @@
     padding: 56px 100px;
     font-family: 'DM Mono', monospace;
     font-size: 13px;
-    letter-spacing: 0.1em;
   }
 
-  footer a {
-    color: var(--sage);
-    text-decoration: none;
-  }
+  footer a { color: var(--sage); text-decoration: none; }
 
-  footer a:hover { color: #edf5eb; }
-
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -326,8 +300,7 @@
     section { padding: 64px 40px; }
     .divider { margin: 0 40px; }
     .exp-item { grid-template-columns: 1fr; gap: 12px; }
-    .contact-bar { gap: 22px; }
-    h1 { font-size: clamp(3rem, 10vw, 5rem); }
+    .services-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -348,18 +321,12 @@
 
 <section id="about">
   <p class="section-label">About</p>
-  <p>"A successful consultant must be adaptable and responsive, tailoring outputs to the cultural and environmental contexts shaping forest governance while being proactive in addressing evolving challenges and achieving collaborative outcomes."<p>
+  <p>"A successful consultant must be adaptable and responsive, tailoring outputs to the cultural and environmental contexts shaping forest governance while being proactive in addressing evolving challenges."</p>
   <p>With over 15 years of experience working across Southeast Asia, I bring extensive knowledge of forest governance, land and resource rights, and tenure security from the community to the international level.</p>
-</p>I specialise in applied research and consulting for non-governmental organisations, collaborating with NGOs, governments, civil society, Indigenous Peoples, and local communities across the region.</p>
-</p>I possess strong technical and strategic expertise with extensive experience producing high-quality proposals, technical reports, research papers, policy briefs, and communications outputs for international organisations, NGOs and governments.</p>
+  <p>I specialise in applied research and consulting for non-governmental organisations, collaborating with NGOs, governments, civil society, Indigenous Peoples, and local communities across the region.</p>
+  <p>I possess strong technical and strategic expertise with extensive experience producing high-quality proposals, technical reports, research papers, policy briefs, and communications outputs.</p>
   <div class="regions">
-    <span class="region-tag">Cambodia</span>
-    <span class="region-tag">Indonesia</span>
-    <span class="region-tag">Lao PDR</span>
-    <span class="region-tag">Philippines</span>
-    <span class="region-tag">Thailand</span>
-    <span class="region-tag">Timor-Leste</span>
-    <span class="region-tag">Vietnam</span>
+    <span class="region-tag">Cambodia</span><span class="region-tag">Indonesia</span><span class="region-tag">Lao PDR</span><span class="region-tag">Philippines</span><span class="region-tag">Thailand</span><span class="region-tag">Timor-Leste</span><span class="region-tag">Vietnam</span>
   </div>
 </section>
 
@@ -370,23 +337,49 @@
   <div class="services-grid">
     <div class="service-card">
       <h3>Technical Writing & Editing</h3>
-      <p>Producing and editing technical and communications outputs for diverse audiences — including proposals, concept notes, policy briefs, donor and programme reporting, knowledge products, synthesis reports, strategic plans, stories of change, case studies, and editing and proofreading of research outputs, reports, and publications.</p>
+      <p class="service-intro">Producing and editing technical and communications outputs for diverse audiences:</p>
+      <ul class="output-list">
+        <li><strong>Strategy:</strong> Proposals • Concept Notes • Strategic Plans</li>
+        <li><strong>Knowledge:</strong> Policy Briefs • Knowledge Products • Synthesis Reports</li>
+        <li><strong>Impact:</strong> Stories of Change • Case Studies • Donor & Programme Reporting</li>
+        <li><strong>Quality:</strong> Editing & Proofreading of research outputs, reports, and publications</li>
+      </ul>
     </div>
     <div class="service-card">
       <h3>Applied Research</h3>
-      <p>Leading and delivering applied and participatory research — including Free, Prior and Informed Consent (FPIC) processes, participatory action research, qualitative research, scoping studies, literature reviews, data analysis and synthesis, research reports, journal articles, and conference papers.</p>
+      <p class="service-intro">Leading and delivering applied and participatory research:</p>
+      <ul class="output-list">
+        <li><strong>Methodology:</strong> FPIC processes • Participatory Action Research • Qualitative Research</li>
+        <li><strong>Analysis:</strong> Scoping Studies • Literature Reviews • Data Analysis & Synthesis</li>
+        <li><strong>Outputs:</strong> Research Reports • Journal Articles • Conference Papers</li>
+      </ul>
     </div>
     <div class="service-card">
       <h3>Policy Outreach & Advocacy</h3>
-      <p>Designing and delivering research-to-policy engagement strategies — including stakeholder, power, interest and influence mapping, advocacy planning and strategy, stakeholder coordination and consultation, evidence communication, science-policy dialogue, and research-to-policy communications.</p>
+      <p class="service-intro">Designing and delivering research-to-policy engagement strategies:</p>
+      <ul class="output-list">
+        <li><strong>Mapping:</strong> Stakeholder, Power, Interest, and Influence Mapping</li>
+        <li><strong>Strategy:</strong> Advocacy Planning • Stakeholder Coordination & Consultation</li>
+        <li><strong>Dialogue:</strong> Evidence Communication • Science-Policy Dialogue • Research-to-Policy Comms</li>
+      </ul>
     </div>
     <div class="service-card">
       <h3>Strategic Planning & Advisory</h3>
-      <p>Supporting organisations to translate vision into action — through multi-stakeholder strategic planning facilitation, programme design and inception, and theory of change, logframe, and results framework development.</p>
+      <p class="service-intro">Supporting organisations to translate vision into action:</p>
+      <ul class="output-list">
+        <li><strong>Facilitation:</strong> Multi-stakeholder Strategic Planning • Programme Inception</li>
+        <li><strong>Design:</strong> Programme Design • Theory of Change Development</li>
+        <li><strong>Frameworks:</strong> Logframe • Results Framework Development</li>
+      </ul>
     </div>
     <div class="service-card">
       <h3>Capacity Development</h3>
-      <p>Building and facilitating capacity-development and training programmes — for policymakers, researchers, NGOs, civil society, and community members — with an emphasis on interactive and participatory approaches in-person and online, covering needs assessment, curriculum and materials development, training design and facilitation, training of trainers, field-based mentoring, and monitoring and evaluation of learning outcomes.</p>
+      <p class="service-intro">Building and facilitating capacity-development and training programmes:</p>
+      <ul class="output-list">
+        <li><strong>Design:</strong> Needs Assessment • Curriculum Development • Training Design</li>
+        <li><strong>Approach:</strong> Interactive & Participatory (In-person & Online) • Training of Trainers</li>
+        <li><strong>Impact:</strong> Field-based Mentoring • Monitoring & Evaluation of Learning Outcomes</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -406,45 +399,23 @@
     <div class="exp-item">
       <div class="exp-org">RECOFTC<br>Southeast Asia · 2024–2025</div>
       <div>
-        <p class="exp-role">Senior Policy Outreach & Gender Inclusion Coordinator</p>
-        <p class="exp-desc">Designed and led the research-to-policy strategy across seven Southeast Asian countries for the Sida-funded Explore Programme, coordinating National Advisory Committees with government representatives, academics, and civil society to advance forest governance research into policy influence, including authoring <a href="https://www.recoftc.org/projects/explore/stories/translating-high-quality-research-actionable-policies" target="_blank" style="color: var(--forest-mid); border-bottom: 1px solid rgba(15,43,15,0.3); text-decoration: none;">practitioner stories</a> communicating programme outcomes to diverse audiences.</p>
-        <p class="exp-desc">Designed and delivered regional training and capacity-development programmes on Participatory Action Research, combining classroom training and field-based mentoring to strengthen science-policy engagement and governance reform.</p>
-        <p class="exp-desc">Led the programme's gender inclusion strategy, ensuring gender equity and representation across research teams, advisory bodies, and capacity-development initiatives, and oversaw a Women's Doctoral Scholarship Programme supporting female PhD researchers across the region.</p>
+        <p class="exp-role">Senior Policy Outreach & Coordinator</p>
+        <p class="exp-desc">Designed and led the research-to-policy strategy across seven Southeast Asian countries for the Sida-funded Explore Programme.</p>
+        <p class="exp-desc">Designed and delivered regional training on Participatory Action Research and led the gender inclusion strategy for forest governance initiatives.</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">RECOFTC / RMFN-Asia<br>Southeast Asia · 2024</div>
       <div>
         <p class="exp-role">Strategic Planning & Technical Writing</p>
-        <p class="exp-desc">Led development of the Regional Multi-stakeholder Forestry Network – Asia (RMFN-Asia) Strategic Plan 2025–2030 — facilitating a multi-stakeholder strategic planning workshop in Thailand and translating outputs into a regional strategy covering landscape governance, climate change, gender equity, and sustainable forest management.</p>
-      </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-org">RECOFTC / FAO & Wyss Academy<br>Bangkok · 2023</div>
-      <div>
-        <p class="exp-role">Applied Research & Technical Writing</p>
-        <p class="exp-desc">Lead researcher for the FAO and Wyss Academy initiative <em>Revisiting Exemplary Forest Management</em>, revisiting eleven Asia-Pacific <em>In Search of Excellence</em> sustainable forest management case studies across ten countries, examining two decades of change in forest management practices, tenure, policy, and community resilience.</p>
-      </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-org">RECOFTC & IIED<br>Southeast Asia · 2022–2023</div>
-      <div>
-        <p class="exp-role">Applied Research & Policy Advisory</p>
-        <p class="exp-desc">Led an applied research scoping study for the FCDO-funded Reversing Environmental Degradation in Africa and Asia (REDAA) programme, identifying strategic priorities for environmental restoration and sustainable natural resource management across Southeast Asia. The study combined an extensive literature review, key informant interviews, and field research across three landscapes in Thailand and Cambodia, and was produced in close coordination with IIED and RECOFTC to inform REDAA's regional grant-making strategy.</p>
+        <p class="exp-desc">Led development of the Regional Multi-stakeholder Forestry Network Strategic Plan 2025–2030, covering landscape governance and climate change.</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">Landesa<br>Thailand · 2022–2023</div>
       <div>
         <p class="exp-role">Applied Research & Technical Writing</p>
-        <p class="exp-desc">Produced an applied research report and technical land and natural resource rights profile for Thailand's Trang region, analysing palm oil supply chain risks related to tenure insecurity, land disputes, and inequitable access to land and resources for Indigenous Peoples, women, and customary tenure communities. Developed a regional risk score using Landesa's indicators and scoring methodology.</p>
-      </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-org">RECOFTC Thailand<br>Thailand · 2020</div>
-      <div>
-        <p class="exp-role">Applied Research & Policy Outreach</p>
-        <p class="exp-desc">Led an FAO-EU FLEGT-funded applied research study examining opportunities and barriers for Thai civil society engagement in VPA implementation, designing and conducting a multi-stakeholder survey with CSOs, government officers, the private sector, and academia across four avenues of civil society engagement — independent forest monitoring, VPA impact monitoring, public disclosure of information, and complaint mechanisms — and producing technical reports with recommendations for the Thai CSO-FLEGT Network.</p>
+        <p class="exp-desc">Produced an applied research report analyzing palm oil supply chain risks related to tenure insecurity and land disputes in Thailand's Trang region.</p>
       </div>
     </div>
   </div>
@@ -458,50 +429,36 @@
     <div class="exp-item">
       <div class="exp-org">FAO · 2025</div>
       <div>
-        <p class="exp-role"><a href="https://openknowledge.fao.org/handle/20.500.14283/cd7052en" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">Exemplary forest management revisited – Insights from successes and challenges</a></p>
+        <p class="exp-role"><a href="https://openknowledge.fao.org/handle/20.500.14283/cd7052en" target="_blank" class="pub-link">Exemplary forest management revisited – Insights from successes and challenges</a></p>
         <p class="exp-desc">FAO, Rome. Contributing author, pp. 19–31.</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">International Forestry Review · 2023</div>
       <div>
-        <p class="exp-role"><a href="https://doi.org/10.1080/1747423X.2023.2184513" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">Safeguarding customary forest tenure in the Mekong Region: a legal analysis</a></p>
+        <p class="exp-role"><a href="https://doi.org/10.1080/1747423X.2023.2184513" target="_blank" class="pub-link">Safeguarding customary forest tenure in the Mekong Region: a legal analysis</a></p>
         <p class="exp-desc">Lewis, S.R., Faure, N., Leonard, S., Pen, R., Ba Ngai, N., & Phengsophaf, K.</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">REDAA Programme Report · 2023</div>
       <div>
-        <p class="exp-role"><a href="https://www.redaa.org/scoping-study-research-action-priorities-redaa-programme-southeast-asia" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">Research-to-action priorities for environmental restoration and sustainable natural resource management in Southeast Asia</a></p>
+        <p class="exp-role"><a href="https://www.redaa.org/scoping-study-research-action-priorities-redaa-programme-southeast-asia" target="_blank" class="pub-link">Research-to-action priorities for natural resource management in Southeast Asia</a></p>
         <p class="exp-desc">Lewis, S.R. (lead author)</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">Journal of Political Ecology · 2022</div>
       <div>
-        <p class="exp-role"><a href="https://doi.org/10.2458/jpe.2398" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">The political logics of EU-FLEGT in Thailand's multistakeholder negotiations: Hegemony and resistance</a></p>
+        <p class="exp-role"><a href="https://doi.org/10.2458/jpe.2398" target="_blank" class="pub-link">The political logics of EU-FLEGT in Thailand's multistakeholder negotiations</a></p>
         <p class="exp-desc">Lewis, S.R. & Bulkan, J.</p>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-org">PhD Thesis · University of British Columbia · 2021</div>
+      <div class="exp-org">PhD Thesis · UBC · 2021</div>
       <div>
-        <p class="exp-role"><a href="https://dx.doi.org/10.14288/1.0406142" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">The Political Ecology of Illegal Logging in Thailand: Forest Exploitation, Violence, and Anti-Politics</a></p>
+        <p class="exp-role"><a href="https://dx.doi.org/10.14288/1.0406142" target="_blank" class="pub-link">The Political Ecology of Illegal Logging in Thailand</a></p>
         <p class="exp-desc">Lewis, S.R.</p>
-      </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-org">Forests · 2019</div>
-      <div>
-        <p class="exp-role"><a href="https://www.mdpi.com/1999-4907/10/1/47" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">Assessing forest governance in the countries of the Greater Mekong Subregion</a></p>
-        <p class="exp-desc">Gritten, D., Lewis, S.R., Breukink, G., Mo, K., Dang, T., & Delattre, E.</p>
-      </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-org">Forests · 2015</div>
-      <div>
-        <p class="exp-role"><a href="https://www.mdpi.com/1999-4907/6/10/3433/htm" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">An uneven playing field: regulatory barriers to communities making a living from the timber from their forests — examples from Cambodia, Nepal and Vietnam</a></p>
-        <p class="exp-desc">Gritten, D., Greijmans, M., Lewis, S.R., et al.</p>
       </div>
     </div>
   </div>
@@ -517,21 +474,21 @@
       <div class="exp-org">Chulalongkorn University<br>Bangkok · 2022–2024</div>
       <div>
         <p class="exp-role">Postdoctoral Research Fellowship, Faculty of Political Science</p>
-        <p class="exp-desc">Carried out qualitative field research on forest governance and land rights in Thailand, applying a political ecology framework to examine inequality in resource access under Thailand's Bio-Circular-Green Economic Model.</p>
+        <p class="exp-desc">Qualitative field research on forest governance and land rights in Thailand within a political ecology framework.</p>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-org">University of British Columbia<br>Vancouver, Canada · 2015–2021</div>
+      <div class="exp-org">University of British Columbia<br>Vancouver · 2015–2021</div>
       <div>
         <p class="exp-role">Doctor of Philosophy, Forestry</p>
-        <p class="exp-desc">Investigated forest governance in Thailand across two scales: first, how forest governance structures, land tenure arrangements, and state processes shape the livelihoods and resource access of Karen Pwo Indigenous communities living adjacent to Thailand's protected areas; and second, how competing actor interests and institutional dynamics influenced the reform of timber legality and smallholder tenure and timber rights through Thailand's EU-Forest Law Enforcement, Governance and Trade Voluntary Partnership Agreement negotiation process.</p>
+        <p class="exp-desc">Investigated how forest governance, land tenure, and state processes shape resource access for Karen Pwo Indigenous communities.</p>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-org">Imperial College London<br>London, UK · 2008–2009</div>
+      <div class="exp-org">Imperial College London<br>London · 2008–2009</div>
       <div>
         <p class="exp-role">Master of Science, Forest Conservation</p>
-        <p class="exp-desc">Analysed climate change adaptation strategies for protected forest areas across Europe, combining a comprehensive literature review with an EU-wide survey of 26 member states, and producing policy recommendations for integrating climate change adaptation into international, European and national biodiversity policy.</p>
+        <p class="exp-desc">Analyzed climate change adaptation strategies for protected forest areas across Europe and 26 member states.</p>
       </div>
     </div>
   </div>
