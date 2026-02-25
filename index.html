@@ -17,7 +17,6 @@
     --mist: #f7faf6;
     --paper: #ffffff;
     --ink: #071507;
-    --gold: #b5913a;
   }
 
   html { scroll-behavior: smooth; }
@@ -64,22 +63,16 @@
     text-transform: uppercase;
     color: var(--light-green);
     margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.1s forwards;
   }
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(4rem, 7vw, 7.5rem);
+    font-size: clamp(3.5rem, 6vw, 6.5rem);
     font-weight: 900;
     line-height: 0.98;
     color: var(--header-green);
     letter-spacing: -0.02em;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.25s forwards;
   }
-
-  h1 em { font-style: italic; color: var(--forest-dark); }
 
   .tagline {
     margin-top: 36px;
@@ -87,9 +80,6 @@
     font-weight: 500;
     color: var(--forest-dark);
     max-width: 860px;
-    line-height: 1.75;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.4s forwards;
   }
 
   .contact-bar {
@@ -97,8 +87,6 @@
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.55s forwards;
   }
 
   .contact-bar a {
@@ -106,10 +94,8 @@
     font-size: 15px;
     color: var(--forest-mid);
     text-decoration: none;
-    letter-spacing: 0.05em;
     border-bottom: 1px solid rgba(15,43,15,0.35);
     padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
   }
 
   /* SECTIONS */
@@ -122,7 +108,6 @@
   .section-label {
     font-family: 'DM Mono', monospace;
     font-size: 15px;
-    font-weight: 400;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--light-green);
@@ -142,18 +127,16 @@
 
   h2 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 4vw, 4.2rem);
+    font-size: clamp(2.8rem, 4vw, 3.8rem);
     font-weight: 900;
-    line-height: 1.08;
     margin-bottom: 32px;
     color: var(--header-green);
-    letter-spacing: -0.02em;
   }
 
   /* SERVICES GRID */
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 32px;
     margin-top: 24px;
   }
@@ -163,13 +146,10 @@
     border: 1px solid rgba(61,140,53,0.13);
     padding: 45px 40px;
     position: relative;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s;
   }
 
-  .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 56px rgba(7,21,7,0.09);
-  }
+  .service-card:hover { transform: translateY(-5px); }
 
   .service-card::before {
     content: '';
@@ -182,46 +162,29 @@
   .service-card h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
-    font-weight: 800;
     color: var(--header-green);
     margin-bottom: 18px;
   }
 
-  .service-intro {
-    font-size: 1.1rem !important;
-    font-style: italic;
-    color: var(--forest-mid);
-    margin-bottom: 24px !important;
-    line-height: 1.6;
-    opacity: 0.9;
-  }
-
   .output-list { list-style: none; padding: 0; margin: 0; }
-
   .output-list li {
     font-size: 1.05rem;
     line-height: 1.5;
     margin-bottom: 16px;
-    color: var(--forest-dark);
-    padding-bottom: 12px;
     border-bottom: 1px solid rgba(90, 170, 80, 0.1);
+    padding-bottom: 12px;
   }
-
-  .output-list li:last-child { border-bottom: none; }
-
   .output-list li strong {
     display: block;
     font-family: 'DM Mono', monospace;
     font-size: 13px;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
     color: var(--light-green);
     margin-bottom: 4px;
   }
 
-  /* EXPERIENCE, EDUCATION & PUBLICATIONS */
+  /* LIST ITEMS (EXP, PUB, EDU) */
   .experience-list { display: flex; flex-direction: column; }
-
   .exp-item {
     padding: 44px 0;
     border-bottom: 1px solid rgba(61,140,53,0.14);
@@ -230,7 +193,6 @@
     gap: 80px;
     align-items: start;
   }
-
   .exp-item:last-child { border-bottom: none; }
 
   .exp-org {
@@ -249,58 +211,41 @@
     margin-bottom: 12px;
   }
 
-  .exp-desc {
-    font-size: 1.18rem;
-    color: var(--forest-dark);
-    margin: 0 0 14px;
-    line-height: 1.85;
-  }
-
   .pub-link {
     color: var(--header-green);
     text-decoration: none;
     border-bottom: 1px solid rgba(61,140,53,0.3);
-    transition: all 0.2s;
   }
 
-  .pub-link:hover { border-bottom-color: var(--header-green); }
+  /* CONTACT */
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    margin-top: 40px;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 24px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; color: var(--light-green); }
+  .contact-form input, .contact-form textarea {
+    width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid rgba(15, 43, 15, 0.2); background: transparent; font-family: inherit; font-size: 1.1rem; outline: none;
+  }
+  .submit-btn {
+    align-self: flex-start; background: var(--forest-mid); color: var(--paper); padding: 14px 40px; font-family: 'DM Mono', monospace; text-transform: uppercase; border: none; cursor: pointer; transition: 0.3s;
+  }
+  .submit-btn:hover { background: var(--header-green); }
 
-  /* SHARED UI */
   .regions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
-  .region-tag {
-    background: var(--forest-mid);
-    color: var(--sage);
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    padding: 8px 20px;
-    text-transform: uppercase;
-  }
+  .region-tag { background: var(--forest-mid); color: var(--sage); font-family: 'DM Mono', monospace; font-size: 13px; padding: 8px 20px; text-transform: uppercase; }
 
   .divider { border: none; border-top: 1px solid rgba(61,140,53,0.12); margin: 0 100px; }
 
-  footer {
-    background: var(--forest-mid);
-    color: rgba(232,240,230,0.65);
-    text-align: center;
-    padding: 56px 100px;
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-  }
-
-  footer a { color: var(--sage); text-decoration: none; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  footer { background: var(--forest-mid); color: rgba(232,240,230,0.65); text-align: center; padding: 56px 100px; font-family: 'DM Mono', monospace; font-size: 13px; }
 
   @media (max-width: 900px) {
-    header { padding: 64px 40px 54px; }
-    section { padding: 64px 40px; }
+    header, section { padding: 60px 40px; }
+    .exp-item, .contact-container { grid-template-columns: 1fr; gap: 40px; }
     .divider { margin: 0 40px; }
-    .exp-item { grid-template-columns: 1fr; gap: 12px; }
-    .services-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -312,7 +257,7 @@
     <h1>Dr. Sophie Rose Lewis</h1>
     <p class="tagline">Forest governance and social forestry specialist with over fifteen years working on land rights, tenure security, and forest policy across Southeast Asia.</p>
     <div class="contact-bar">
-      <a href="mailto:sophieroselewis@gmail.com">sophieroselewis@gmail.com</a>
+      <a href="mailto:sophie.r.lewis@gmail.com">sophie.r.lewis@gmail.com</a>
       <a href="https://orcid.org/0000-0003-2806-1748" target="_blank">ORCID Publications</a>
       <a href="tel:+66619400118">Bangkok · +66 61 940 0118</a>
     </div>
@@ -321,10 +266,8 @@
 
 <section id="about">
   <p class="section-label">About</p>
-  <p>"A successful consultant must be adaptable and responsive, tailoring outputs to the cultural and environmental contexts shaping forest governance while being proactive in addressing evolving challenges."</p>
   <p>With over 15 years of experience working across Southeast Asia, I bring extensive knowledge of forest governance, land and resource rights, and tenure security from the community to the international level.</p>
-  <p>I specialise in applied research and consulting for non-governmental organisations, collaborating with NGOs, governments, civil society, Indigenous Peoples, and local communities across the region.</p>
-  <p>I possess strong technical and strategic expertise with extensive experience producing high-quality proposals, technical reports, research papers, policy briefs, and communications outputs.</p>
+  <p>I specialise in applied research and consulting for non-governmental organisations, collaborating with governments, civil society, and Indigenous Peoples.</p>
   <div class="regions">
     <span class="region-tag">Cambodia</span><span class="region-tag">Indonesia</span><span class="region-tag">Lao PDR</span><span class="region-tag">Philippines</span><span class="region-tag">Thailand</span><span class="region-tag">Timor-Leste</span><span class="region-tag">Vietnam</span>
   </div>
@@ -337,48 +280,32 @@
   <div class="services-grid">
     <div class="service-card">
       <h3>Technical Writing & Editing</h3>
-      <p class="service-intro">Producing and editing technical and communications outputs for diverse audiences:</p>
       <ul class="output-list">
         <li><strong>Strategy:</strong> Proposals • Concept Notes • Strategic Plans</li>
         <li><strong>Knowledge:</strong> Policy Briefs • Knowledge Products • Synthesis Reports</li>
-        <li><strong>Impact:</strong> Stories of Change • Case Studies • Donor & Programme Reporting</li>
-        <li><strong>Quality:</strong> Editing & Proofreading of research outputs, reports, and publications</li>
+        <li><strong>Quality:</strong> Editing & Proofreading of research outputs and publications</li>
       </ul>
     </div>
     <div class="service-card">
       <h3>Applied Research</h3>
-      <p class="service-intro">Leading and delivering applied and participatory research:</p>
       <ul class="output-list">
-        <li><strong>Methodology:</strong> FPIC processes • Participatory Action Research • Qualitative Research</li>
-        <li><strong>Analysis:</strong> Scoping Studies • Literature Reviews • Data Analysis & Synthesis</li>
+        <li><strong>Methodology:</strong> FPIC processes • Participatory Action Research</li>
+        <li><strong>Analysis:</strong> Scoping Studies • Literature Reviews • Data Synthesis</li>
         <li><strong>Outputs:</strong> Research Reports • Journal Articles • Conference Papers</li>
       </ul>
     </div>
     <div class="service-card">
       <h3>Policy Outreach & Advocacy</h3>
-      <p class="service-intro">Designing and delivering research-to-policy engagement strategies:</p>
       <ul class="output-list">
-        <li><strong>Mapping:</strong> Stakeholder, Power, Interest, and Influence Mapping</li>
         <li><strong>Strategy:</strong> Advocacy Planning • Stakeholder Coordination & Consultation</li>
-        <li><strong>Dialogue:</strong> Evidence Communication • Science-Policy Dialogue • Research-to-Policy Comms</li>
+        <li><strong>Dialogue:</strong> Evidence Communication • Science-Policy Dialogue</li>
       </ul>
     </div>
     <div class="service-card">
       <h3>Strategic Planning & Advisory</h3>
-      <p class="service-intro">Supporting organisations to translate vision into action:</p>
       <ul class="output-list">
-        <li><strong>Facilitation:</strong> Multi-stakeholder Strategic Planning • Programme Inception</li>
         <li><strong>Design:</strong> Programme Design • Theory of Change Development</li>
-        <li><strong>Frameworks:</strong> Logframe • Results Framework Development</li>
-      </ul>
-    </div>
-    <div class="service-card">
-      <h3>Capacity Development</h3>
-      <p class="service-intro">Building and facilitating capacity-development and training programmes:</p>
-      <ul class="output-list">
-        <li><strong>Design:</strong> Needs Assessment • Curriculum Development • Training Design</li>
-        <li><strong>Approach:</strong> Interactive & Participatory (In-person & Online) • Training of Trainers</li>
-        <li><strong>Impact:</strong> Field-based Mentoring • Monitoring & Evaluation of Learning Outcomes</li>
+        <li><strong>Metrics:</strong> Logframe & Results Framework Development</li>
       </ul>
     </div>
   </div>
@@ -393,29 +320,21 @@
       <div class="exp-org">ADRA UK<br>Timor-Leste · 2026</div>
       <div>
         <p class="exp-role">Strategic Planning & Technical Writing</p>
-        <p class="exp-desc">Developed a technical concept note and logframe for an EU call for proposal supporting the Directorate General of Forestry in Timor-Leste to build institutional capacity for implementing priority forestry projects.</p>
+        <p>Developed a technical concept note and logframe for an EU call for proposal supporting the Directorate General of Forestry in Timor-Leste to build institutional capacity.</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">RECOFTC<br>Southeast Asia · 2024–2025</div>
       <div>
         <p class="exp-role">Senior Policy Outreach & Coordinator</p>
-        <p class="exp-desc">Designed and led the research-to-policy strategy across seven Southeast Asian countries for the Sida-funded Explore Programme.</p>
-        <p class="exp-desc">Designed and delivered regional training on Participatory Action Research and led the gender inclusion strategy for forest governance initiatives.</p>
-      </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-org">RECOFTC / RMFN-Asia<br>Southeast Asia · 2024</div>
-      <div>
-        <p class="exp-role">Strategic Planning & Technical Writing</p>
-        <p class="exp-desc">Led development of the Regional Multi-stakeholder Forestry Network Strategic Plan 2025–2030, covering landscape governance and climate change.</p>
+        <p>Designed and led the research-to-policy strategy across seven countries for the Sida-funded Explore Programme, coordinating National Advisory Committees.</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">Landesa<br>Thailand · 2022–2023</div>
       <div>
         <p class="exp-role">Applied Research & Technical Writing</p>
-        <p class="exp-desc">Produced an applied research report analyzing palm oil supply chain risks related to tenure insecurity and land disputes in Thailand's Trang region.</p>
+        <p>Produced an applied research report analyzing palm oil supply chain risks related to tenure insecurity and land disputes in Thailand's Trang region.</p>
       </div>
     </div>
   </div>
@@ -429,66 +348,80 @@
     <div class="exp-item">
       <div class="exp-org">FAO · 2025</div>
       <div>
-        <p class="exp-role"><a href="https://openknowledge.fao.org/handle/20.500.14283/cd7052en" target="_blank" class="pub-link">Exemplary forest management revisited – Insights from successes and challenges</a></p>
+        <p class="exp-role"><a href="https://openknowledge.fao.org/handle/20.500.14283/cd7052en" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">Exemplary forest management revisited – Insights from successes and challenges</a></p>
         <p class="exp-desc">FAO, Rome. Contributing author, pp. 19–31.</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">International Forestry Review · 2023</div>
       <div>
-        <p class="exp-role"><a href="https://doi.org/10.1080/1747423X.2023.2184513" target="_blank" class="pub-link">Safeguarding customary forest tenure in the Mekong Region: a legal analysis</a></p>
+        <p class="exp-role"><a href="https://doi.org/10.1080/1747423X.2023.2184513" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">Safeguarding customary forest tenure in the Mekong Region: a legal analysis</a></p>
         <p class="exp-desc">Lewis, S.R., Faure, N., Leonard, S., Pen, R., Ba Ngai, N., & Phengsophaf, K.</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">REDAA Programme Report · 2023</div>
       <div>
-        <p class="exp-role"><a href="https://www.redaa.org/scoping-study-research-action-priorities-redaa-programme-southeast-asia" target="_blank" class="pub-link">Research-to-action priorities for natural resource management in Southeast Asia</a></p>
+        <p class="exp-role"><a href="https://www.redaa.org/scoping-study-research-action-priorities-redaa-programme-southeast-asia" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">Research-to-action priorities for environmental restoration and sustainable natural resource management in Southeast Asia</a></p>
         <p class="exp-desc">Lewis, S.R. (lead author)</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">Journal of Political Ecology · 2022</div>
       <div>
-        <p class="exp-role"><a href="https://doi.org/10.2458/jpe.2398" target="_blank" class="pub-link">The political logics of EU-FLEGT in Thailand's multistakeholder negotiations</a></p>
+        <p class="exp-role"><a href="https://doi.org/10.2458/jpe.2398" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">The political logics of EU-FLEGT in Thailand's multistakeholder negotiations: Hegemony and resistance</a></p>
         <p class="exp-desc">Lewis, S.R. & Bulkan, J.</p>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-org">PhD Thesis · UBC · 2021</div>
+      <div class="exp-org">PhD Thesis · University of British Columbia · 2021</div>
       <div>
-        <p class="exp-role"><a href="https://dx.doi.org/10.14288/1.0406142" target="_blank" class="pub-link">The Political Ecology of Illegal Logging in Thailand</a></p>
+        <p class="exp-role"><a href="https://dx.doi.org/10.14288/1.0406142" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">The Political Ecology of Illegal Logging in Thailand: Forest Exploitation, Violence, and Anti-Politics</a></p>
         <p class="exp-desc">Lewis, S.R.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-org">Forests · 2019</div>
+      <div>
+        <p class="exp-role"><a href="https://www.mdpi.com/1999-4907/10/1/47" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">Assessing forest governance in the countries of the Greater Mekong Subregion</a></p>
+        <p class="exp-desc">Gritten, D., Lewis, S.R., Breukink, G., Mo, K., Dang, T., & Delattre, E.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-org">Forests · 2015</div>
+      <div>
+        <p class="exp-role"><a href="https://www.mdpi.com/1999-4907/6/10/3433/htm" target="_blank" style="color: var(--header-green); text-decoration: none; border-bottom: 1px solid rgba(61,140,53,0.3);">An uneven playing field: regulatory barriers to communities making a living from the timber from their forests — examples from Cambodia, Nepal and Vietnam</a></p>
+        <p class="exp-desc">Gritten, D., Greijmans, M., Lewis, S.R., et al.</p>
       </div>
     </div>
   </div>
 </section>
 
+
 <hr class="divider">
 
 <section id="education">
   <p class="section-label">Education & Research</p>
-  <h2>Research and education</h2>
   <div class="experience-list">
     <div class="exp-item">
       <div class="exp-org">Chulalongkorn University<br>Bangkok · 2022–2024</div>
       <div>
         <p class="exp-role">Postdoctoral Research Fellowship, Faculty of Political Science</p>
-        <p class="exp-desc">Qualitative field research on forest governance and land rights in Thailand within a political ecology framework.</p>
+        <p>Qualitative field research on forest governance and land rights in Thailand within a political ecology framework.</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">University of British Columbia<br>Vancouver · 2015–2021</div>
       <div>
         <p class="exp-role">Doctor of Philosophy, Forestry</p>
-        <p class="exp-desc">Investigated how forest governance, land tenure, and state processes shape resource access for Karen Pwo Indigenous communities.</p>
+        <p>Focused on forest governance, land tenure, and state processes shaping resource access in Thailand.</p>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-org">Imperial College London<br>London · 2008–2009</div>
       <div>
         <p class="exp-role">Master of Science, Forest Conservation</p>
-        <p class="exp-desc">Analyzed climate change adaptation strategies for protected forest areas across Europe and 26 member states.</p>
+        <p>Analyzed climate change adaptation strategies for protected forest areas across Europe.</p>
       </div>
     </div>
   </div>
@@ -499,14 +432,24 @@
 <section id="contact">
   <p class="section-label">Contact</p>
   <h2>Get in touch</h2>
-  <p>I welcome enquiries about consultancies, collaborations, and assignments.</p>
-  <p style="margin-top: 8px;">
-    <a href="mailto:sophieroselewis@gmail.com" style="color: var(--forest-mid); font-size: 1.3rem; text-decoration: none; border-bottom: 1px solid var(--sage); padding-bottom: 2px;">sophieroselewis@gmail.com →</a>
-  </p>
+  <div class="contact-container">
+    <form class="contact-form" action="https://formspree.io/f/xlgwaong" method="POST">
+      <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
+      <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+      <div class="form-group"><label>Message</label><textarea name="message" rows="4" required></textarea></div>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+    <div class="contact-details">
+      <div class="info-block"><h4>Email</h4><p>sophie.r.lewis@gmail.com</p></div>
+      <div class="info-block"><h4>Phone</h4><p>+66-61-940-0118</p></div>
+      <div class="info-block"><h4>Address</h4><p>Bangkok, Thailand</p></div>
+      <div class="info-block"><h4>LinkedIn</h4><p><a href="www.linkedin.com/in/sophie-rose-lewis-843a1921a" target="_blank" style="color:var(--forest-dark);">View Profile →</a></p></div>
+    </div>
+  </div>
 </section>
 
 <footer>
-  <p>Dr. Sophie Rose Lewis &nbsp;·&nbsp; Bangkok, Thailand &nbsp;·&nbsp; <a href="mailto:sophieroselewis@gmail.com">sophieroselewis@gmail.com</a></p>
+  <p>© 2026 Dr. Sophie Rose Lewis · Forest Governance Specialist</p>
 </footer>
 
 </body>
