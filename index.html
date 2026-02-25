@@ -17,6 +17,7 @@
     --mist: #f7faf6;
     --paper: #ffffff;
     --ink: #071507;
+    --gold: #b5913a;
   }
 
   html { scroll-behavior: smooth; }
@@ -50,6 +51,14 @@
     pointer-events: none;
   }
 
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--forest-mid), var(--sage), transparent);
+  }
+
   .header-inner {
     max-width: 1600px;
     margin: 0 auto;
@@ -63,15 +72,24 @@
     text-transform: uppercase;
     color: var(--light-green);
     margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
   }
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3.5rem, 6vw, 6.5rem);
+    font-size: clamp(4rem, 7vw, 7.5rem);
     font-weight: 900;
     line-height: 0.98;
     color: var(--header-green);
     letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.25s forwards;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--forest-dark);
   }
 
   .tagline {
@@ -80,6 +98,9 @@
     font-weight: 500;
     color: var(--forest-dark);
     max-width: 860px;
+    line-height: 1.75;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
   }
 
   .contact-bar {
@@ -87,6 +108,8 @@
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.55s forwards;
   }
 
   .contact-bar a {
@@ -94,8 +117,15 @@
     font-size: 15px;
     color: var(--forest-mid);
     text-decoration: none;
+    letter-spacing: 0.05em;
     border-bottom: 1px solid rgba(15,43,15,0.35);
     padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contact-bar a:hover {
+    color: var(--header-green);
+    border-color: var(--header-green);
   }
 
   /* SECTIONS */
@@ -108,6 +138,7 @@
   .section-label {
     font-family: 'DM Mono', monospace;
     font-size: 15px;
+    font-weight: 400;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--light-green);
@@ -127,16 +158,28 @@
 
   h2 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 4vw, 3.8rem);
+    font-size: clamp(2.8rem, 4vw, 4.2rem);
     font-weight: 900;
+    line-height: 1.08;
     margin-bottom: 32px;
     color: var(--header-green);
+    letter-spacing: -0.02em;
   }
 
-  /* SERVICES GRID */
+  h2 em { font-style: italic; color: var(--forest-dark); }
+
+  p {
+    font-size: 1.3rem;
+    color: var(--forest-dark);
+    margin-bottom: 22px;
+    max-width: 960px;
+    line-height: 1.9;
+  }
+
+  /* SERVICES */
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 32px;
     margin-top: 24px;
   }
@@ -144,12 +187,15 @@
   .service-card {
     background: var(--mist);
     border: 1px solid rgba(61,140,53,0.13);
-    padding: 45px 40px;
+    padding: 40px 36px 34px;
     position: relative;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
-  .service-card:hover { transform: translateY(-5px); }
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 56px rgba(7,21,7,0.09);
+  }
 
   .service-card::before {
     content: '';
@@ -161,30 +207,30 @@
 
   .service-card h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
+    font-size: 1.55rem;
+    font-weight: 800;
     color: var(--header-green);
-    margin-bottom: 18px;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
   }
 
-  .output-list { list-style: none; padding: 0; margin: 0; }
-  .output-list li {
-    font-size: 1.05rem;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    border-bottom: 1px solid rgba(90, 170, 80, 0.1);
-    padding-bottom: 12px;
-  }
-  .output-list li strong {
-    display: block;
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    text-transform: uppercase;
-    color: var(--light-green);
-    margin-bottom: 4px;
+  .service-card p {
+    font-size: 1.2rem;
+    color: var(--forest-dark);
+    margin: 0;
+    line-height: 1.9;
+    max-width: none;
+    font-weight: 400;
   }
 
-  /* LIST ITEMS (EXP, PUB, EDU) */
-  .experience-list { display: flex; flex-direction: column; }
+  /* EXPERIENCE */
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
   .exp-item {
     padding: 44px 0;
     border-bottom: 1px solid rgba(61,140,53,0.14);
@@ -193,6 +239,7 @@
     gap: 80px;
     align-items: start;
   }
+
   .exp-item:last-child { border-bottom: none; }
 
   .exp-org {
@@ -209,43 +256,76 @@
     font-weight: 800;
     color: var(--header-green);
     margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
   }
 
-  .pub-link {
-    color: var(--header-green);
+  .exp-desc {
+    font-size: 1.18rem;
+    color: var(--forest-dark);
+    margin: 0 0 14px;
+    line-height: 1.85;
+    max-width: none;
+  }
+
+  .exp-desc:last-child { margin-bottom: 0; }
+
+  /* REGIONS */
+  .regions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .region-tag {
+    background: var(--forest-mid);
+    color: var(--sage);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    padding: 8px 20px;
+    text-transform: uppercase;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(61,140,53,0.12);
+    margin: 0 100px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--forest-mid);
+    color: rgba(232,240,230,0.65);
+    text-align: center;
+    padding: 56px 100px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+  }
+
+  footer a {
+    color: var(--sage);
     text-decoration: none;
-    border-bottom: 1px solid rgba(61,140,53,0.3);
   }
 
-  /* CONTACT */
-  .contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    margin-top: 40px;
-  }
-  .contact-form { display: flex; flex-direction: column; gap: 24px; }
-  .form-group { display: flex; flex-direction: column; gap: 8px; }
-  .form-group label { font-family: 'DM Mono', monospace; font-size: 13px; text-transform: uppercase; color: var(--light-green); }
-  .contact-form input, .contact-form textarea {
-    width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid rgba(15, 43, 15, 0.2); background: transparent; font-family: inherit; font-size: 1.1rem; outline: none;
-  }
-  .submit-btn {
-    align-self: flex-start; background: var(--forest-mid); color: var(--paper); padding: 14px 40px; font-family: 'DM Mono', monospace; text-transform: uppercase; border: none; cursor: pointer; transition: 0.3s;
-  }
-  .submit-btn:hover { background: var(--header-green); }
+  footer a:hover { color: #edf5eb; }
 
-  .regions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
-  .region-tag { background: var(--forest-mid); color: var(--sage); font-family: 'DM Mono', monospace; font-size: 13px; padding: 8px 20px; text-transform: uppercase; }
-
-  .divider { border: none; border-top: 1px solid rgba(61,140,53,0.12); margin: 0 100px; }
-
-  footer { background: var(--forest-mid); color: rgba(232,240,230,0.65); text-align: center; padding: 56px 100px; font-family: 'DM Mono', monospace; font-size: 13px; }
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
   @media (max-width: 900px) {
-    header, section { padding: 60px 40px; }
-    .exp-item, .contact-container { grid-template-columns: 1fr; gap: 40px; }
+    header { padding: 64px 40px 54px; }
+    section { padding: 64px 40px; }
     .divider { margin: 0 40px; }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+    .contact-bar { gap: 22px; }
+    h1 { font-size: clamp(3rem, 10vw, 5rem); }
   }
 </style>
 </head>
@@ -257,7 +337,7 @@
     <h1>Dr. Sophie Rose Lewis</h1>
     <p class="tagline">Forest governance and social forestry specialist with over fifteen years working on land rights, tenure security, and forest policy across Southeast Asia.</p>
     <div class="contact-bar">
-      <a href="mailto:sophie.r.lewis@gmail.com">sophie.r.lewis@gmail.com</a>
+      <a href="mailto:sophieroselewis@gmail.com">sophieroselewis@gmail.com</a>
       <a href="https://orcid.org/0000-0003-2806-1748" target="_blank">ORCID Publications</a>
       <a href="tel:+66619400118">Bangkok · +66 61 940 0118</a>
     </div>
@@ -270,7 +350,14 @@
   <p>With over 15 years of experience working across Southeast Asia, I bring extensive knowledge of forest governance, land and resource rights, and tenure security from the community to the international level.</p>
 </p>I specialise in applied research and consulting for non-governmental organisations, collaborating with NGOs, governments, civil society, Indigenous Peoples, and local communities across the region.</p>
 </p>I possess strong technical and strategic expertise with extensive experience producing high-quality proposals, technical reports, research papers, policy briefs, and communications outputs for international organisations, NGOs and governments.</p>
-    <span class="region-tag">Cambodia</span><span class="region-tag">Indonesia</span><span class="region-tag">Lao PDR</span><span class="region-tag">Philippines</span><span class="region-tag">Thailand</span><span class="region-tag">Timor-Leste</span><span class="region-tag">Vietnam</span>
+  <div class="regions">
+    <span class="region-tag">Cambodia</span>
+    <span class="region-tag">Indonesia</span>
+    <span class="region-tag">Lao PDR</span>
+    <span class="region-tag">Philippines</span>
+    <span class="region-tag">Thailand</span>
+    <span class="region-tag">Timor-Leste</span>
+    <span class="region-tag">Vietnam</span>
   </div>
 </section>
 
@@ -281,33 +368,23 @@
   <div class="services-grid">
     <div class="service-card">
       <h3>Technical Writing & Editing</h3>
-      <ul class="output-list">
-        <li><strong>Strategy:</strong> Proposals • Concept Notes • Strategic Plans</li>
-        <li><strong>Knowledge:</strong> Policy Briefs • Knowledge Products • Synthesis Reports</li>
-        <li><strong>Quality:</strong> Editing & Proofreading of research outputs and publications</li>
-      </ul>
+      <p>Producing and editing technical and communications outputs for diverse audiences — including proposals, concept notes, policy briefs, donor and programme reporting, knowledge products, synthesis reports, strategic plans, stories of change, case studies, and editing and proofreading of research outputs, reports, and publications.</p>
     </div>
     <div class="service-card">
       <h3>Applied Research</h3>
-      <ul class="output-list">
-        <li><strong>Methodology:</strong> FPIC processes • Participatory Action Research</li>
-        <li><strong>Analysis:</strong> Scoping Studies • Literature Reviews • Data Synthesis</li>
-        <li><strong>Outputs:</strong> Research Reports • Journal Articles • Conference Papers</li>
-      </ul>
+      <p>Leading and delivering applied and participatory research — including Free, Prior and Informed Consent (FPIC) processes, participatory action research, qualitative research, scoping studies, literature reviews, data analysis and synthesis, research reports, journal articles, and conference papers.</p>
     </div>
     <div class="service-card">
       <h3>Policy Outreach & Advocacy</h3>
-      <ul class="output-list">
-        <li><strong>Strategy:</strong> Advocacy Planning • Stakeholder Coordination & Consultation</li>
-        <li><strong>Dialogue:</strong> Evidence Communication • Science-Policy Dialogue</li>
-      </ul>
+      <p>Designing and delivering research-to-policy engagement strategies — including stakeholder, power, interest and influence mapping, advocacy planning and strategy, stakeholder coordination and consultation, evidence communication, science-policy dialogue, and research-to-policy communications.</p>
     </div>
     <div class="service-card">
       <h3>Strategic Planning & Advisory</h3>
-      <ul class="output-list">
-        <li><strong>Design:</strong> Programme Design • Theory of Change Development</li>
-        <li><strong>Metrics:</strong> Logframe & Results Framework Development</li>
-      </ul>
+      <p>Supporting organisations to translate vision into action — through multi-stakeholder strategic planning facilitation, programme design and inception, and theory of change, logframe, and results framework development.</p>
+    </div>
+    <div class="service-card">
+      <h3>Capacity Development</h3>
+      <p>Building and facilitating capacity-development and training programmes — for policymakers, researchers, NGOs, civil society, and community members — with an emphasis on interactive and participatory approaches in-person and online, covering needs assessment, curriculum and materials development, training design and facilitation, training of trainers, field-based mentoring, and monitoring and evaluation of learning outcomes.</p>
     </div>
   </div>
 </section>
@@ -371,7 +448,6 @@
   </div>
 </section>
 
-
 <hr class="divider">
 
 <section id="publications">
@@ -429,36 +505,46 @@
   </div>
 </section>
 
-
 <hr class="divider">
 
 <section id="education">
   <p class="section-label">Education & Research</p>
+  <h2>Research and education</h2>
   <div class="experience-list">
     <div class="exp-item">
       <div class="exp-org">Chulalongkorn University<br>Bangkok · 2022–2024</div>
       <div>
         <p class="exp-role">Postdoctoral Research Fellowship, Faculty of Political Science</p>
-        <p>Qualitative field research on forest governance and land rights in Thailand within a political ecology framework.</p>
+        <p class="exp-desc">Carried out qualitative field research on forest governance and land rights in Thailand, applying a political ecology framework to examine inequality in resource access under Thailand's Bio-Circular-Green Economic Model.</p>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-org">University of British Columbia<br>Vancouver · 2015–2021</div>
+      <div class="exp-org">University of British Columbia<br>Vancouver, Canada · 2015–2021</div>
       <div>
         <p class="exp-role">Doctor of Philosophy, Forestry</p>
-        <p>Focused on forest governance, land tenure, and state processes shaping resource access in Thailand.</p>
+        <p class="exp-desc">Investigated forest governance in Thailand across two scales: first, how forest governance structures, land tenure arrangements, and state processes shape the livelihoods and resource access of Karen Pwo Indigenous communities living adjacent to Thailand's protected areas; and second, how competing actor interests and institutional dynamics influenced the reform of timber legality and smallholder tenure and timber rights through Thailand's EU-Forest Law Enforcement, Governance and Trade Voluntary Partnership Agreement negotiation process.</p>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-org">Imperial College London<br>London · 2008–2009</div>
+      <div class="exp-org">Imperial College London<br>London, UK · 2008–2009</div>
       <div>
         <p class="exp-role">Master of Science, Forest Conservation</p>
-        <p>Analyzed climate change adaptation strategies for protected forest areas across Europe.</p>
+        <p class="exp-desc">Analysed climate change adaptation strategies for protected forest areas across Europe, combining a comprehensive literature review with an EU-wide survey of 26 member states, and producing policy recommendations for integrating climate change adaptation into international, European and national biodiversity policy.</p>
       </div>
     </div>
   </div>
 </section>
 
+<hr class="divider">
+
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <h2>Get in touch</h2>
+  <p>I welcome enquiries about consultancies, collaborations, and assignments.</p>
+  <p style="margin-top: 8px;">
+    <a href="mailto:sophieroselewis@gmail.com" style="color: var(--forest-mid); font-size: 1.3rem; text-decoration: none; border-bottom: 1px solid var(--sage); padding-bottom: 2px;">sophieroselewis@gmail.com →</a>
+  </p>
+</section>
 <hr class="divider">
 
 <section id="contact">
