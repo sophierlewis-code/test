@@ -132,14 +132,17 @@
   .hero-image {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 60vh;
+    min-height: 400px;
     border-radius: 0;
     overflow: hidden;
   }
 
   .hero-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
     display: block;
     filter: contrast(1.08) saturate(1.1);
   }
