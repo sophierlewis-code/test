@@ -132,16 +132,15 @@
   .hero-image {
     position: relative;
     width: 100%;
-    height: calc(100vh - 110px);
+    max-width: calc((100vh - 110px) * 1.7755);
+    margin: 0 auto;
     border-radius: 0;
   }
 
   .hero-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: block;
-    object-fit: cover;
-    object-position: center center;
     filter: contrast(1.08) saturate(1.1);
   }
 
@@ -579,7 +578,6 @@
     section { padding: 28px 24px; }
     .exp-item { grid-template-columns: 1fr; gap: 10px; }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
-    .hero-image { height: calc(100vh - 56px); }
     .hero-overlay div p { font-size: clamp(0.7rem, 3.5vw, 1rem) !important; }
     .hero-overlay div { padding-left: 1rem !important; padding-right: 1rem !important; padding-bottom: 0.75rem !important; }
   }
