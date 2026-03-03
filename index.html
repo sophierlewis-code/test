@@ -244,6 +244,7 @@
     margin-bottom: 0;
     box-shadow: none;
     width: 100%;
+    scroll-margin-top: 110px;
   }
 
   section:nth-of-type(even) {
@@ -620,7 +621,7 @@
     #sidebar nav { display: none; }
     #main-content { margin-top: calc(56px + env(safe-area-inset-top)); padding: 0; }
     header { padding: 0; margin: 0; width: 100%; overflow: visible; }
-    section { padding: 28px 24px; }
+    section { padding: 28px 24px; scroll-margin-top: calc(56px + env(safe-area-inset-top)); }
     .exp-item { grid-template-columns: 1fr; gap: 10px; }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
     .hero-image { height: auto; max-width: none; background: #ffffff; }
