@@ -726,7 +726,7 @@
   @media (min-width: 760px) {
     .about-inner {
       flex-direction: row;
-      min-height: 580px;
+      height: calc(100vh - 110px);
     }
 
     .about-photo {
@@ -739,23 +739,24 @@
     }
 
     .about-icon img {
-      height: 72px;
+      height: 60px;
     }
 
     .about-text {
       flex: 1;
-      padding: 64px 56px 64px 52px;
+      padding: 40px 48px 40px 44px;
       justify-content: center;
-      gap: 24px;
+      gap: 16px;
     }
 
     .about-heading {
-      font-size: clamp(1.2rem, 1.8vw, 1.65rem);
+      font-size: clamp(1.05rem, 1.5vw, 1.45rem);
     }
 
     .about-body,
     .about-italic {
-      font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+      font-size: clamp(0.85rem, 1vw, 0.98rem);
+      line-height: 1.65;
     }
   }
 </style>
