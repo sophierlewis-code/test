@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dr. Sophie Rose Lewis — Forest Governance Specialist</title>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&family=DM+Mono:wght@300;400&family=Nunito:wght@400;600;800;900&family=DM+Sans:wght@300;400;500&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&family=DM+Mono:wght@300;400&family=Nunito:wght@400;600;800;900&family=DM+Sans:wght@300;400;500&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -637,6 +637,127 @@
     .hero-overlay div p { font-size: clamp(0.9rem, 2.2vw, 1.6rem) !important; }
     .hero-overlay div { padding-left: clamp(1rem, 4vw, 40px) !important; padding-right: clamp(1rem, 4vw, 40px) !important; }
   }
+
+  /* ── ABOUT SECTION ── */
+  #about {
+    background: #172009 !important;
+    padding: 0 !important;
+  }
+
+  .about-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Photo column — mobile: full width, 4:3 crop */
+  .about-photo {
+    width: 100%;
+    position: relative;
+  }
+
+  .about-photo-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .about-photo-wrap img.about-portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .about-icon {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .about-icon img {
+    height: 56px;
+    width: auto;
+    display: block;
+  }
+
+  /* Text column */
+  .about-text {
+    padding: 40px 24px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: transparent;
+  }
+
+  .about-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    line-height: 1.45;
+    margin: 0;
+    max-width: none;
+  }
+
+  .about-body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #ffffff;
+    line-height: 1.8;
+    margin: 0;
+    max-width: none;
+  }
+
+  .about-italic {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #ffffff;
+    line-height: 1.8;
+    margin: 0;
+    max-width: none;
+  }
+
+  /* Desktop: side-by-side */
+  @media (min-width: 760px) {
+    .about-inner {
+      flex-direction: row;
+      min-height: 580px;
+    }
+
+    .about-photo {
+      flex: 0 0 42%;
+    }
+
+    .about-photo-wrap {
+      height: 100%;
+      aspect-ratio: unset;
+    }
+
+    .about-icon img {
+      height: 72px;
+    }
+
+    .about-text {
+      flex: 1;
+      padding: 64px 56px 64px 52px;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .about-heading {
+      font-size: clamp(1.2rem, 1.8vw, 1.65rem);
+    }
+
+    .about-body,
+    .about-italic {
+      font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+    }
+  }
 </style>
 </head>
 <body>
@@ -673,31 +794,25 @@
     </div>
   </header>
 
-      <section id="about" style="background: #ffffff; padding: 80px 8%;">
-    <div style="display:flex; gap: 60px; align-items:flex-start; max-width: 1200px; margin: 0 auto;">
-      
-      <!-- LEFT COLUMN: photo -->
-      <div style="flex: 0 0 38%;">
-        <div style="width:100%; aspect-ratio: 3/4; background: #f0f4f1; border-radius: 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; border: 2px dashed #c0d4c8; position:relative; overflow:hidden;">
-          <img src="1.jpeg" alt="Dr. Sophie Rose Lewis" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
+  <section id="about">
+    <div class="about-inner">
+
+      <!-- Photo column -->
+      <div class="about-photo">
+        <div class="about-photo-wrap">
+          <img class="about-portrait" src="profile.jpg" alt="Dr. Sophie Rose Lewis">
+          <div class="about-icon">
+            <img src="profileicon.svg" alt="Forest Governance Lab">
+          </div>
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: text + logo sign-off -->
-      <div style="flex: 1; padding-top: 8px; display:flex; flex-direction:column; justify-content:space-between; min-height: 100%;">
-        <div>
-          <div style="width: 48px; height: 4px; background: #005C40; border-radius: 2px; margin-bottom: 28px;"></div>
-          <p class="section-label" style="color: #005C40; margin-bottom: 24px;">About</p>
-          <div style="display:flex; flex-direction:column; gap: 16px;">
-            <p style="color: #1a2e1a; font-size:1.05rem; line-height:1.8; margin:0;">With over 15 years of experience working across Southeast Asia, I bring extensive knowledge of forest governance, land and resource rights, and tenure security from the community to the international level.</p>
-            <p style="color: #1a2e1a; font-size:1.05rem; line-height:1.8; margin:0;">I specialise in applied research and consulting for non-governmental organisations, collaborating with NGOs, governments, civil society, Indigenous Peoples, and local communities across the region.</p>
-            <p style="color: #1a2e1a; font-size:1.05rem; line-height:1.8; margin:0;">I possess strong technical and strategic expertise with extensive experience producing high-quality proposals, technical reports, research papers, policy briefs, and communications outputs for international organisations, NGOs and governments.</p>
-          </div>
-        </div>
-        <!-- Logo sign-off — bottom right -->
-        <div style="margin-top: 40px; display:flex; justify-content:flex-end;">
-          <img src="drawingGREENONWHITE1NOSUBBG.svg" alt="Dr. Sophie Rose Lewis — Forest Governance Specialist" style="width: 100%; max-width: 320px; height: auto; opacity: 0.9;">
-        </div>
+      <!-- Text column -->
+      <div class="about-text">
+        <p class="about-heading">Forest Governance Lab is the independent consulting practice of Dr. Sophie Rose Lewis.</p>
+        <p class="about-body">With over 15 years working across Southeast Asia, I specialise in forest governance, social forestry, resource rights and land tenure security — from the ground level through to policy.</p>
+        <p class="about-body">I work with NGOs, governments, civil society organisations, Indigenous Peoples, and local communities, bringing both technical depth and practical understanding.</p>
+        <p class="about-italic">I focus on outputs that are high-quality, grounded, and actionable.</p>
       </div>
 
     </div>
