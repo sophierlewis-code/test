@@ -702,7 +702,7 @@
     font-size: 1.2rem;
     color: #ffffff;
     line-height: 1.45;
-    margin: 0;
+    margin: 0 0 10px;
     max-width: none;
   }
 
@@ -723,7 +723,7 @@
     font-size: 0.95rem;
     color: #ffffff;
     line-height: 1.8;
-    margin: 0;
+    margin: 10px 0 0;
     max-width: none;
   }
 
@@ -762,12 +762,17 @@
 
     .about-heading {
       font-size: clamp(1.05rem, 1.5vw, 1.45rem);
+      margin: 0;
     }
 
     .about-body,
     .about-italic {
       font-size: clamp(0.85rem, 1vw, 0.98rem);
       line-height: 1.65;
+    }
+
+    .about-italic {
+      margin: 0;
     }
   }
 </style>
