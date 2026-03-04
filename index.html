@@ -684,11 +684,19 @@
 
   /* Text column */
   .about-text {
+    position: relative;
     padding: 40px 24px 48px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     background: transparent;
+  }
+
+  .about-text .section-label {
+    position: absolute;
+    top: 0.5cm;
+    left: 24px;
+    color: #ffffff;
   }
 
   .about-heading {
@@ -747,6 +755,10 @@
       padding: 40px 48px 40px 44px;
       justify-content: center;
       gap: 16px;
+    }
+
+    .about-text .section-label {
+      left: 44px;
     }
 
     .about-heading {
