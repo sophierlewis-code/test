@@ -749,9 +749,9 @@
 
     .about-text {
       flex: 1;
-      padding: 3.5cm 48px 40px 44px;
-      justify-content: flex-start;
-      gap: 16px;
+      padding: 3.5cm 48px 3.5cm 44px;
+      justify-content: center;
+      gap: 0;
     }
 
     .about-text .section-label {
@@ -761,18 +761,24 @@
     }
 
     .about-heading {
-      font-size: clamp(1.05rem, 1.5vw, 1.45rem);
-      margin: 0 0 8px;
+      font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+      margin: 0 0 48px;
     }
 
-    .about-body,
-    .about-italic {
-      font-size: clamp(0.85rem, 1vw, 0.98rem);
+    .about-body {
+      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
       line-height: 1.65;
+      margin: 0 0 16px;
+    }
+
+    .about-body + .about-italic {
+      margin-top: 16px;
     }
 
     .about-italic {
-      margin: 8px 0 0;
+      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+      line-height: 1.65;
+      margin: 0;
     }
   }
 </style>
