@@ -67,7 +67,7 @@
   /* Name & Title */
   .sidebar-name {
     font-family: 'Nunito', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.4025rem;
     font-weight: 400;
     letter-spacing: 0.04em;
     color: #005C40;
@@ -406,7 +406,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 16px;
+    margin-top: 18.5px;
   }
 
   /* CONTACT */
@@ -639,6 +639,195 @@
   }
 
   /* ── ABOUT SECTION ── */
+  #about {
+    background: #172009 !important;
+    padding: 0 !important;
+  }
+
+  .about-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Photo column — mobile: full width, portrait crop */
+  .about-photo {
+    width: 100%;
+    position: relative;
+  }
+
+  .about-photo-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+  }
+
+  .about-photo-wrap img.about-portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .about-icon {
+    position: absolute;
+    bottom: 0.2cm;
+    left: calc(20px + 0.5cm);
+  }
+
+  .about-icon img {
+    height: 112px;
+    width: auto;
+    display: block;
+  }
+
+  /* Text column */
+  .about-text {
+    position: relative;
+    padding: 40px 24px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: transparent;
+  }
+
+  .about-text .section-label {
+    color: #ffffff;
+  }
+
+  .about-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.26225rem;
+    color: #ffffff;
+    line-height: 1.45;
+    margin: 0 0 12px;
+    max-width: none;
+  }
+
+  .about-body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.06875rem;
+    color: #ffffff;
+    line-height: 1.8;
+    margin: 0;
+    max-width: none;
+  }
+
+  .about-italic {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.175625rem;
+    color: #ffffff;
+    line-height: 1.8;
+    margin: 11.5px 0 0;
+    max-width: none;
+  }
+
+
+  @media (min-width: 760px) and (max-width: 1400px) {
+    .about-photo-wrap img.about-portrait {
+      object-fit: contain !important;
+      object-position: left top !important;
+      background: #172009;
+    }
+
+    .about-text {
+      padding: clamp(1.8rem, 2.8vw, 2.6cm) clamp(0.8rem, 1.6vw, 1.6cm) clamp(1.2rem, 2vw, 1.8cm);
+      height: 100%;
+      max-height: 100%;
+      overflow-y: auto;
+    }
+
+    .about-heading {
+      font-size: clamp(0.945rem, 1.305vw, 1.215rem);
+      margin: 0 0 26px;
+    }
+
+    .about-body {
+      font-size: clamp(0.81rem, 0.945vw, 0.945rem);
+      line-height: 1.55;
+    }
+
+    .about-body + .about-italic {
+      margin-top: 14px;
+    }
+
+    .about-italic {
+      font-size: clamp(0.855rem, 0.99vw, 1.035rem);
+      line-height: 1.55;
+    }
+  }
+
+  /* Desktop: side-by-side */
+  @media (min-width: 760px) {
+    .about-inner {
+      flex-direction: row;
+      height: min(calc(100vh - 110px), 680px);
+    }
+
+    .about-photo {
+      flex: 0 0 40%;
+      width: 40%;
+      min-width: 260px;
+      max-width: 40%;
+      height: 100%;
+    }
+
+    .about-photo-wrap {
+      height: 100%;
+      width: 100%;
+    }
+
+    .about-photo-wrap img.about-portrait {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: left top;
+    }
+
+    .about-icon img {
+      height: 120px;
+    }
+
+    .about-text {
+      flex: 1 1 60%;
+      min-width: 0;
+      padding: 3cm clamp(1rem, 2.1vw, 2.4cm) 2cm;
+      justify-content: flex-start;
+      gap: 0;
+    }
+
+    .about-text .section-label {
+      position: absolute;
+      top: 0.5cm;
+      left: clamp(1rem, 2.1vw, 2.4cm);
+    }
+
+    .about-heading {
+      font-size: clamp(1.26225rem, 1.893375vw, 1.7881875rem);
+      margin: 0 0 38px;
+    }
+
+    .about-body {
+      font-size: clamp(1.06875rem, 1.35vw, 1.29375rem);
+      line-height: 1.65;
+      margin: 0 0 16px;
+    }
+
+    .about-body + .about-italic {
+      margin-top: 18.5px;
+    }
+
+    .about-italic {
+      font-size: clamp(1.175625rem, 1.485vw, 1.423125rem);
+      line-height: 1.65;
+      margin: 0;
+    }
+  }
 </style>
 </head>
 <body>
@@ -676,6 +865,25 @@
   </header>
 
   <section id="about">
+    <div class="about-inner">
+
+      <!-- Photo column -->
+      <div class="about-photo">
+        <div class="about-photo-wrap">
+          <img class="about-portrait" src="profile3.JPG" alt="Dr. Sophie Rose Lewis">
+        </div>
+      </div>
+
+      <!-- Text column -->
+      <div class="about-text">
+        <p class="section-label">About</p>
+        <p class="about-heading">Forest Governance Lab is the independent consulting practice of Dr. Sophie Rose Lewis.</p>
+        <p class="about-body">With over 15 years working across Southeast Asia, I specialise in forest governance, social forestry, resource rights and land tenure — from the ground level through to policy.</p>
+        <p class="about-body">I work with NGOs, governments, civil society organisations, Indigenous Peoples, and local communities, bringing both technical depth and practical understanding.</p>
+        <p class="about-italic">I focus on outputs that are high-quality, grounded, and actionable.</p>
+      </div>
+
+    </div>
   </section>
 
 
