@@ -67,7 +67,7 @@
   /* Name & Title */
   .sidebar-name {
     font-family: 'Nunito', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.4025rem;
     font-weight: 400;
     letter-spacing: 0.04em;
     color: #005C40;
@@ -406,7 +406,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 16px;
+    margin-top: 18.5px;
   }
 
   /* CONTACT */
@@ -649,7 +649,7 @@
     flex-direction: column;
   }
 
-  /* Photo column — mobile: full width, 4:3 crop */
+  /* Photo column — mobile: full width, portrait crop */
   .about-photo {
     width: 100%;
     position: relative;
@@ -658,7 +658,7 @@
   .about-photo-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
     overflow: hidden;
   }
 
@@ -699,17 +699,17 @@
   .about-heading {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.4025rem;
     color: #ffffff;
     line-height: 1.45;
-    margin: 0 0 10px;
+    margin: 0 0 12px;
     max-width: none;
   }
 
   .about-body {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 1.1875rem;
     color: #ffffff;
     line-height: 1.8;
     margin: 0;
@@ -720,35 +720,47 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-style: italic;
-    font-size: 0.95rem;
+    font-size: 1.30625rem;
     color: #ffffff;
     line-height: 1.8;
-    margin: 10px 0 0;
+    margin: 11.5px 0 0;
     max-width: none;
+  }
+
+
+  @media (min-width: 760px) and (max-width: 1400px) {
+    .about-photo-wrap img.about-portrait {
+      object-fit: contain !important;
+      object-position: left top !important;
+      background: #172009;
+    }
   }
 
   /* Desktop: side-by-side */
   @media (min-width: 760px) {
     .about-inner {
       flex-direction: row;
-      height: calc(100vh - 110px);
+      height: min(calc(100vh - 110px), 680px);
     }
 
     .about-photo {
-      flex: 0 0 auto;
-      width: auto;
+      flex: 0 0 40%;
+      width: 40%;
+      min-width: 260px;
+      max-width: 40%;
       height: 100%;
     }
 
     .about-photo-wrap {
       height: 100%;
-      width: auto;
+      width: 100%;
     }
 
     .about-photo-wrap img.about-portrait {
       height: 100%;
-      width: auto;
-      object-fit: unset;
+      width: 100%;
+      object-fit: cover;
+      object-position: left top;
     }
 
     .about-icon img {
@@ -756,36 +768,36 @@
     }
 
     .about-text {
-      flex: 1;
+      flex: 1 1 60%;
       min-width: 0;
-      padding: 3.5cm 3cm 3.5cm 3cm;
-      justify-content: center;
+      padding: 3cm clamp(1rem, 2.1vw, 2.4cm) 2cm;
+      justify-content: flex-start;
       gap: 0;
     }
 
     .about-text .section-label {
       position: absolute;
       top: 0.5cm;
-      left: 44px;
+      left: clamp(1rem, 2.1vw, 2.4cm);
     }
 
     .about-heading {
-      font-size: clamp(1.2rem, 1.8vw, 1.7rem);
-      margin: 0 0 48px;
+      font-size: clamp(1.4025rem, 2.10375vw, 1.986875rem);
+      margin: 0 0 38px;
     }
 
     .about-body {
-      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+      font-size: clamp(1.1875rem, 1.5vw, 1.4375rem);
       line-height: 1.65;
       margin: 0 0 16px;
     }
 
     .about-body + .about-italic {
-      margin-top: 16px;
+      margin-top: 18.5px;
     }
 
     .about-italic {
-      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+      font-size: clamp(1.30625rem, 1.65vw, 1.58125rem);
       line-height: 1.65;
       margin: 0;
     }
@@ -832,7 +844,7 @@
       <!-- Photo column -->
       <div class="about-photo">
         <div class="about-photo-wrap">
-          <img class="about-portrait" src="profile3.jpg" alt="Dr. Sophie Rose Lewis">
+          <img class="about-portrait" src="profile3.JPG" alt="Dr. Sophie Rose Lewis">
         </div>
       </div>
 
