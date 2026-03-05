@@ -699,7 +699,7 @@
   .about-heading {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 1.4025rem;
+    font-size: 1.26225rem;
     color: #ffffff;
     line-height: 1.45;
     margin: 0 0 12px;
@@ -709,7 +709,7 @@
   .about-body {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 1.1875rem;
+    font-size: 1.06875rem;
     color: #ffffff;
     line-height: 1.8;
     margin: 0;
@@ -720,7 +720,7 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-style: italic;
-    font-size: 1.30625rem;
+    font-size: 1.175625rem;
     color: #ffffff;
     line-height: 1.8;
     margin: 11.5px 0 0;
@@ -733,6 +733,32 @@
       object-fit: contain !important;
       object-position: left top !important;
       background: #172009;
+    }
+
+    .about-text {
+      padding: clamp(1.8rem, 2.8vw, 2.6cm) clamp(0.8rem, 1.6vw, 1.6cm) clamp(1.2rem, 2vw, 1.8cm);
+      height: 100%;
+      max-height: 100%;
+      overflow-y: auto;
+    }
+
+    .about-heading {
+      font-size: clamp(0.945rem, 1.305vw, 1.215rem);
+      margin: 0 0 26px;
+    }
+
+    .about-body {
+      font-size: clamp(0.81rem, 0.945vw, 0.945rem);
+      line-height: 1.55;
+    }
+
+    .about-body + .about-italic {
+      margin-top: 14px;
+    }
+
+    .about-italic {
+      font-size: clamp(0.855rem, 0.99vw, 1.035rem);
+      line-height: 1.55;
     }
   }
 
@@ -782,12 +808,12 @@
     }
 
     .about-heading {
-      font-size: clamp(1.4025rem, 2.10375vw, 1.986875rem);
+      font-size: clamp(1.26225rem, 1.893375vw, 1.7881875rem);
       margin: 0 0 38px;
     }
 
     .about-body {
-      font-size: clamp(1.1875rem, 1.5vw, 1.4375rem);
+      font-size: clamp(1.06875rem, 1.35vw, 1.29375rem);
       line-height: 1.65;
       margin: 0 0 16px;
     }
@@ -797,7 +823,7 @@
     }
 
     .about-italic {
-      font-size: clamp(1.30625rem, 1.65vw, 1.58125rem);
+      font-size: clamp(1.175625rem, 1.485vw, 1.423125rem);
       line-height: 1.65;
       margin: 0;
     }
@@ -844,7 +870,7 @@
       <!-- Photo column -->
       <div class="about-photo">
         <div class="about-photo-wrap">
-          <img class="about-portrait" src="profile3.JPG " alt="Dr. Sophie Rose Lewis">
+          <img class="about-portrait" src="profile3.JPG" alt="Dr. Sophie Rose Lewis">
         </div>
       </div>
 
