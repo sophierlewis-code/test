@@ -340,6 +340,7 @@
   .services-carousel {
     position: relative;
     margin-top: 20px;
+    padding: 0 56px;
   }
 
   .services-scroll {
@@ -385,10 +386,10 @@
     background: transparent;
     border: none;
     color: var(--header-green);
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    font-size: 1.4rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 0;
+    font-size: 2.8rem;
     font-weight: 700;
     cursor: pointer;
     display: flex;
@@ -397,18 +398,20 @@
     z-index: 2;
     transition: opacity 0.2s;
     line-height: 1;
+    padding: 0;
   }
 
-  .services-arrow:hover { opacity: 0.6; }
+  .services-arrow:hover { opacity: 0.5; }
 
-  .services-arrow.prev { left: -26px; }
-  .services-arrow.next { right: -26px; }
+  .services-arrow.prev { left: 0; }
+  .services-arrow.next { right: 0; }
 
-  .services-arrow.hidden { opacity: 0; pointer-events: none; }
+  .services-arrow.hidden { opacity: 0.2; pointer-events: none; }
 
   @media (max-width: 700px) {
-    .service-card { flex: 0 0 80vw; }
-    .services-arrow { display: none; }
+    .services-carousel { padding: 0 44px; }
+    .service-card { flex: 0 0 calc(100vw - 130px); }
+    .services-arrow { font-size: 2.2rem; width: 40px; }
   }
 
   /* EXPERIENCE */
