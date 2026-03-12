@@ -316,82 +316,89 @@
   }
 
   /* SERVICES TABS */
-  .services-tabs-wrap {
-    background: var(--header-green);
-    border-radius: 4px;
+  /* SERVICES SCROLL */
+  .services-carousel {
+    position: relative;
     margin-top: 20px;
-    overflow: hidden;
   }
 
-  .services-tab-bar {
+  .services-scroll {
     display: flex;
+    gap: 20px;
     overflow-x: auto;
+    scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    border-bottom: 1px solid rgba(255,255,255,0.18);
+    padding-bottom: 4px;
   }
 
-  .services-tab-bar::-webkit-scrollbar { display: none; }
+  .services-scroll::-webkit-scrollbar { display: none; }
 
-  .services-tab-btn {
-    flex-shrink: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 16px 24px;
+  .service-card {
+    flex: 0 0 300px;
+    background: var(--header-green);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 32px 28px 28px;
+    position: relative;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: rgba(255,255,255,0.35);
+  }
+
+  .service-card h3 {
     font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.6);
-    white-space: nowrap;
-    border-bottom: 3px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-    line-height: 1.2;
-  }
-
-  .services-tab-btn:hover {
-    color: rgba(255,255,255,0.9);
-  }
-
-  .services-tab-btn.active {
-    color: #ffffff;
-    border-bottom-color: #ffffff;
-  }
-
-  .services-tab-panel {
-    display: none;
-    padding: 36px 32px;
-  }
-
-  .services-tab-panel.active {
-    display: block;
-  }
-
-  .services-tab-panel h3 {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     line-height: 1.2;
   }
 
-  .services-tab-panel p {
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.88);
+  .service-card p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
     margin: 0;
-    max-width: 680px;
-    line-height: 1.8;
+    line-height: 1.75;
   }
 
-  @media (max-width: 600px) {
-    .services-tab-btn {
-      padding: 14px 18px;
-      font-size: 0.88rem;
-    }
-    .services-tab-panel {
-      padding: 28px 20px;
-    }
+  .services-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--header-green);
+    border: 2px solid rgba(255,255,255,0.3);
+    color: #ffffff;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: background 0.2s, border-color 0.2s;
+    line-height: 1;
+  }
+
+  .services-arrow:hover {
+    background: var(--sage);
+    border-color: var(--sage);
+  }
+
+  .services-arrow.prev { left: -26px; }
+  .services-arrow.next { right: -26px; }
+
+  .services-arrow.hidden { opacity: 0; pointer-events: none; }
+
+  @media (max-width: 700px) {
+    .service-card { flex: 0 0 80vw; }
+    .services-arrow { display: none; }
   }
 
   /* EXPERIENCE */
@@ -886,34 +893,31 @@
 
   <section id="services">
     <p class="section-label">Services</p>
-    <div class="services-tabs-wrap">
-      <div class="services-tab-bar" role="tablist">
-        <button class="services-tab-btn active" role="tab" data-tab="svc-1">Technical Writing & Editing</button>
-        <button class="services-tab-btn" role="tab" data-tab="svc-2">Applied Research</button>
-        <button class="services-tab-btn" role="tab" data-tab="svc-3">Policy Outreach & Advocacy</button>
-        <button class="services-tab-btn" role="tab" data-tab="svc-4">Strategic Planning & Advisory</button>
-        <button class="services-tab-btn" role="tab" data-tab="svc-5">Capacity Development</button>
+    <div class="services-carousel">
+      <button class="services-arrow prev" aria-label="Scroll left">&#8592;</button>
+      <div class="services-scroll" id="services-scroll">
+        <div class="service-card">
+          <h3>Technical Writing & Editing</h3>
+          <p>Producing and editing technical and communications outputs for diverse audiences — including proposals, concept notes, policy briefs, donor and programme reporting, knowledge products, synthesis reports, strategic plans, stories of change, case studies, and editing and proofreading.</p>
+        </div>
+        <div class="service-card">
+          <h3>Applied Research</h3>
+          <p>Leading and delivering applied and participatory research — including FPIC processes, participatory action research, qualitative research, scoping studies, literature reviews, data analysis and synthesis, research reports, journal articles, and conference papers.</p>
+        </div>
+        <div class="service-card">
+          <h3>Policy Outreach & Advocacy</h3>
+          <p>Designing and delivering research-to-policy engagement strategies — including stakeholder mapping, advocacy planning, stakeholder coordination and consultation, evidence communication, science-policy dialogue, and research-to-policy communications.</p>
+        </div>
+        <div class="service-card">
+          <h3>Strategic Planning & Advisory</h3>
+          <p>Supporting organisations to translate vision into action — through multi-stakeholder strategic planning facilitation, programme design and inception, and theory of change, logframe, and results framework development.</p>
+        </div>
+        <div class="service-card">
+          <h3>Capacity Development</h3>
+          <p>Building and facilitating capacity-development and training programmes for policymakers, researchers, NGOs, civil society, and community members — covering needs assessment, curriculum development, training design, field-based mentoring, and evaluation of learning outcomes.</p>
+        </div>
       </div>
-      <div id="svc-1" class="services-tab-panel active" role="tabpanel">
-        <h3>Technical Writing & Editing</h3>
-        <p>Producing and editing technical and communications outputs for diverse audiences — from policy briefs and donor reporting to knowledge products and strategic communications.</p>
-      </div>
-      <div id="svc-2" class="services-tab-panel" role="tabpanel">
-        <h3>Applied Research</h3>
-        <p>Leading and delivering applied and participatory research — from scoping studies and literature reviews to qualitative fieldwork and peer-reviewed publications.</p>
-      </div>
-      <div id="svc-3" class="services-tab-panel" role="tabpanel">
-        <h3>Policy Outreach & Advocacy</h3>
-        <p>Designing and delivering research-to-policy engagement strategies — from stakeholder mapping and advocacy planning to evidence communication and research-policy dialogue.</p>
-      </div>
-      <div id="svc-4" class="services-tab-panel" role="tabpanel">
-        <h3>Strategic Planning & Advisory</h3>
-        <p>Supporting organisations to translate vision into action — from strategic planning facilitation and programme design to theory of change and results framework development.</p>
-      </div>
-      <div id="svc-5" class="services-tab-panel" role="tabpanel">
-        <h3>Capacity Development</h3>
-        <p>Building and facilitating capacity-development and training programmes for policymakers, researchers, NGOs, civil society, and community members —from needs assessment and training design to field-based mentoring and learning evaluations.</p>
-      </div>
+      <button class="services-arrow next" aria-label="Scroll right">&#8594;</button>
     </div>
   </section>
 
@@ -1109,15 +1113,21 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-  // Services tabs
-  document.querySelectorAll('.services-tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.services-tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.services-tab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-    });
-  });
+  // Services carousel arrows
+  const svcScroll = document.getElementById('services-scroll');
+  const svcPrev = document.querySelector('.services-arrow.prev');
+  const svcNext = document.querySelector('.services-arrow.next');
+  const svcStep = 320;
+
+  function updateSvcArrows() {
+    svcPrev.classList.toggle('hidden', svcScroll.scrollLeft <= 0);
+    svcNext.classList.toggle('hidden', svcScroll.scrollLeft + svcScroll.clientWidth >= svcScroll.scrollWidth - 2);
+  }
+
+  svcPrev.addEventListener('click', () => { svcScroll.scrollBy({ left: -svcStep, behavior: 'smooth' }); });
+  svcNext.addEventListener('click', () => { svcScroll.scrollBy({ left: svcStep, behavior: 'smooth' }); });
+  svcScroll.addEventListener('scroll', updateSvcArrows);
+  updateSvcArrows();
 
   // Toggle sidebar on mobile
   const toggleBtn = document.getElementById('toggle-btn');
