@@ -133,15 +133,16 @@
   .hero-image {
     position: relative;
     width: 100%;
-    max-width: calc((100vh - 110px) * 1.7755);
-    margin: 0 auto;
     border-radius: 0;
-    background: #ffffff;
+    background: #000;
+    overflow: hidden;
   }
 
   .hero-image img {
     width: 100%;
-    height: auto;
+    height: calc(100vh - 110px);
+    object-fit: cover;
+    object-position: center center;
     display: block;
     filter: contrast(1.08) saturate(1.1);
   }
@@ -665,8 +666,8 @@
     section { padding: 28px 24px; scroll-margin-top: calc(56px + env(safe-area-inset-top)); }
     .exp-item { grid-template-columns: 1fr; gap: 10px; }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
-    .hero-image { height: auto; max-width: none; background: #ffffff; }
-    .hero-image img { width: 100%; height: auto; object-fit: contain; object-position: center top; }
+    .hero-image { height: auto; background: #000; }
+    .hero-image img { width: 100%; height: 56vw; object-fit: cover; object-position: center center; }
     .hero-overlay div p { font-size: clamp(0.7rem, 3.5vw, 1rem) !important; }
     .hero-overlay div { padding-left: 1rem !important; padding-right: 1rem !important; padding-bottom: 0.75rem !important; }
    .hero-overlay p.hero-subline {
@@ -690,7 +691,7 @@
     flex-direction: column;
   }
 
-  /* Photo column — mobile: full width, portrait crop */
+  /* Photo column — mobile: full width, 4:3 crop */
   .about-photo {
     width: 100%;
     position: relative;
@@ -699,7 +700,7 @@
   .about-photo-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
   }
 
@@ -740,17 +741,17 @@
   .about-heading {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 1.26225rem;
+    font-size: 1.2rem;
     color: #ffffff;
     line-height: 1.45;
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     max-width: none;
   }
 
   .about-body {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 1.06875rem;
+    font-size: 0.95rem;
     color: #ffffff;
     line-height: 1.8;
     margin: 0;
@@ -761,73 +762,35 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-style: italic;
-    font-size: 1.175625rem;
+    font-size: 0.95rem;
     color: #ffffff;
     line-height: 1.8;
-    margin: 11.5px 0 0;
+    margin: 10px 0 0;
     max-width: none;
-  }
-
-
-  @media (min-width: 760px) and (max-width: 1400px) {
-    .about-photo-wrap img.about-portrait {
-      object-fit: contain !important;
-      object-position: left top !important;
-      background: #172009;
-    }
-
-    .about-text {
-      padding: clamp(1.8rem, 2.8vw, 2.6cm) clamp(0.8rem, 1.6vw, 1.6cm) clamp(1.2rem, 2vw, 1.8cm);
-      height: 100%;
-      max-height: 100%;
-      overflow-y: auto;
-    }
-
-    .about-heading {
-      font-size: clamp(0.945rem, 1.305vw, 1.215rem);
-      margin: 0 0 26px;
-    }
-
-    .about-body {
-      font-size: clamp(0.81rem, 0.945vw, 0.945rem);
-      line-height: 1.55;
-    }
-
-    .about-body + .about-italic {
-      margin-top: 14px;
-    }
-
-    .about-italic {
-      font-size: clamp(0.855rem, 0.99vw, 1.035rem);
-      line-height: 1.55;
-    }
   }
 
   /* Desktop: side-by-side */
   @media (min-width: 760px) {
     .about-inner {
       flex-direction: row;
-      height: min(calc(100vh - 110px), 680px);
+      height: calc(100vh - 110px);
     }
 
     .about-photo {
-      flex: 0 0 40%;
-      width: 40%;
-      min-width: 260px;
-      max-width: 40%;
+      flex: 0 0 auto;
+      width: auto;
       height: 100%;
     }
 
     .about-photo-wrap {
       height: 100%;
-      width: 100%;
+      width: auto;
     }
 
     .about-photo-wrap img.about-portrait {
       height: 100%;
-      width: 100%;
-      object-fit: cover;
-      object-position: left top;
+      width: auto;
+      object-fit: unset;
     }
 
     .about-icon img {
@@ -835,36 +798,36 @@
     }
 
     .about-text {
-      flex: 1 1 60%;
+      flex: 1;
       min-width: 0;
-      padding: 3cm clamp(1rem, 2.1vw, 2.4cm) 2cm;
-      justify-content: flex-start;
+      padding: 3.5cm 3cm 3.5cm 3cm;
+      justify-content: center;
       gap: 0;
     }
 
     .about-text .section-label {
       position: absolute;
       top: 0.5cm;
-      left: clamp(1rem, 2.1vw, 2.4cm);
+      left: 44px;
     }
 
     .about-heading {
-      font-size: clamp(1.26225rem, 1.893375vw, 1.7881875rem);
-      margin: 0 0 38px;
+      font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+      margin: 0 0 48px;
     }
 
     .about-body {
-      font-size: clamp(1.06875rem, 1.35vw, 1.29375rem);
+      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
       line-height: 1.65;
       margin: 0 0 16px;
     }
 
     .about-body + .about-italic {
-      margin-top: 18.5px;
+      margin-top: 16px;
     }
 
     .about-italic {
-      font-size: clamp(1.175625rem, 1.485vw, 1.423125rem);
+      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
       line-height: 1.65;
       margin: 0;
     }
@@ -919,7 +882,7 @@
       <div class="about-text">
         <p class="section-label">About</p>
         <p class="about-heading">Forest Governance Lab is the independent consulting practice of Dr. Sophie Rose Lewis.</p>
-        <p class="about-body">With over 15 years working across Southeast Asia, I specialise in forest governance, social forestry, resource rights and land tenure — from the ground level through to policy.</p>
+        <p class="about-body">With over 15 years working across Southeast Asia, I specialise in forest governance, social forestry, resource rights and land tenure security — from the ground level through to policy.</p>
         <p class="about-body">I work with NGOs, governments, civil society organisations, Indigenous Peoples, and local communities, bringing both technical depth and practical understanding.</p>
         <p class="about-italic">I focus on outputs that are high-quality, grounded, and actionable.</p>
       </div>
