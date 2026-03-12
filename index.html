@@ -336,8 +336,8 @@
 
   .service-card {
     flex: 0 0 300px;
-    background: var(--header-green);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: #ffffff;
+    border: 1px solid rgba(0,92,64,0.15);
     padding: 32px 28px 28px;
     position: relative;
   }
@@ -347,21 +347,21 @@
     position: absolute;
     top: 0; left: 0;
     width: 4px; height: 100%;
-    background: rgba(255,255,255,0.35);
+    background: var(--header-green);
   }
 
   .service-card h3 {
     font-family: 'Source Sans 3', sans-serif;
     font-size: 1.15rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--header-green);
     margin-bottom: 12px;
     line-height: 1.2;
   }
 
   .service-card p {
     font-size: 1rem;
-    color: rgba(255,255,255,0.85);
+    color: var(--forest-dark);
     margin: 0;
     line-height: 1.75;
   }
@@ -370,25 +370,26 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--header-green);
-    border: 2px solid rgba(255,255,255,0.3);
-    color: #ffffff;
+    background: #ffffff;
+    border: 2px solid var(--header-green);
+    color: var(--header-green);
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    transition: background 0.2s, border-color 0.2s;
+    transition: background 0.2s, color 0.2s;
     line-height: 1;
   }
 
   .services-arrow:hover {
-    background: var(--sage);
-    border-color: var(--sage);
+    background: var(--header-green);
+    color: #ffffff;
   }
 
   .services-arrow.prev { left: -26px; }
@@ -894,7 +895,7 @@
   <section id="services">
     <p class="section-label">Services</p>
     <div class="services-carousel">
-      <button class="services-arrow prev" aria-label="Scroll left">&#8592;</button>
+      <button class="services-arrow prev" aria-label="Scroll left">&lt;</button>
       <div class="services-scroll" id="services-scroll">
         <div class="service-card">
           <h3>Technical Writing & Editing</h3>
@@ -917,7 +918,7 @@
           <p>Building and facilitating capacity-development and training programmes for policymakers, researchers, NGOs, civil society, and community members — covering needs assessment, curriculum development, training design, field-based mentoring, and evaluation of learning outcomes.</p>
         </div>
       </div>
-      <button class="services-arrow next" aria-label="Scroll right">&#8594;</button>
+      <button class="services-arrow next" aria-label="Scroll right">&gt;</button>
     </div>
   </section>
 
