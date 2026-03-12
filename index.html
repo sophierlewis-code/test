@@ -408,9 +408,10 @@
   .services-arrow.hidden { opacity: 0.2; pointer-events: none; }
 
   @media (max-width: 700px) {
-    .services-carousel { padding: 0 44px; }
-    .service-card { flex: 0 0 calc(100vw - 130px); }
-    .services-arrow { font-size: 2.2rem; width: 40px; }
+    .services-carousel { padding: 0 40px; }
+    .services-scroll { scroll-snap-type: x mandatory; }
+    .service-card { flex: 0 0 100%; scroll-snap-align: start; }
+    .services-arrow { font-size: 2.2rem; width: 36px; }
   }
 
   /* EXPERIENCE */
