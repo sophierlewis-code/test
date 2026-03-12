@@ -344,7 +344,11 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding-bottom: 4px;
-    padding-right: 56px;
+  }
+
+  .services-scroll::after {
+    content: '';
+    flex: 0 0 56px;
   }
 
   .services-scroll::-webkit-scrollbar { display: none; }
