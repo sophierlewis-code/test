@@ -340,6 +340,7 @@
     gap: 20px;
     overflow-x: auto;
     scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding-bottom: 4px;
@@ -348,7 +349,8 @@
   .services-scroll::-webkit-scrollbar { display: none; }
 
   .service-card {
-    flex: 0 0 300px;
+    flex: 0 0 calc(50% - 10px);
+    scroll-snap-align: start;
     background: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.35);
     padding: 32px 28px 28px;
