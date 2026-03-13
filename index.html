@@ -410,6 +410,28 @@
     margin: 10px 0 14px;
   }
 
+  .services-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .svc-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid #005C40;
+    opacity: 0.4;
+    transition: all 0.3s;
+  }
+
+  .svc-dot.active {
+    background: #005C40;
+    opacity: 1;
+  }
+
   .services-arrow {
     position: absolute;
     top: 50%;
@@ -1022,6 +1044,13 @@
       </div>
       <button class="services-arrow next" aria-label="Scroll right">&gt;</button>
     </div>
+    <div class="services-dots" id="services-dots">
+      <span class="svc-dot active"></span>
+      <span class="svc-dot"></span>
+      <span class="svc-dot"></span>
+      <span class="svc-dot"></span>
+      <span class="svc-dot"></span>
+    </div>
   </section>
 
 
@@ -1225,10 +1254,21 @@
     svcNext.classList.toggle('hidden', svcScroll.scrollLeft + svcScroll.clientWidth >= svcScroll.scrollWidth - 2);
   }
 
+  const svcDots = document.querySelectorAll('.svc-dot');
+
+  function updateSvcDots() {
+    const cardWidth = svcScroll.querySelector('.service-card').offsetWidth + 40;
+    const index = Math.round(svcScroll.scrollLeft / cardWidth);
+    svcDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i <= index);
+    });
+  }
+
   svcPrev.addEventListener('click', () => { svcScroll.scrollBy({ left: -svcStep, behavior: 'smooth' }); });
   svcNext.addEventListener('click', () => { svcScroll.scrollBy({ left: svcStep, behavior: 'smooth' }); });
-  svcScroll.addEventListener('scroll', updateSvcArrows);
+  svcScroll.addEventListener('scroll', () => { updateSvcArrows(); updateSvcDots(); });
   updateSvcArrows();
+  updateSvcDots();
 
   // Toggle sidebar on mobile
   const toggleBtn = document.getElementById('toggle-btn');
