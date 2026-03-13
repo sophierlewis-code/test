@@ -356,10 +356,6 @@
     padding: 38px 28px 28px;
     position: relative;
     scroll-snap-align: start;
-    display: grid;
-    grid-template-columns: 46px 1fr;
-    gap: 0 12px;
-    align-items: start;
   }
 
   .service-card h3 {
@@ -380,14 +376,13 @@
   .card-icon {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding-top: 3px;
-    flex-shrink: 0;
+    margin-bottom: 16px;
     color: var(--header-green);
   }
 
-  .card-body {
-    min-width: 0;
+  .card-icon svg, .card-icon img {
+    width: 52px;
+    height: 52px;
   }
 
   .service-card p:first-of-type {
@@ -936,43 +931,37 @@
       <div class="services-scroll" id="services-scroll">
         <div class="service-card">
           <div class="card-icon">
-            <svg width="34" height="34" viewBox="0 0 38 38" fill="none" stroke="currentColor">
+            <svg width="52" height="52" viewBox="0 0 38 38" fill="none" stroke="currentColor">
               <path d="M10 32 L6 32 L6 28 L26 8 L30 12Z" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
               <line x1="23" y1="11" x2="27" y2="15" stroke-width="1.2"/>
             </svg>
           </div>
-          <div class="card-body">
-            <h3>Technical Writing & Editing</h3>
-            <p>Producing and editing technical and communications outputs for diverse audiences.</p>
-            <p class="card-from">from policy briefs and donor reporting to knowledge products and strategic communications.</p>
-          </div>
+          <h3>Technical Writing & Editing</h3>
+          <p>Producing and editing technical and communications outputs for diverse audiences.</p>
+          <p class="card-from">from policy briefs and donor reporting to knowledge products and strategic communications.</p>
         </div>
         <div class="service-card">
           <div class="card-icon">
-            <img src="rcion1.svg" alt="" width="34" height="40">
+            <img src="rcion1.svg" alt="" width="52" height="52">
           </div>
-          <div class="card-body">
-            <h3>Applied Research</h3>
-            <p>Leading and delivering applied and participatory research.</p>
-            <p class="card-from">from scoping studies and literature reviews to qualitative fieldwork and peer-reviewed publications.</p>
-          </div>
+          <h3>Applied Research</h3>
+          <p>Leading and delivering applied and participatory research.</p>
+          <p class="card-from">from scoping studies and literature reviews to qualitative fieldwork and peer-reviewed publications.</p>
         </div>
         <div class="service-card">
           <div class="card-icon">
-            <svg width="34" height="34" viewBox="0 0 38 38" fill="none" stroke="currentColor">
+            <svg width="52" height="52" viewBox="0 0 38 38" fill="none" stroke="currentColor">
               <path d="M6 8 L24 8 L24 18 L16 18 L12 22 L12 18 L6 18Z" stroke-width="1.3" stroke-linejoin="round"/>
               <path d="M14 22 L32 22 L32 30 L28 30 L24 34 L24 30 L14 30Z" stroke-width="1.2" stroke-linejoin="round" opacity="0.6"/>
             </svg>
           </div>
-          <div class="card-body">
-            <h3>Policy Outreach & Advocacy</h3>
-            <p>Designing and delivering research-to-policy engagement strategies.</p>
-            <p class="card-from">from stakeholder mapping and advocacy planning to evidence communication and science-policy dialogue.</p>
-          </div>
+          <h3>Policy Outreach & Advocacy</h3>
+          <p>Designing and delivering research-to-policy engagement strategies.</p>
+          <p class="card-from">from stakeholder mapping and advocacy planning to evidence communication and science-policy dialogue.</p>
         </div>
         <div class="service-card">
           <div class="card-icon">
-            <svg width="34" height="34" viewBox="0 0 38 38" fill="none" stroke="currentColor">
+            <svg width="52" height="52" viewBox="0 0 38 38" fill="none" stroke="currentColor">
               <circle cx="19" cy="19" r="14" stroke-width="1.3"/>
               <circle cx="19" cy="19" r="2" fill="currentColor" opacity="0.6" stroke="none"/>
               <path d="M19 6 L21 17 L19 19 L17 17Z" stroke-width="1.1" stroke-linejoin="round"/>
@@ -981,25 +970,21 @@
               <path d="M32 19 L21 21 L19 19 L21 17Z" stroke-width="1.1" stroke-linejoin="round"/>
             </svg>
           </div>
-          <div class="card-body">
-            <h3>Strategic Planning & Advisory</h3>
-            <p>Supporting organisations to translate vision into action.</p>
-            <p class="card-from">from strategic planning facilitation and programme design to theory of change and results framework development.</p>
-          </div>
+          <h3>Strategic Planning & Advisory</h3>
+          <p>Supporting organisations to translate vision into action.</p>
+          <p class="card-from">from strategic planning facilitation and programme design to theory of change and results framework development.</p>
         </div>
         <div class="service-card">
           <div class="card-icon">
-            <svg width="34" height="34" viewBox="0 0 38 38" fill="none" stroke="currentColor">
+            <svg width="52" height="52" viewBox="0 0 38 38" fill="none" stroke="currentColor">
               <path d="M19 34 L19 18" stroke-width="1.4" stroke-linecap="round"/>
               <path d="M19 22 Q12 14 6 8 Q12 8 19 16" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M19 16 Q26 8 32 4 Q30 12 19 18" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <div class="card-body">
-            <h3>Capacity Development</h3>
-            <p>Building and facilitating capacity-development and training programmes for policymakers, researchers, NGOs, civil society, and community members.</p>
-            <p class="card-from">from needs assessment and training design to facilitation and learning evaluation.</p>
-          </div>
+          <h3>Capacity Development</h3>
+          <p>Building and facilitating capacity-development and training programmes for policymakers, researchers, NGOs, civil society, and community members.</p>
+          <p class="card-from">from needs assessment and training design to facilitation and learning evaluation.</p>
         </div>
       </div>
       <button class="services-arrow next" aria-label="Scroll right">&gt;</button>
