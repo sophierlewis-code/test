@@ -432,6 +432,28 @@
     opacity: 1;
   }
 
+  .work-dots {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .work-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid #005C40;
+    opacity: 0.4;
+    transition: all 0.3s;
+  }
+
+  .work-dot.active {
+    background: #005C40;
+    opacity: 1;
+  }
+
   .services-arrow {
     position: absolute;
     top: 50%;
@@ -525,6 +547,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     display: block;
   }
 
@@ -833,6 +856,10 @@
     #experience .selected-work-scroll .work-card {
       flex: 0 0 min(85vw, 360px);
       scroll-snap-align: start;
+    }
+
+    #experience .work-dots {
+      display: flex;
     }
   }
   @media (max-width: 760px) {
@@ -1269,6 +1296,13 @@
         </article>
       </div>
     </div>
+    <div class="work-dots" id="work-dots" aria-label="Selected work carousel progress">
+      <span class="work-dot active"></span>
+      <span class="work-dot"></span>
+      <span class="work-dot"></span>
+      <span class="work-dot"></span>
+      <span class="work-dot"></span>
+    </div>
   </section>
 
 
@@ -1429,6 +1463,25 @@
   svcScroll.addEventListener('scroll', () => { updateSvcArrows(); updateSvcDots(); });
   updateSvcArrows();
   updateSvcDots();
+
+  const workScroll = document.querySelector('#experience .selected-work-scroll');
+  const workDots = document.querySelectorAll('.work-dot');
+
+  function updateWorkDots() {
+    if (!workScroll || !workDots.length) return;
+    const workCard = workScroll.querySelector('.work-card');
+    if (!workCard) return;
+    const cardWidth = workCard.offsetWidth + 16;
+    const index = Math.round(workScroll.scrollLeft / cardWidth);
+    workDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i <= index);
+    });
+  }
+
+  if (workScroll) {
+    workScroll.addEventListener('scroll', updateWorkDots);
+    updateWorkDots();
+  }
 
   // Toggle sidebar on mobile
   const toggleBtn = document.getElementById('toggle-btn');
