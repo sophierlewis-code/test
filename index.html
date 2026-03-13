@@ -471,6 +471,90 @@
   /* EXPERIENCE */
   .experience-list { display: flex; flex-direction: column; }
 
+  #experience .selected-work-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  #experience .selected-work-row {
+    display: grid;
+    gap: 16px;
+  }
+
+  #experience .selected-work-row.top {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #experience .selected-work-row.bottom {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(66%, 760px);
+    margin: 0 auto;
+  }
+
+  #experience .selected-work-scroll {
+    display: none;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  #experience .selected-work-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  #experience .work-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e9e9e9;
+    background: #ffffff;
+  }
+
+  #experience .work-image {
+    height: 180px;
+    overflow: hidden;
+    background: #f5f5f0;
+  }
+
+  #experience .work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #experience .work-content {
+    padding: 16px;
+  }
+
+  #experience .work-meta {
+    font-size: 11px;
+    color: #7f8a80;
+    margin: 0 0 4px;
+    line-height: 1.35;
+  }
+
+  #experience .work-role {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--header-green);
+    margin: 0 0 6px;
+    min-height: 34px;
+    line-height: 1.3;
+  }
+
+  #experience .work-desc {
+    font-size: 12px;
+    color: #444;
+    margin: 0;
+    line-height: 1.55;
+  }
+
+
   .exp-item {
     padding: 36px 0;
     border-bottom: 1px solid rgba(61,140,53,0.14);
@@ -730,6 +814,26 @@
     #sidebar nav { display: none; }
   }
 
+
+  @media (max-width: 1024px) {
+    #experience .selected-work-grid {
+      gap: 0;
+      margin-top: 4px;
+    }
+
+    #experience .selected-work-row {
+      display: none;
+    }
+
+    #experience .selected-work-scroll {
+      display: flex;
+    }
+
+    #experience .selected-work-scroll .work-card {
+      flex: 0 0 min(85vw, 360px);
+      scroll-snap-align: start;
+    }
+  }
   @media (max-width: 760px) {
     body { display: block; }
     #main-content { margin-top: calc(56px + env(safe-area-inset-top)); padding: 0; }
@@ -1056,57 +1160,112 @@
 
   <section id="experience">
     <p class="section-label">Selected Work</p>
-    <div class="experience-list">
-      <div class="exp-item">
-        <div class="exp-org">ADRA UK<br>Timor-Leste · 2026</div>
-        <div>
-          <p class="exp-role">Strategic Planning & Technical Writing</p>
-          <p class="exp-desc">Project concept note with log frame for an EU call for proposals to support the Directorate General of Forestry in Timor-Leste enhance institutional capacity for priority forestry projects.</p>
-        </div>
+    <div class="selected-work-grid" aria-label="Selected work highlights">
+      <div class="selected-work-row top">
+        <article class="work-card">
+          <div class="work-image">
+            <img src="ADRA.jpg" alt="ADRA UK strategic planning workshop flipchart">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">ADRA UK · Timor-Leste · 2026</p>
+            <p class="work-role">Strategic Planning &amp; Technical Writing</p>
+            <p class="work-desc">Project concept note with logframe for an EU call to support Timor-Leste&apos;s Directorate General of Forestry in strengthening institutional capacity for priority forestry projects.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="Explore.webp" alt="RECOFTC National Advisory Committee meeting for Explore programme">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC · Southeast Asia · 2024–2025</p>
+            <p class="work-role">Policy Outreach &amp; Capacity Development</p>
+            <p class="work-desc">Research-to-policy strategy across seven Southeast Asian countries, coordinating National Advisory Committees and delivering regional participatory action research training.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="FAO.jpg" alt="FAO publication cover used for RECOFTC research and technical writing">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC / FAO &amp; Wyss Academy · 2023</p>
+            <p class="work-role">Applied Research &amp; Technical Writing</p>
+            <p class="work-desc">Technical synthesis of sustainable forest management case studies across ten countries, examining two decades of changes in tenure, policy, and community resilience.</p>
+          </div>
+        </article>
       </div>
-      <div class="exp-item">
-        <div class="exp-org">RECOFTC<br>Southeast Asia · 2024–2025</div>
-        <div>
-          <p class="exp-role">Policy Outreach & Gender Inclusion Capacity Development Coordination</p>
-          <p class="exp-desc">Research-to-policy strategy across seven Southeast Asian countries for the Sida-funded Explore Programme, coordinating National Advisory Committees with government representatives, academics, and civil society.</p>
-          <p class="exp-desc">Regional training and capacity-development programmes on Participatory Action Research, combining classroom training and field-based mentoring to strengthen science-policy engagement and governance reform.</p>
-          <p class="exp-desc">Gender inclusion strategy, ensuring gender equity and representation across research teams, advisory bodies, and capacity-development initiatives.</p>
-        </div>
+      <div class="selected-work-row bottom">
+        <article class="work-card">
+          <div class="work-image">
+            <img src="REDAA.jpeg" alt="Community meeting image for REDAA scoping study in Southeast Asia">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC &amp; IIED · Southeast Asia · 2022–2023</p>
+            <p class="work-role">Applied Research &amp; Policy Advisory</p>
+            <p class="work-desc">Scoping study for the FCDO-funded REDAA programme, identifying research-to-action priorities for restoration and sustainable natural resource management across Southeast Asia.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="Thai_Oil_palm.jpg" alt="Palm oil landscape in Trang, Thailand for Landesa rights profile">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">Landesa · Thailand · 2022–2023</p>
+            <p class="work-role">Applied Research &amp; Technical Writing</p>
+            <p class="work-desc">Land and resource rights profile for Trang, Thailand, analysing palm oil supply chain risks linked to tenure insecurity for Indigenous Peoples and customary communities.</p>
+          </div>
+        </article>
       </div>
-      <div class="exp-item">
-        <div class="exp-org">RECOFTC / RMFN-Asia<br>Southeast Asia · 2024</div>
-        <div>
-          <p class="exp-role">Strategic Planning & Technical Writing</p>
-          <p class="exp-desc">Draft Regional Multi-stakeholder Forestry Network – Asia (RMFN-Asia) Strategic Plan 2025–2030.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">RECOFTC / FAO & Wyss Academy<br>Bangkok · 2023</div>
-        <div>
-          <p class="exp-role">Applied Research & Technical Writing</p>
-          <p class="exp-desc">Technical synthesis of sustainable forest management case studies across ten countries, examining two decades of change in forest management practices, tenure, policy, and community resilience for <em>Revisiting Exemplary Forest Management: In Search of Excellence</em>.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">RECOFTC & IIED<br>Southeast Asia · 2022–2023</div>
-        <div>
-          <p class="exp-role">Applied Research & Policy Advisory</p>
-          <p class="exp-desc">Scoping study for the FCDO-funded REDAA programme, identifying strategic priorities for environmental restoration and sustainable natural resource management across Southeast Asia.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">Landesa<br>Thailand · 2022–2023</div>
-        <div>
-          <p class="exp-role">Applied Research & Technical Writing</p>
-          <p class="exp-desc">Applied research and technical land and natural resource rights profile for Thailand's Trang region, analysing palm oil supply chain risks related to tenure insecurity and inequitable access for Indigenous Peoples, women, and customary tenure communities.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">RECOFTC Thailand<br>Thailand · 2020</div>
-        <div>
-          <p class="exp-role">Applied Research & Policy Outreach</p>
-          <p class="exp-desc">FAO-EU-FLEGT funded applied research examining opportunities and barriers for Thai civil society engagement in Voluntary Partnership Agreement implementation, producing technical reports for the Thai CSO-FLEGT Network.</p>
-        </div>
+      <div class="selected-work-scroll" aria-label="Selected work carousel">
+        <article class="work-card">
+          <div class="work-image">
+            <img src="ADRA.jpg" alt="ADRA UK strategic planning workshop flipchart">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">ADRA UK · Timor-Leste · 2026</p>
+            <p class="work-role">Strategic Planning &amp; Technical Writing</p>
+            <p class="work-desc">Project concept note with logframe for an EU call to support Timor-Leste&apos;s Directorate General of Forestry in strengthening institutional capacity for priority forestry projects.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="Explore.webp" alt="RECOFTC National Advisory Committee meeting for Explore programme">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC · Southeast Asia · 2024–2025</p>
+            <p class="work-role">Policy Outreach &amp; Capacity Development</p>
+            <p class="work-desc">Research-to-policy strategy across seven Southeast Asian countries, coordinating National Advisory Committees and delivering regional participatory action research training.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="FAO.jpg" alt="FAO publication cover used for RECOFTC research and technical writing">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC / FAO &amp; Wyss Academy · 2023</p>
+            <p class="work-role">Applied Research &amp; Technical Writing</p>
+            <p class="work-desc">Technical synthesis of sustainable forest management case studies across ten countries, examining two decades of changes in tenure, policy, and community resilience.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="REDAA.jpeg" alt="Community meeting image for REDAA scoping study in Southeast Asia">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC &amp; IIED · Southeast Asia · 2022–2023</p>
+            <p class="work-role">Applied Research &amp; Policy Advisory</p>
+            <p class="work-desc">Scoping study for the FCDO-funded REDAA programme, identifying research-to-action priorities for restoration and sustainable natural resource management across Southeast Asia.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="Thai_Oil_palm.jpg" alt="Palm oil landscape in Trang, Thailand for Landesa rights profile">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">Landesa · Thailand · 2022–2023</p>
+            <p class="work-role">Applied Research &amp; Technical Writing</p>
+            <p class="work-desc">Land and resource rights profile for Trang, Thailand, analysing palm oil supply chain risks linked to tenure insecurity for Indigenous Peoples and customary communities.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
