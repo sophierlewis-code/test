@@ -338,7 +338,8 @@
 
   .services-scroll {
     display: flex;
-    gap: 20px;
+    gap: 40px;
+    scroll-snap-type: x mandatory; 
     overflow-x: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
@@ -350,10 +351,11 @@
   .services-scroll::-webkit-scrollbar { display: none; }
 
   .service-card {
-    flex: 0 0 300px;
+    flex: 0 0 350px;
     background: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.35);
-    padding: 32px 28px 28px;
+    padding: 38px 28px 28px;
+    scroll-snap-align: start;
     position: relative;
     scroll-snap-align: start;
   }
@@ -372,6 +374,11 @@
     color: rgba(255,255,255,0.85);
     margin: 0;
     line-height: 1.75;
+  }
+  .card-divider {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
   }
 
   .services-arrow {
@@ -913,23 +920,33 @@
       <div class="services-scroll" id="services-scroll">
         <div class="service-card">
           <h3>Technical Writing & Editing</h3>
-          <p>Producing and editing technical and communications outputs for diverse audiences — including proposals, concept notes, policy briefs, donor and programme reporting, knowledge products, synthesis reports, strategic plans, stories of change, case studies, and editing and proofreading.</p>
+          <p>Producing and editing technical and communications outputs for diverse audiences.</p>
+          <div class="card-divider"><svg width="12" height="14" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2 Q12 8 7 14 Q2 8 7 2Z" fill="none" stroke="#005C40" stroke-width="1.2"/></svg></div>
+          <p>— from policy briefs and donor reporting to knowledge products and strategic communications.</p>
         </div>
         <div class="service-card">
           <h3>Applied Research</h3>
-          <p>Leading and delivering applied and participatory research — including FPIC processes, participatory action research, qualitative research, scoping studies, literature reviews, data analysis and synthesis, research reports, journal articles, and conference papers.</p>
+          <p>Leading and delivering applied and participatory research.</p>
+          <div class="card-divider"><svg width="12" height="14" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2 Q12 8 7 14 Q2 8 7 2Z" fill="none" stroke="#005C40" stroke-width="1.2"/></svg></div>
+          <p>— from scoping studies and literature reviews to qualitative fieldwork and peer-reviewed publications.</p>
         </div>
         <div class="service-card">
           <h3>Policy Outreach & Advocacy</h3>
-          <p>Designing and delivering research-to-policy engagement strategies — including stakeholder mapping, advocacy planning, stakeholder coordination and consultation, evidence communication, science-policy dialogue, and research-to-policy communications.</p>
+          <p>Designing and delivering research-to-policy engagement strategies.</p>
+          <div class="card-divider"><svg width="12" height="14" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2 Q12 8 7 14 Q2 8 7 2Z" fill="none" stroke="#005C40" stroke-width="1.2"/></svg></div>
+          <p>— from stakeholder mapping and advocacy planning to evidence communication and science-policy dialogue.</p>
         </div>
         <div class="service-card">
           <h3>Strategic Planning & Advisory</h3>
-          <p>Supporting organisations to translate vision into action — through multi-stakeholder strategic planning facilitation, programme design and inception, and theory of change, logframe, and results framework development.</p>
+          <p>Supporting organisations to translate vision into action.</p>
+          <div class="card-divider"><svg width="12" height="14" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2 Q12 8 7 14 Q2 8 7 2Z" fill="none" stroke="#005C40" stroke-width="1.2"/></svg></div>
+          <p>— from strategic planning facilitation and programme design to theory of change and results framework development.</p>
         </div>
         <div class="service-card">
           <h3>Capacity Development</h3>
-          <p>Building and facilitating capacity-development and training programmes for policymakers, researchers, NGOs, civil society, and community members — covering needs assessment, curriculum development, training design, field-based mentoring, and evaluation of learning outcomes.</p>
+          <p>Building and facilitating capacity-development and training programmes for policymakers, researchers, NGOs, civil society, and community members.</p>
+          <div class="card-divider"><svg width="12" height="14" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2 Q12 8 7 14 Q2 8 7 2Z" fill="none" stroke="#005C40" stroke-width="1.2"/></svg></div>
+          <p>— from needs assessment and training design to facilitation and learning evaluation.</p>
         </div>
       </div>
       <button class="services-arrow next" aria-label="Scroll right">&gt;</button>
@@ -938,7 +955,7 @@
 
 
   <section id="experience">
-    <p class="section-label">Selected Experience</p>
+    <p class="section-label">Selected Work</p>
     <div class="experience-list">
       <div class="exp-item">
         <div class="exp-org">ADRA UK<br>Timor-Leste · 2026</div>
@@ -1130,7 +1147,7 @@
   const svcScroll = document.getElementById('services-scroll');
   const svcPrev = document.querySelector('.services-arrow.prev');
   const svcNext = document.querySelector('.services-arrow.next');
-  const svcStep = 320;
+  const svcStep = 390;
 
   function updateSvcArrows() {
     svcPrev.classList.toggle('hidden', svcScroll.scrollLeft <= 0);
