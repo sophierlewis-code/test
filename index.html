@@ -565,35 +565,6 @@
     opacity: 1;
   }
 
-  .services-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    color: var(--header-green);
-    width: 48px;
-    height: 48px;
-    border-radius: 0;
-    font-size: 2.8rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    transition: opacity 0.2s;
-    line-height: 1;
-    padding: 0;
-  }
-
-  .services-arrow:hover { opacity: 0.5; }
-
-  .services-arrow.prev { left: 0; }
-  .services-arrow.next { right: 0; }
-
-  .services-arrow.hidden { opacity: 0.2; pointer-events: none; }
-
   @media (min-width: 1100px) {
     .services-carousel {
       padding: 0;
@@ -615,7 +586,6 @@
       scroll-snap-align: none;
     }
 
-    .services-arrow,
     .services-dots {
       display: none;
     }
@@ -654,9 +624,6 @@
       height: 42px;
     }
 
-    .services-arrow {
-      display: none;
-    }
   }
 
   /* EXPERIENCE */
@@ -1268,7 +1235,6 @@
   <section id="services">
     <p class="section-label">Services</p>
     <div class="services-carousel">
-      <button class="services-arrow prev" aria-label="Scroll left">&lt;</button>
       <div class="services-scroll" id="services-scroll">
         <div class="service-card">
           <div class="card-header">
@@ -1343,7 +1309,6 @@
           <p class="card-from">from needs assessment and training design to facilitation and learning evaluation.</p>
         </div>
       </div>
-      <button class="services-arrow next" aria-label="Scroll right">&gt;</button>
     </div>
     <div class="services-dots" id="services-dots">
       <span class="svc-dot active"></span>
@@ -1638,17 +1603,8 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-  // Services carousel arrows
+  // Services carousel dots
   const svcScroll = document.getElementById('services-scroll');
-  const svcPrev = document.querySelector('.services-arrow.prev');
-  const svcNext = document.querySelector('.services-arrow.next');
-  const svcStep = 390;
-
-  function updateSvcArrows() {
-    svcPrev.classList.toggle('hidden', svcScroll.scrollLeft <= 0);
-    svcNext.classList.toggle('hidden', svcScroll.scrollLeft + svcScroll.clientWidth >= svcScroll.scrollWidth - 2);
-  }
-
   const svcDots = document.querySelectorAll('.svc-dot');
 
   function updateSvcDots() {
@@ -1667,10 +1623,7 @@
     });
   }
 
-  svcPrev.addEventListener('click', () => { svcScroll.scrollBy({ left: -svcStep, behavior: 'smooth' }); });
-  svcNext.addEventListener('click', () => { svcScroll.scrollBy({ left: svcStep, behavior: 'smooth' }); });
-  svcScroll.addEventListener('scroll', () => { updateSvcArrows(); updateSvcDots(); });
-  updateSvcArrows();
+  svcScroll.addEventListener('scroll', updateSvcDots);
   updateSvcDots();
 
   const workScroll = document.querySelector('#experience .selected-work-scroll');
