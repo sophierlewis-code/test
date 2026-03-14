@@ -871,23 +871,43 @@
     line-height: 1.6;
   }
 
+  .info-block a {
+    display: inline;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .email-link {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .info-block a:hover { color: var(--sage); }
 
   /* FOOTER */
   footer {
-    background: var(--forest-mid);
-    color: rgba(232,240,230,0.65);
-    text-align: center;
-    padding: 36px 56px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    border-radius: 0;
+    background: #005c40;
+    color: rgba(255,255,255,0.78);
+    padding: 24px 56px;
     margin-bottom: 0;
   }
 
-  footer a { color: var(--sage); text-decoration: none; }
-  footer a:hover { color: #edf5eb; }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .footer-logo {
+    width: auto;
+    height: 64px;
+    display: block;
+  }
+
+  footer a { color: rgba(255,255,255,0.9); text-decoration: none; }
+  footer a:hover { color: #ffffff; }
 
   /* ── MOBILE TOP BAR ── */
   #mobile-bar {
@@ -1590,7 +1610,7 @@
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
       <div class="contact-details">
-        <div class="info-block"><h4>Email</h4><p><a href="mailto:contact@forest-governance-lab.org">contact@forest-governance-lab.org</a></p></div>
+        <div class="info-block"><h4>Email</h4><p><a href="mailto:contact@forest-governance-lab.org" class="email-link" aria-label="Email contact@forest-governance-lab.org">contact@forest-governance-lab.org</a></p></div>
         <div class="info-block"><h4>Address</h4><p>Bangkok, Thailand</p></div>
         <div class="info-block"><h4>LinkedIn</h4><a href="https://www.linkedin.com/in/sophie-rose-lewis-843a1921a/" target="_blank">View Profile →</a></div>
       </div>
@@ -1598,7 +1618,9 @@
   </section>
 
   <footer>
-    <p>© 2026 Dr. Sophie Rose Lewis · Forest Governance Specialist</p>
+    <div class="footer-inner">
+      <img src="drawingGREENONWHITE1NOSUBBG.svg" alt="Forest Governance Lab" class="footer-logo">
+    </div>
   </footer>
 
 </div>
