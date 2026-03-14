@@ -565,35 +565,6 @@
     opacity: 1;
   }
 
-  .services-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    color: var(--header-green);
-    width: 48px;
-    height: 48px;
-    border-radius: 0;
-    font-size: 2.8rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    transition: opacity 0.2s;
-    line-height: 1;
-    padding: 0;
-  }
-
-  .services-arrow:hover { opacity: 0.5; }
-
-  .services-arrow.prev { left: 0; }
-  .services-arrow.next { right: 0; }
-
-  .services-arrow.hidden { opacity: 0.2; pointer-events: none; }
-
   @media (min-width: 1100px) {
     .services-carousel {
       padding: 0;
@@ -615,17 +586,44 @@
       scroll-snap-align: none;
     }
 
-    .services-arrow,
     .services-dots {
       display: none;
     }
   }
 
   @media (max-width: 700px) {
-    .services-carousel { padding: 0 40px; }
-    .services-scroll { scroll-snap-type: x mandatory; padding: 2px 2px 4px; }
-    .service-card { flex: 0 0 calc(100% - 4px); scroll-snap-align: start; }
-    .services-arrow { font-size: 2.2rem; width: 36px; }
+    .services-carousel { padding: 0; }
+
+    .services-scroll {
+      gap: 12px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 0;
+    }
+
+    .service-card {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      min-height: 320px;
+      padding: 26px 20px 22px;
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+      line-height: 1.3;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .card-icon svg,
+    .card-icon img {
+      width: 42px;
+      height: 42px;
+    }
+
   }
 
   /* EXPERIENCE */
@@ -1237,7 +1235,6 @@
   <section id="services">
     <p class="section-label">Services</p>
     <div class="services-carousel">
-      <button class="services-arrow prev" aria-label="Scroll left">&lt;</button>
       <div class="services-scroll" id="services-scroll">
         <div class="service-card">
           <div class="card-header">
@@ -1312,7 +1309,6 @@
           <p class="card-from">from needs assessment and training design to facilitation and learning evaluation.</p>
         </div>
       </div>
-      <button class="services-arrow next" aria-label="Scroll right">&gt;</button>
     </div>
     <div class="services-dots" id="services-dots">
       <span class="svc-dot active"></span>
@@ -1563,15 +1559,14 @@
   <section id="contact">
     <p class="section-label">Contact</p>
     <div class="contact-container">
-      <form class="contact-form" action="https://formspree.io/f/xlgwaong" method="POST">
+      <form class="contact-form" action="https://formspree.io/f/mwvrqrnz" method="POST">
         <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
         <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
         <div class="form-group"><label>Message</label><textarea name="message" rows="4" required></textarea></div>
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
       <div class="contact-details">
-        <div class="info-block"><h4>Email</h4><p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e6d716e76777b306c30727b69776d5e79737f7772307d7173">[email&#160;protected]</a></p></div>
-        <div class="info-block"><h4>Phone</h4><p>+66-61-940-0118</p></div>
+        <div class="info-block"><h4>Email</h4><p><a href="mailto:contact@forest-governance-lab.org">contact@forest-governance-lab.org</a></p></div>
         <div class="info-block"><h4>Address</h4><p>Bangkok, Thailand</p></div>
         <div class="info-block"><h4>LinkedIn</h4><a href="https://www.linkedin.com/in/sophie-rose-lewis-843a1921a/" target="_blank">View Profile →</a></div>
       </div>
@@ -1605,19 +1600,9 @@
   </nav>
 </aside>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-  // Services carousel arrows
+  // Services carousel dots
   const svcScroll = document.getElementById('services-scroll');
-  const svcPrev = document.querySelector('.services-arrow.prev');
-  const svcNext = document.querySelector('.services-arrow.next');
-  const svcStep = 390;
-
-  function updateSvcArrows() {
-    svcPrev.classList.toggle('hidden', svcScroll.scrollLeft <= 0);
-    svcNext.classList.toggle('hidden', svcScroll.scrollLeft + svcScroll.clientWidth >= svcScroll.scrollWidth - 2);
-  }
-
   const svcDots = document.querySelectorAll('.svc-dot');
 
   function updateSvcDots() {
@@ -1636,10 +1621,7 @@
     });
   }
 
-  svcPrev.addEventListener('click', () => { svcScroll.scrollBy({ left: -svcStep, behavior: 'smooth' }); });
-  svcNext.addEventListener('click', () => { svcScroll.scrollBy({ left: svcStep, behavior: 'smooth' }); });
-  svcScroll.addEventListener('scroll', () => { updateSvcArrows(); updateSvcDots(); });
-  updateSvcArrows();
+  svcScroll.addEventListener('scroll', updateSvcDots);
   updateSvcDots();
 
   const workScroll = document.querySelector('#experience .selected-work-scroll');
