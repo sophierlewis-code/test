@@ -1478,8 +1478,16 @@
   const svcDots = document.querySelectorAll('.svc-dot');
 
   function updateSvcDots() {
-    const cardWidth = svcScroll.querySelector('.service-card').offsetWidth + 40;
-    const index = Math.round(svcScroll.scrollLeft / cardWidth);
+    const card = svcScroll.querySelector('.service-card');
+    if (!card || !svcDots.length) return;
+
+    const cardWidth = card.offsetWidth + 40;
+    const atEnd = svcScroll.scrollLeft + svcScroll.clientWidth >= svcScroll.scrollWidth - 2;
+    const lastIndex = svcDots.length - 1;
+    const index = atEnd
+      ? lastIndex
+      : Math.min(lastIndex, Math.max(0, Math.round(svcScroll.scrollLeft / cardWidth)));
+
     svcDots.forEach((dot, i) => {
       dot.classList.toggle('active', i <= index);
     });
@@ -1498,8 +1506,14 @@
     if (!workScroll || !workDots.length) return;
     const workCard = workScroll.querySelector('.work-card');
     if (!workCard) return;
+
     const cardWidth = workCard.offsetWidth + 16;
-    const index = Math.round(workScroll.scrollLeft / cardWidth);
+    const atEnd = workScroll.scrollLeft + workScroll.clientWidth >= workScroll.scrollWidth - 2;
+    const lastIndex = workDots.length - 1;
+    const index = atEnd
+      ? lastIndex
+      : Math.min(lastIndex, Math.max(0, Math.round(workScroll.scrollLeft / cardWidth)));
+
     workDots.forEach((dot, i) => {
       dot.classList.toggle('active', i <= index);
     });
