@@ -853,6 +853,8 @@
     display: flex;
     flex-direction: column;
     gap: 28px;
+    position: relative;
+    z-index: 3;
   }
 
   .info-block h4 {
@@ -869,6 +871,23 @@
     color: var(--forest-dark);
     text-decoration: none;
     line-height: 1.6;
+  }
+
+  .info-block {
+    position: relative;
+    z-index: 2;
+  }
+
+  .info-block a {
+    position: relative;
+    z-index: 3;
+    display: inline-block;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .info-block-email {
+    cursor: pointer;
   }
 
   .info-block a:hover { color: var(--sage); }
@@ -1590,7 +1609,7 @@
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
       <div class="contact-details">
-        <div class="info-block"><h4>Email</h4><p><a href="mailto:contact@forest-governance-lab.org">contact@forest-governance-lab.org</a></p></div>
+        <div class="info-block info-block-email"><h4>Email</h4><p><a href="mailto:contact@forest-governance-lab.org" class="email-link">contact@forest-governance-lab.org</a></p></div>
         <div class="info-block"><h4>Address</h4><p>Bangkok, Thailand</p></div>
         <div class="info-block"><h4>LinkedIn</h4><a href="https://www.linkedin.com/in/sophie-rose-lewis-843a1921a/" target="_blank">View Profile →</a></div>
       </div>
@@ -1741,6 +1760,29 @@ const onScroll = () => {
 
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
+
+// Ensure the email address block is reliably clickable on desktop and mobile.
+const emailBlock = document.querySelector('.info-block-email');
+const emailLink = document.querySelector('.email-link');
+
+const openEmailClient = () => {
+  if (!emailLink) return;
+  window.location.href = emailLink.getAttribute('href');
+};
+
+if (emailLink) {
+  emailLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    openEmailClient();
+  });
+}
+
+if (emailBlock) {
+  emailBlock.addEventListener('click', (event) => {
+    if (event.target.closest('a')) return;
+    openEmailClient();
+  });
+}
 </script>
 </body>
 </html>
