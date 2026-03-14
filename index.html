@@ -454,6 +454,103 @@
     opacity: 1;
   }
 
+  /* PUBLICATIONS */
+  #publications {
+    background: #ffffff !important;
+  }
+
+  #publications .section-label {
+    color: var(--header-green);
+  }
+
+  #publications .publications-carousel {
+    margin-top: 12px;
+  }
+
+  #publications .publications-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 6px;
+  }
+
+  #publications .publications-scroll::-webkit-scrollbar { display: none; }
+
+  #publications .publication-card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    background: #ffffff;
+  }
+
+  #publications .publication-image {
+    width: 100%;
+    background: #f7f7f7;
+    border: 1px solid #e5e5e5;
+  }
+
+  #publications .publication-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  #publications .publication-content {
+    padding-top: 12px;
+  }
+
+  #publications .pub-title {
+    font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    margin: 0 0 6px;
+  }
+
+  #publications .pub-title a {
+    color: var(--forest-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  #publications .pub-meta,
+  #publications .pub-role {
+    font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--forest-dark);
+    margin: 0 0 6px;
+    max-width: none;
+  }
+
+  #publications .pub-role {
+    margin-bottom: 0;
+  }
+
+  #publications .publications-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  #publications .pub-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid #005C40;
+    opacity: 0.4;
+    transition: all 0.3s;
+  }
+
+  #publications .pub-dot.active {
+    background: #005C40;
+    opacity: 1;
+  }
+
   .services-arrow {
     position: absolute;
     top: 50%;
@@ -482,6 +579,33 @@
   .services-arrow.next { right: 0; }
 
   .services-arrow.hidden { opacity: 0.2; pointer-events: none; }
+
+  @media (min-width: 1100px) {
+    .services-carousel {
+      padding: 0;
+    }
+
+    .services-scroll {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      overflow: visible;
+      scroll-snap-type: none;
+      max-width: calc((350px * 3) + (40px * 2));
+      margin: 0 auto;
+    }
+
+    .services-scroll .service-card {
+      flex: 0 0 350px;
+      scroll-snap-align: none;
+    }
+
+    .services-arrow,
+    .services-dots {
+      display: none;
+    }
+  }
 
   @media (max-width: 700px) {
     .services-carousel { padding: 0 40px; }
@@ -1308,55 +1432,87 @@
 
   <section id="publications">
     <p class="section-label">Publications</p>
-    <div class="experience-list">
-      <div class="exp-item">
-        <div class="exp-org">FAO · 2025</div>
-        <div>
-          <p class="exp-role"><a href="https://openknowledge.fao.org/handle/20.500.14283/cd7052en" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">Exemplary forest management revisited – Insights from successes and challenges</a></p>
-          <p class="exp-desc">FAO, Rome. Contributing author, pp. 19–31.</p>
-        </div>
+    <div class="publications-carousel">
+      <div class="publications-scroll" id="publications-scroll" aria-label="Publications carousel">
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="FAO.jpg" alt="Cover page of Exemplary forest management revisited publication">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://openknowledge.fao.org/items/95e3fb5d-93c7-439c-ae6d-187ff0a543be" target="_blank" rel="noopener noreferrer">Exemplary forest management revisited</a></p>
+            <p class="pub-meta">FAO · 2025</p>
+            <p class="pub-role">Contributing author, pp. 19–31.</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="Safeguarding.png" alt="Cover page of Safeguarding customary forest tenure publication">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://www.tandfonline.com/doi/full/10.1080/1747423X.2023.2184513" target="_blank" rel="noopener noreferrer">Safeguarding customary forest tenure</a></p>
+            <p class="pub-meta">International Forestry Review · 2023</p>
+            <p class="pub-role">Lead Author</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="REDAAdoc.jpg" alt="Cover page of Research-to-action priorities in Southeast Asia report">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://www.redaa.org/scoping-study-research-action-priorities-redaa-programme-southeast-asia" target="_blank" rel="noopener noreferrer">Research-to-action priorities in Southeast Asia</a></p>
+            <p class="pub-meta">REDAA Programme Report · 2023</p>
+            <p class="pub-role">Lead Author</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="EU-FLEGT.png" alt="Cover page of The political logics of EU-FLEGT publication">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://journals.librarypublishing.arizona.edu/jpe/article/id/2398/" target="_blank" rel="noopener noreferrer">The political logics of EU-FLEGT</a></p>
+            <p class="pub-meta">Journal of Political Ecology · 2022</p>
+            <p class="pub-role">Lead Author</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="Thesis.png" alt="Cover page of The Political Ecology of Illegal Logging in Thailand thesis">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0406142" target="_blank" rel="noopener noreferrer">The Political Ecology of Illegal Logging in Thailand</a></p>
+            <p class="pub-meta">PhD Thesis · UBC · 2021</p>
+            <p class="pub-role">Lead Author</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="Assessing.png" alt="Cover page of Assessing forest governance in the Greater Mekong publication">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://www.mdpi.com/1999-4907/10/1/47" target="_blank" rel="noopener noreferrer">Assessing forest governance in the Greater Mekong</a></p>
+            <p class="pub-meta">Forests · 2019</p>
+            <p class="pub-role">Co-Author</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="uneven.png" alt="Cover page of Regulatory barriers to communities making a living from timber publication">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://www.mdpi.com/1999-4907/6/10/3433" target="_blank" rel="noopener noreferrer">Regulatory barriers to communities making a living from timber</a></p>
+            <p class="pub-meta">Forests · 2015</p>
+            <p class="pub-role">Co-Author</p>
+          </div>
+        </article>
       </div>
-      <div class="exp-item">
-        <div class="exp-org">International Forestry Review · 2023</div>
-        <div>
-          <p class="exp-role"><a href="https://doi.org/10.1080/1747423X.2023.2184513" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">Safeguarding customary forest tenure in the Mekong Region: a legal analysis</a></p>
-          <p class="exp-desc">Lewis, S.R., Faure, N., Leonard, S., Pen, R., Ba Ngai, N., & Phengsophaf, K.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">REDAA Programme Report · 2023</div>
-        <div>
-          <p class="exp-role"><a href="https://www.redaa.org/scoping-study-research-action-priorities-redaa-programme-southeast-asia" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">Research-to-action priorities for environmental restoration and sustainable natural resource management in Southeast Asia</a></p>
-          <p class="exp-desc">Lewis, S.R. (lead author)</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">Journal of Political Ecology · 2022</div>
-        <div>
-          <p class="exp-role"><a href="https://doi.org/10.2458/jpe.2398" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">The political logics of EU-FLEGT in Thailand's multistakeholder negotiations: Hegemony and resistance</a></p>
-          <p class="exp-desc">Lewis, S.R. & Bulkan, J.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">PhD Thesis · UBC · 2021</div>
-        <div>
-          <p class="exp-role"><a href="https://dx.doi.org/10.14288/1.0406142" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">The Political Ecology of Illegal Logging in Thailand: Forest Exploitation, Violence, and Anti-Politics</a></p>
-          <p class="exp-desc">Lewis, S.R.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">Forests · 2019</div>
-        <div>
-          <p class="exp-role"><a href="https://www.mdpi.com/1999-4907/10/1/47" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">Assessing forest governance in the countries of the Greater Mekong Subregion</a></p>
-          <p class="exp-desc">Gritten, D., Lewis, S.R., Breukink, G., Mo, K., Dang, T., & Delattre, E.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">Forests · 2015</div>
-        <div>
-          <p class="exp-role"><a href="https://www.mdpi.com/1999-4907/6/10/3433/htm" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">An uneven playing field: regulatory barriers to communities making a living from the timber from their forests</a></p>
-          <p class="exp-desc">Gritten, D., Greijmans, M., Lewis, S.R., et al.</p>
-        </div>
+      <div class="publications-dots" id="publications-dots" aria-label="Publications carousel progress">
+        <span class="pub-dot active"></span>
+        <span class="pub-dot"></span>
+        <span class="pub-dot"></span>
+        <span class="pub-dot"></span>
+        <span class="pub-dot"></span>
+        <span class="pub-dot"></span>
+        <span class="pub-dot"></span>
       </div>
     </div>
   </section>
@@ -1451,8 +1607,16 @@
   const svcDots = document.querySelectorAll('.svc-dot');
 
   function updateSvcDots() {
-    const cardWidth = svcScroll.querySelector('.service-card').offsetWidth + 40;
-    const index = Math.round(svcScroll.scrollLeft / cardWidth);
+    const card = svcScroll.querySelector('.service-card');
+    if (!card || !svcDots.length) return;
+
+    const cardWidth = card.offsetWidth + 40;
+    const atEnd = svcScroll.scrollLeft + svcScroll.clientWidth >= svcScroll.scrollWidth - 2;
+    const lastIndex = svcDots.length - 1;
+    const index = atEnd
+      ? lastIndex
+      : Math.min(lastIndex, Math.max(0, Math.round(svcScroll.scrollLeft / cardWidth)));
+
     svcDots.forEach((dot, i) => {
       dot.classList.toggle('active', i <= index);
     });
@@ -1471,8 +1635,14 @@
     if (!workScroll || !workDots.length) return;
     const workCard = workScroll.querySelector('.work-card');
     if (!workCard) return;
+
     const cardWidth = workCard.offsetWidth + 16;
-    const index = Math.round(workScroll.scrollLeft / cardWidth);
+    const atEnd = workScroll.scrollLeft + workScroll.clientWidth >= workScroll.scrollWidth - 2;
+    const lastIndex = workDots.length - 1;
+    const index = atEnd
+      ? lastIndex
+      : Math.min(lastIndex, Math.max(0, Math.round(workScroll.scrollLeft / cardWidth)));
+
     workDots.forEach((dot, i) => {
       dot.classList.toggle('active', i <= index);
     });
@@ -1481,6 +1651,31 @@
   if (workScroll) {
     workScroll.addEventListener('scroll', updateWorkDots);
     updateWorkDots();
+  }
+
+  const pubScroll = document.getElementById('publications-scroll');
+  const pubDots = document.querySelectorAll('#publications .pub-dot');
+
+  function updatePubDots() {
+    if (!pubScroll || !pubDots.length) return;
+    const pubCard = pubScroll.querySelector('.publication-card');
+    if (!pubCard) return;
+
+    const cardWidth = pubCard.offsetWidth + 20;
+    const atEnd = pubScroll.scrollLeft + pubScroll.clientWidth >= pubScroll.scrollWidth - 2;
+    const lastIndex = pubDots.length - 1;
+    const index = atEnd
+      ? lastIndex
+      : Math.min(lastIndex, Math.max(0, Math.round(pubScroll.scrollLeft / cardWidth)));
+
+    pubDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i <= index);
+    });
+  }
+
+  if (pubScroll) {
+    pubScroll.addEventListener('scroll', updatePubDots);
+    updatePubDots();
   }
 
   // Toggle sidebar on mobile
