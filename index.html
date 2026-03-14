@@ -483,6 +483,33 @@
 
   .services-arrow.hidden { opacity: 0.2; pointer-events: none; }
 
+  @media (min-width: 1100px) {
+    .services-carousel {
+      padding: 0;
+    }
+
+    .services-scroll {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      overflow: visible;
+      scroll-snap-type: none;
+      max-width: calc((350px * 3) + (40px * 2));
+      margin: 0 auto;
+    }
+
+    .services-scroll .service-card {
+      flex: 0 0 350px;
+      scroll-snap-align: none;
+    }
+
+    .services-arrow,
+    .services-dots {
+      display: none;
+    }
+  }
+
   @media (max-width: 700px) {
     .services-carousel { padding: 0 40px; }
     .services-scroll { scroll-snap-type: x mandatory; padding: 2px 2px 4px; }
