@@ -1056,6 +1056,27 @@
       display: flex;
     }
   }
+
+  @media (min-width: 761px) {
+    footer {
+      padding: 30px 40px;
+    }
+
+    .footer-inner {
+      max-width: none;
+      margin: 0;
+    }
+
+    .footer-logo {
+      margin-left: 2cm;
+    }
+
+    .footer-copy {
+      margin-right: 0.5cm;
+      align-self: flex-end;
+    }
+  }
+
   @media (max-width: 760px) {
     body { display: block; }
     #main-content { margin-top: calc(56px + env(safe-area-inset-top)); padding: 0; }
