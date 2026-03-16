@@ -896,14 +896,27 @@
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
+    gap: 24px;
+    width: 100%;
   }
 
   .footer-logo {
     width: auto;
     height: 144px;
     display: block;
+    max-width: 100%;
+  }
+
+  .footer-copy {
+    margin-left: auto;
+    text-align: right;
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    line-height: 1.4;
+    white-space: normal;
   }
 
   footer a { color: rgba(255,255,255,0.9); text-decoration: none; }
@@ -1051,6 +1064,28 @@
     .hero-image { height: auto; max-width: none; background: #ffffff; }
     .hero-image img { width: 100%; height: auto; object-fit: contain; object-position: center top; }
     .hero-overlay div { padding-left: 1rem !important; padding-right: 1rem !important; padding-bottom: 0.75rem !important; }
+
+    footer {
+      padding: 24px;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      height: auto;
+      width: min(240px, 75vw);
+    }
+
+    .footer-copy {
+      margin-left: 0;
+      text-align: center;
+    }
   }
 
   @media (max-width: 700px) {
@@ -1620,6 +1655,7 @@
   <footer>
     <div class="footer-inner">
       <img src="drawingwhiteongreen.svg" alt="Forest Governance Lab" class="footer-logo">
+      <p class="footer-copy">© 2026 Forest Governance Lab</p>
     </div>
   </footer>
 
