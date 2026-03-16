@@ -756,7 +756,7 @@
 
   #education .geo-focus-wrap {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(250px, 0.8fr);
+    grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.75fr);
     gap: 28px;
     align-items: start;
     margin-top: 6px;
@@ -765,17 +765,22 @@
   #education .geo-map-panel,
   #education .geo-info-panel {
     background: #ffffff;
-    border: 1px solid rgba(0, 92, 64, 0.15);
+    border: none;
     border-radius: 10px;
   }
 
   #education .geo-map-panel {
     padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   #education .geo-map-panel img {
     width: 100%;
+    max-height: clamp(360px, 62vh, 560px);
     height: auto;
+    object-fit: contain;
     display: block;
     background: #ffffff;
   }
@@ -783,17 +788,8 @@
   #education .geo-info-panel {
     padding: 18px;
   }
-
-  #education .geo-file {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--light-green);
-    word-break: break-all;
-    margin: 0 0 10px;
-  }
-
   #education .geo-active {
-    font-size: 1.1rem;
+    font-size: clamp(1.28rem, 1.18rem + 0.45vw, 1.42rem);
     font-weight: 700;
     color: var(--header-green);
     margin: 0 0 10px;
@@ -807,7 +803,7 @@
 
   #education .geo-country-list li {
     color: var(--forest-dark);
-    font-size: 1.02rem;
+    font-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.32rem);
     line-height: 1.65;
     margin: 0;
   }
@@ -1159,7 +1155,8 @@
     .exp-item { grid-template-columns: 1fr; gap: 10px; }
     #education .geo-focus-wrap { grid-template-columns: 1fr; gap: 18px; }
     #education .geo-info-panel { padding: 16px; }
-    #education .geo-country-list li { font-size: 1rem; }
+    #education .geo-map-panel img { max-height: clamp(280px, 52vh, 420px); }
+    #education .geo-country-list li { font-size: clamp(1.12rem, 1.03rem + 0.7vw, 1.24rem); }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
     .hero-image { height: auto; max-width: none; background: #ffffff; }
     .hero-image img { width: 100%; height: auto; object-fit: contain; object-position: center top; }
@@ -1716,7 +1713,6 @@
         <img src="Southeast_Asia_location_mapwhole4.svg" alt="Map of Southeast Asia showing the geographic focus area">
       </div>
       <div class="geo-info-panel">
-        <p class="geo-file">Southeast_Asia_location_mapwhole4.svg</p>
         <p class="geo-active">Active across:</p>
         <ul class="geo-country-list" aria-label="Countries where work is active">
           <li>Cambodia</li>
