@@ -754,6 +754,64 @@
 
   .exp-desc:last-child { margin-bottom: 0; }
 
+  #education .geo-focus-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(250px, 0.8fr);
+    gap: 28px;
+    align-items: start;
+    margin-top: 6px;
+  }
+
+  #education .geo-map-panel,
+  #education .geo-info-panel {
+    background: #ffffff;
+    border: 1px solid rgba(0, 92, 64, 0.15);
+    border-radius: 10px;
+  }
+
+  #education .geo-map-panel {
+    padding: 12px;
+  }
+
+  #education .geo-map-panel img {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: #ffffff;
+  }
+
+  #education .geo-info-panel {
+    padding: 18px;
+  }
+
+  #education .geo-file {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--light-green);
+    word-break: break-all;
+    margin: 0 0 10px;
+  }
+
+  #education .geo-active {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--header-green);
+    margin: 0 0 10px;
+  }
+
+  #education .geo-country-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #education .geo-country-list li {
+    color: var(--forest-dark);
+    font-size: 1.02rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+
   /* REGIONS */
   .regions {
     display: flex;
@@ -1099,6 +1157,9 @@
     header { padding: 0; margin: 0; width: 100%; overflow: visible; }
     section { padding: 28px 24px; scroll-margin-top: calc(56px + env(safe-area-inset-top)); }
     .exp-item { grid-template-columns: 1fr; gap: 10px; }
+    #education .geo-focus-wrap { grid-template-columns: 1fr; gap: 18px; }
+    #education .geo-info-panel { padding: 16px; }
+    #education .geo-country-list li { font-size: 1rem; }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
     .hero-image { height: auto; max-width: none; background: #ffffff; }
     .hero-image img { width: 100%; height: auto; object-fit: contain; object-position: center top; }
@@ -1649,28 +1710,22 @@
 
 
   <section id="education">
-    <p class="section-label">Education & Research</p>
-    <div class="experience-list">
-      <div class="exp-item">
-        <div class="exp-org">Chulalongkorn University<br>Bangkok · 2022–2024</div>
-        <div>
-          <p class="exp-role">Postdoctoral Research Fellowship, Faculty of Political Science</p>
-          <p class="exp-desc">Qualitative field research on forest governance and land rights in Thailand, applying a political ecology framework to examine inequality in resource access under Thailand's Bio-Circular-Green Economic Model.</p>
-        </div>
+    <p class="section-label">Geographic Focus</p>
+    <div class="geo-focus-wrap">
+      <div class="geo-map-panel">
+        <img src="Southeast_Asia_location_mapwhole4.svg" alt="Map of Southeast Asia showing the geographic focus area">
       </div>
-      <div class="exp-item">
-        <div class="exp-org">University of British Columbia<br>Vancouver · 2015–2021</div>
-        <div>
-          <p class="exp-role">Doctor of Philosophy, Forestry</p>
-          <p class="exp-desc">Investigated forest governance in Thailand across two scales: how governance structures shape livelihoods and resource access of Karen Pwo Indigenous communities adjacent to protected areas; and how competing actor interests influenced the reform of timber legality and smallholder tenure through Thailand's EU-FLEGT Voluntary Partnership Agreement process.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">Imperial College London<br>London · 2008–2009</div>
-        <div>
-          <p class="exp-role">Master of Science, Forest Conservation</p>
-          <p class="exp-desc">Reviewed literature and surveyed 26 EU states to assess climate change adaptation strategies for protected forests, providing policy recommendations for biodiversity policy.</p>
-        </div>
+      <div class="geo-info-panel">
+        <p class="geo-file">Southeast_Asia_location_mapwhole4.svg</p>
+        <p class="geo-active">Active across:</p>
+        <ul class="geo-country-list" aria-label="Countries where work is active">
+          <li>Cambodia</li>
+          <li>Indonesia</li>
+          <li>Lao PDR</li>
+          <li>Timor-Leste</li>
+          <li>Thailand</li>
+          <li>Viet Nam</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -1718,7 +1773,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#experience">Selected Works</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#education">Education</a></li>
+      <li><a href="#education">Geographic Focus</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
