@@ -49,6 +49,8 @@
 	</sodipodi:namedview>
 
 
+<rect id="background-white" x="1947.168" y="657.515" width="373.66041" height="342.49478" fill="#ffffff" />
+
 <g
    id="id"
    style="fill:#005c40;fill-opacity:1;stroke:#ffffff;stroke-opacity:1"
@@ -2567,4 +2569,18 @@
    id="path35" /><path
    style="opacity:0.04;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
    d="m 2119.2884,869.9809 c -0.084,-0.03 -0.1074,-0.045 -0.2957,-0.1786 -1.234,-0.8785 -1.9709,-1.5177 -2.2646,-1.9643 -0.1471,-0.2237 -0.2343,-0.447 -0.3977,-1.0181 -0.062,-0.2161 -0.1279,-0.4363 -0.1468,-0.4893 -0.1082,-0.3039 -0.2385,-0.5248 -0.4174,-0.708 -0.047,-0.048 -0.078,-0.088 -0.071,-0.091 0.01,0 0.075,-0.02 0.1497,-0.038 0.5616,-0.1391 1.1451,-0.4125 1.7391,-0.815 0.3356,-0.2274 0.6022,-0.4346 1.2405,-0.9639 1.0751,-0.8915 1.546,-1.2188 2.1796,-1.5151 0.3082,-0.1442 0.5091,-0.2134 0.6018,-0.2074 h 0.051 v 0.087 c 0,0.1154 -0.042,0.2478 -0.1236,0.4179 -0.1369,0.2844 -0.231,0.3993 -0.4952,0.6047 -0.3453,0.2685 -0.4773,0.3808 -0.6454,0.5489 -0.1794,0.1794 -0.2729,0.3018 -0.3543,0.464 -0.096,0.1916 -0.1508,0.3899 -0.1757,0.6375 -0.016,0.1639 -0.01,0.688 0.016,0.9615 0.077,0.8873 0.093,1.9756 0.039,2.6795 -0.058,0.7518 -0.1837,1.2669 -0.3653,1.4977 -0.081,0.1024 -0.152,0.1259 -0.262,0.086 z"
-   id="path36" /></svg>
+   id="path36" />
+<g id="geographic-focus-overlay">
+  <rect id="right-panel-white" x="2190" y="690" width="125" height="280" fill="#ffffff" />
+  <rect id="header-panel-white" x="2145" y="660" width="170" height="34" fill="#ffffff" />
+  <text x="2153" y="683" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#005c40">Geographic Focus</text>
+  <text x="2198" y="718" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#005c40">Southeast_Asia_location_mapwhole4.svg</text>
+  <text x="2198" y="738" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#005c40">Active across:</text>
+  <text x="2198" y="760" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#005c40">Cambodia</text>
+  <text x="2198" y="779" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#005c40">Indonesia</text>
+  <text x="2198" y="798" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#005c40">Lao PDR</text>
+  <text x="2198" y="817" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#005c40">Timor-Leste</text>
+  <text x="2198" y="836" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#005c40">Thailand</text>
+  <text x="2198" y="855" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#005c40">Viet Nam</text>
+</g>
+</svg>
