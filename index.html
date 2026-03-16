@@ -762,6 +762,13 @@
     margin-top: 6px;
   }
 
+  #education .geo-map-panel,
+  #education .geo-info-panel {
+    background: #ffffff;
+    border: 1px solid rgba(0, 92, 64, 0.15);
+    border-radius: 10px;
+  }
+
   #education .geo-map-panel {
     padding: 12px;
   }
@@ -773,6 +780,17 @@
     background: #ffffff;
   }
 
+  #education .geo-info-panel {
+    padding: 18px;
+  }
+
+  #education .geo-file {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--light-green);
+    word-break: break-all;
+    margin: 0 0 10px;
+  }
 
   #education .geo-active {
     font-size: 1.1rem;
@@ -1140,6 +1158,7 @@
     section { padding: 28px 24px; scroll-margin-top: calc(56px + env(safe-area-inset-top)); }
     .exp-item { grid-template-columns: 1fr; gap: 10px; }
     #education .geo-focus-wrap { grid-template-columns: 1fr; gap: 18px; }
+    #education .geo-info-panel { padding: 16px; }
     #education .geo-country-list li { font-size: 1rem; }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
     .hero-image { height: auto; max-width: none; background: #ffffff; }
@@ -1697,6 +1716,7 @@
         <img src="Southeast_Asia_location_mapwhole4.svg" alt="Map of Southeast Asia showing the geographic focus area">
       </div>
       <div class="geo-info-panel">
+        <p class="geo-file">Southeast_Asia_location_mapwhole4.svg</p>
         <p class="geo-active">Active across:</p>
         <ul class="geo-country-list" aria-label="Countries where work is active">
           <li>Cambodia</li>
