@@ -1057,7 +1057,7 @@
     }
   }
 
-  @media (min-width: 761px) {
+  @media (min-width: 1025px) {
     footer {
       padding: 30px 40px;
     }
@@ -1074,6 +1074,22 @@
     .footer-copy {
       margin-right: 0.5cm;
       align-self: flex-end;
+    }
+  }
+
+
+  @media (max-width: 1024px) {
+    .footer-inner {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer-copy {
+      margin-left: 0;
+      text-align: center;
+      align-self: center;
     }
   }
 
