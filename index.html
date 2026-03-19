@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dr. Sophie Rose Lewis — Forest Governance Specialist</title>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&family=DM+Mono:wght@300;400&family=Nunito:wght@400;600;800;900&family=DM+Sans:wght@300;400;500&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&family=DM+Mono:wght@300;400&family=Nunito:wght@400;600;800;900&family=DM+Sans:wght@300;400;500&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>  @font-face {
     font-family: 'Alverata';
     src: url('fonnts.com-Alverata-Informal-.otf') format('opentype');
@@ -57,14 +57,20 @@
    right: 0;
     width: 100%;
     height: 110px;
-    background: #ffffff;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0,92,64,0.06);
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0 40px;
     z-index: 100;
     gap: 6px;
+    transition: box-shadow 0.4s ease;
   }
+
+  #sidebar.scrolled { box-shadow: 0 1px 12px rgba(0,40,20,0.06); }
 
 
 
@@ -113,20 +119,37 @@
     text-decoration: none;
     padding: 8px 14px;
     border-radius: 2px;
-    transition: background 0.2s, color 0.2s;
+    transition: color 0.2s;
     position: relative;
     white-space: nowrap;
   }
 
+  #sidebar nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 14px;
+    right: 14px;
+    height: 1.5px;
+    background: #005C40;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   #sidebar nav ul li a:hover {
-    background: rgba(0,92,64,0.08);
+    background: transparent;
     color: #005C40;
   }
 
+  #sidebar nav ul li a:hover::after { transform: scaleX(1); }
+
   #sidebar nav ul li a.active {
-    background: rgba(0,92,64,0.1);
+    background: transparent;
     color: #005C40;
   }
+
+  #sidebar nav ul li a.active::after { transform: scaleX(1); }
 
   /* ── HEADER HERO ── */
   header {
@@ -247,17 +270,27 @@
   /* ── SECTIONS ── */
   section {
     background: var(--paper);
-    padding: 72px 10%;
+    padding: clamp(80px, 10vw, 140px) 10%;
     border-radius: 0;
     margin-bottom: 0;
     box-shadow: none;
     width: 100%;
     scroll-margin-top: 110px;
+    position: relative;
   }
 
   section:nth-of-type(even) {
     background: #005C40;
   }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Soft section dividers */
+  section + section { border-top: none; }
+  section + section::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,92,64,0.12), transparent); }
+  section:nth-of-type(even)::before { display: none; }
 
   section:nth-of-type(even) .section-label,
   section:nth-of-type(even) h3,
@@ -413,24 +446,27 @@
   .services-dots {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     margin-top: 20px;
   }
 
   .svc-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: transparent;
-    border: 2px solid #005C40;
-    opacity: 0.4;
+    background: rgba(0,92,64,0.2);
+    border: none;
     transition: all 0.3s;
   }
 
   .svc-dot.active {
     background: #005C40;
-    opacity: 1;
+    transform: scale(1.4);
   }
+
+  /* Dormant dot rules for future work/pub carousels */
+  .work-dot, .pub-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,92,64,0.2); border: none; transition: all 0.3s; }
+  .work-dot.active, .pub-dot.active { background: #005C40; transform: scale(1.4); }
 
   .services-arrow {
     position: absolute;
@@ -481,6 +517,14 @@
   }
 
   .exp-item:last-child { border-bottom: none; }
+
+  /* Work card hover lift (dormant .work-card rules + live .exp-item) */
+  #experience .work-card { transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s ease; }
+  #experience .work-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,40,20,0.08); }
+  #experience .work-image img { transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+  #experience .work-card:hover .work-image img { transform: scale(1.04); }
+  #experience .exp-item { transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s ease; }
+  #experience .exp-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,40,20,0.08); }
 
   .exp-org {
     font-family: 'DM Mono', monospace;
@@ -622,6 +666,18 @@
   footer a { color: var(--sage); text-decoration: none; }
   footer a:hover { color: #edf5eb; }
 
+  /* Tighter footer text */
+  footer p { font-size: 14px; color: rgba(255,255,255,0.5); letter-spacing: 0.03em; font-family: 'Source Sans 3', sans-serif; }
+
+  /* Contact intro (dormant — no .contact-intro element currently in DOM) */
+  #contact .contact-intro { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2vw, 1.65rem); font-weight: 400; font-style: italic; line-height: 1.5; }
+
+  /* Publication card hover */
+  #publications .publication-card { transition: transform 0.4s ease; }
+  #publications .publication-card:hover { transform: translateY(-4px); }
+  #publications .exp-item { transition: transform 0.4s ease; }
+  #publications .exp-item:hover { transform: translateY(-4px); }
+
   /* ── MOBILE TOP BAR ── */
   #mobile-bar {
     display: none;
@@ -631,10 +687,10 @@
     right: 0;
     z-index: 200;
     width: 100%;
-    background: #ffffff;
+    background: rgba(255,255,255,0.92);
     border-bottom: none;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     height: calc(56px + env(safe-area-inset-top));
     align-items: center;
     justify-content: space-between;
@@ -941,7 +997,7 @@
     </div>
   </header>
 
-  <section id="about">
+  <section id="about" class="reveal">
     <div class="about-inner">
 
       <!-- Photo column -->
@@ -964,7 +1020,7 @@
   </section>
 
 
-  <section id="services">
+  <section id="services" class="reveal">
     <p class="section-label">Services</p>
     <div class="services-carousel">
       <button class="services-arrow prev" aria-label="Scroll left">&lt;</button>
@@ -1054,7 +1110,7 @@
   </section>
 
 
-  <section id="experience">
+  <section id="experience" class="reveal">
     <p class="section-label">Selected Work</p>
     <div class="experience-list">
       <div class="exp-item">
@@ -1112,7 +1168,7 @@
   </section>
 
 
-  <section id="publications">
+  <section id="publications" class="reveal">
     <p class="section-label">Publications</p>
     <div class="experience-list">
       <div class="exp-item">
@@ -1168,7 +1224,7 @@
   </section>
 
 
-  <section id="education">
+  <section id="education" class="reveal">
     <p class="section-label">Education & Research</p>
     <div class="experience-list">
       <div class="exp-item">
@@ -1196,7 +1252,7 @@
   </section>
 
 
-  <section id="contact">
+  <section id="contact" class="reveal">
     <p class="section-label">Contact</p>
     <div class="contact-container">
       <form class="contact-form" action="https://formspree.io/f/xlgwaong" method="POST">
@@ -1313,6 +1369,16 @@ const onScroll = () => {
 
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.06, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+// Frosted nav scrolled class
+window.addEventListener('scroll', () => { document.getElementById('sidebar') && document.getElementById('sidebar').classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 </script>
 </body>
 </html>
