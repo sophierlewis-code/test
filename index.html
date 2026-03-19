@@ -58,7 +58,6 @@
     width: 100%;
     height: 110px;
     background: #ffffff;
-    border-bottom: 1px solid rgba(0,92,64,0.06);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -114,13 +113,20 @@
     text-decoration: none;
     padding: 8px 14px;
     border-radius: 2px;
-    transition: color 0.2s;
+    transition: background 0.2s, color 0.2s;
     position: relative;
     white-space: nowrap;
   }
 
-  #sidebar nav ul li a:hover { background: rgba(0, 92, 64, 0.08); border-radius: 2px; }
-  #sidebar nav ul li a.active { background: rgba(0, 92, 64, 0.08); border-radius: 2px; }
+  #sidebar nav ul li a:hover {
+    background: rgba(0,92,64,0.08);
+    color: #005C40;
+  }
+
+  #sidebar nav ul li a.active {
+    background: rgba(0,92,64,0.1);
+    color: #005C40;
+  }
 
   /* ── HEADER HERO ── */
   header {
@@ -241,22 +247,17 @@
   /* ── SECTIONS ── */
   section {
     background: var(--paper);
-    padding: clamp(80px, 10vw, 140px) 10%;
+    padding: 72px 10%;
     border-radius: 0;
     margin-bottom: 0;
     box-shadow: none;
     width: 100%;
     scroll-margin-top: 110px;
-    position: relative;
   }
 
-  /* Scroll reveal */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.25,0.1,0.25,1), transform 0.8s cubic-bezier(0.25,0.1,0.25,1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* Soft gradient dividers */
-  section + section::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,92,64,0.15), transparent); }
-  section:nth-of-type(even)::before { display: none; }
+  section + section {
+    border-top: 1pt solid var(--header-green);
+  }
 
   section:nth-of-type(even) {
     background: #005C40;
@@ -421,38 +422,40 @@
   }
 
   .svc-dot {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: rgba(0,92,64,0.2);
-    border: none;
+    background: transparent;
+    border: 2px solid #005C40;
+    opacity: 0.4;
     transition: all 0.3s;
   }
 
   .svc-dot.active {
     background: #005C40;
-    transform: scale(1.4);
+    opacity: 1;
   }
 
   .work-dots {
     display: none;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     margin-top: 16px;
   }
 
   .work-dot {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: rgba(0,92,64,0.2);
-    border: none;
+    background: transparent;
+    border: 2px solid #005C40;
+    opacity: 0.4;
     transition: all 0.3s;
   }
 
   .work-dot.active {
     background: #005C40;
-    transform: scale(1.4);
+    opacity: 1;
   }
 
   /* PUBLICATIONS */
@@ -552,17 +555,18 @@
   }
 
   #publications .pub-dot {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: rgba(0,92,64,0.2);
-    border: none;
+    background: transparent;
+    border: 2px solid #005C40;
+    opacity: 0.4;
     transition: all 0.3s;
   }
 
   #publications .pub-dot.active {
     background: #005C40;
-    transform: scale(1.4);
+    opacity: 1;
   }
 
   @media (min-width: 1100px) {
@@ -713,16 +717,6 @@
     margin: 0;
     line-height: 1.55;
   }
-
-  /* Hover lift — work cards */
-  #experience .work-card { transition: transform 0.45s cubic-bezier(0.4,0,0.2,1), box-shadow 0.45s ease; }
-  #experience .work-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,40,20,0.09); }
-  #experience .work-image img { transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
-  #experience .work-card:hover .work-image img { transform: scale(1.04); }
-
-  /* Hover lift — publication cards */
-  #publications .publication-card { transition: transform 0.45s cubic-bezier(0.4,0,0.2,1), box-shadow 0.45s ease; }
-  #publications .publication-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,40,20,0.09); }
 
 
   .exp-item {
@@ -977,9 +971,9 @@
     margin-left: auto;
     margin-right: 0.5cm;
     text-align: right;
-    color: rgba(255,255,255,0.5);
+    color: #ffffff;
     font-family: 'Nunito', sans-serif;
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1.3;
     white-space: normal;
     align-self: flex-end;
@@ -1217,7 +1211,7 @@
 
   .about-statement {
     text-align: center;
-    padding: 0 10% 48px;
+    padding: 0 5% 48px;
     border-bottom: 1px solid rgba(0, 92, 64, 0.06);
     margin-bottom: 0;
   }
@@ -1336,35 +1330,14 @@
   }
 
   @media (max-width: 760px) {
-    .about-statement {
-      padding: 0 24px 32px;
-    }
-    .about-headline {
-      font-size: clamp(1.3rem, 5vw, 1.8rem);
-    }
-    .about-split {
-      grid-template-columns: 1fr;
-    }
-    .about-photo-col {
-      min-height: 50vh;
-      max-height: 400px;
-    }
-    .about-bio-col {
-      padding: 28px 24px;
-    }
-    .about-cred-bar {
-      flex-direction: column;
-      gap: 12px;
-      padding: 20px 24px;
-      align-items: flex-start;
-    }
-    .cred-items {
-      flex-direction: column;
-      gap: 6px;
-    }
-    .cred-divider {
-      display: none;
-    }
+    .about-statement { padding: 0 24px 32px; }
+    .about-headline { font-size: clamp(1.3rem, 5vw, 1.8rem); }
+    .about-split { grid-template-columns: 1fr; }
+    .about-photo-col { min-height: 50vh; max-height: 400px; }
+    .about-bio-col { padding: 28px 24px; }
+    .about-cred-bar { flex-direction: column; gap: 12px; padding: 20px 24px; align-items: flex-start; }
+    .cred-items { flex-direction: column; gap: 6px; }
+    .cred-divider { display: none; }
   }
 </style>
 </head>
@@ -1402,7 +1375,7 @@
     </div>
   </header>
 
-  <section id="about" class="reveal">
+  <section id="about">
 
     <!-- Zone 1: Centred statement banner -->
     <div class="about-statement">
@@ -1437,7 +1410,7 @@
   </section>
 
 
-  <section id="services" class="reveal">
+  <section id="services">
     <p class="section-label">Services</p>
     <div class="services-carousel">
       <div class="services-scroll" id="services-scroll">
@@ -1525,7 +1498,7 @@
   </section>
 
 
-  <section id="experience" class="reveal">
+  <section id="experience">
     <p class="section-label">Selected Works</p>
     <div class="selected-work-grid" aria-label="Selected work highlights">
       <div class="selected-work-row top">
@@ -1645,7 +1618,7 @@
   </section>
 
 
-  <section id="publications" class="reveal">
+  <section id="publications">
     <p class="section-label">Publications</p>
     <div class="publications-carousel">
       <div class="publications-scroll" id="publications-scroll" aria-label="Publications carousel">
@@ -1733,7 +1706,7 @@
   </section>
 
 
-  <section id="education" class="reveal">
+  <section id="education">
     <p class="section-label">Geographic Focus</p>
     <div class="geo-focus-wrap">
       <div class="geo-map-panel">
@@ -1754,7 +1727,7 @@
   </section>
 
 
-  <section id="contact" class="reveal">
+  <section id="contact">
     <p class="section-label">Contact</p>
     <p class="contact-intro">Get in touch to start a discussion on consultations or collaboration with the Lab</p>
     <div class="contact-container">
@@ -1919,14 +1892,6 @@ const onScroll = () => {
 
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
-
-// Scroll reveal
-const revealEls = document.querySelectorAll('.reveal');
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-}, { threshold: 0.06, rootMargin: '0px 0px -50px 0px' });
-revealEls.forEach(el => revealObs.observe(el));
-
 
 const copyEmailBtn = document.getElementById('copy-email-btn');
 const copyEmailStatus = document.getElementById('copy-email-status');
