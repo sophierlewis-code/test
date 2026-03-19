@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dr. Sophie Rose Lewis — Forest Governance Specialist</title>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&family=DM+Mono:wght@300;400&family=Nunito:wght@400;600;800;900&family=DM+Sans:wght@300;400;500&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&family=DM+Mono:wght@300;400&family=Nunito:wght@400;600;800;900&family=DM+Sans:wght@300;400;500&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 <style>  @font-face {
     font-family: 'Alverata';
     src: url('fonnts.com-Alverata-Informal-.otf') format('opentype');
@@ -57,20 +57,14 @@
    right: 0;
     width: 100%;
     height: 110px;
-    background: rgba(255,255,255,0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(0,92,64,0.06);
+    background: #ffffff;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0 40px;
     z-index: 100;
     gap: 6px;
-    transition: box-shadow 0.4s ease;
   }
-
-  #sidebar.scrolled { box-shadow: 0 1px 12px rgba(0,40,20,0.06); }
 
 
 
@@ -119,37 +113,20 @@
     text-decoration: none;
     padding: 8px 14px;
     border-radius: 2px;
-    transition: color 0.2s;
+    transition: background 0.2s, color 0.2s;
     position: relative;
     white-space: nowrap;
   }
 
-  #sidebar nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    left: 14px;
-    right: 14px;
-    height: 1.5px;
-    background: #005C40;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
   #sidebar nav ul li a:hover {
-    background: transparent;
+    background: rgba(0,92,64,0.08);
     color: #005C40;
   }
-
-  #sidebar nav ul li a:hover::after { transform: scaleX(1); }
 
   #sidebar nav ul li a.active {
-    background: transparent;
+    background: rgba(0,92,64,0.1);
     color: #005C40;
   }
-
-  #sidebar nav ul li a.active::after { transform: scaleX(1); }
 
   /* ── HEADER HERO ── */
   header {
@@ -270,13 +247,12 @@
   /* ── SECTIONS ── */
   section {
     background: var(--paper);
-    padding: clamp(80px, 10vw, 140px) 10%;
+    padding: 72px 10%;
     border-radius: 0;
     margin-bottom: 0;
     box-shadow: none;
     width: 100%;
     scroll-margin-top: 110px;
-    position: relative;
   }
 
   section + section {
@@ -286,15 +262,6 @@
   section:nth-of-type(even) {
     background: #005C40;
   }
-
-  /* Scroll reveal */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* Soft section dividers */
-  section + section { border-top: none; }
-  section + section::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,92,64,0.12), transparent); }
-  section:nth-of-type(even)::before { display: none; }
 
   section:nth-of-type(even) .section-label,
   section:nth-of-type(even) h3,
@@ -450,32 +417,36 @@
   .services-dots {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     margin-top: 20px;
   }
 
   .svc-dot {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: rgba(0,92,64,0.2);
-    border: none;
+    background: transparent;
+    border: 2px solid #005C40;
+    opacity: 0.4;
     transition: all 0.3s;
   }
 
   .svc-dot.active {
     background: #005C40;
-    transform: scale(1.4);
+    opacity: 1;
   }
 
-  /* Dormant dot rules for future work/pub carousels */
-  .work-dot, .pub-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,92,64,0.2); border: none; transition: all 0.3s; }
-  .work-dot.active, .pub-dot.active { background: #005C40; transform: scale(1.4); }
+  .work-dots {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
 
-  .services-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  .work-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
     background: transparent;
     border: 2px solid #005C40;
     opacity: 0.4;
@@ -759,14 +730,6 @@
 
   .exp-item:last-child { border-bottom: none; }
 
-  /* Work card hover lift (dormant .work-card rules + live .exp-item) */
-  #experience .work-card { transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s ease; }
-  #experience .work-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,40,20,0.08); }
-  #experience .work-image img { transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-  #experience .work-card:hover .work-image img { transform: scale(1.04); }
-  #experience .exp-item { transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s ease; }
-  #experience .exp-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,40,20,0.08); }
-
   .exp-org {
     font-family: 'DM Mono', monospace;
     font-size: 13px;
@@ -1019,18 +982,6 @@
   footer a { color: rgba(255,255,255,0.9); text-decoration: none; }
   footer a:hover { color: #ffffff; }
 
-  /* Tighter footer text */
-  footer p { font-size: 14px; color: rgba(255,255,255,0.5); letter-spacing: 0.03em; font-family: 'Source Sans 3', sans-serif; }
-
-  /* Contact intro (dormant — no .contact-intro element currently in DOM) */
-  #contact .contact-intro { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2vw, 1.65rem); font-weight: 400; font-style: italic; line-height: 1.5; }
-
-  /* Publication card hover */
-  #publications .publication-card { transition: transform 0.4s ease; }
-  #publications .publication-card:hover { transform: translateY(-4px); }
-  #publications .exp-item { transition: transform 0.4s ease; }
-  #publications .exp-item:hover { transform: translateY(-4px); }
-
   /* ── MOBILE TOP BAR ── */
   #mobile-bar {
     display: none;
@@ -1040,10 +991,10 @@
     right: 0;
     z-index: 200;
     width: 100%;
-    background: rgba(255,255,255,0.92);
+    background: #ffffff;
     border-bottom: none;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     height: calc(56px + env(safe-area-inset-top));
     align-items: center;
     justify-content: space-between;
@@ -1480,7 +1431,7 @@
     </div>
   </header>
 
-  <section id="about" class="reveal">
+  <section id="about">
     <div class="about-inner">
 
       <!-- Photo column -->
@@ -1510,7 +1461,7 @@ MSc Forest Conservation, Imperial College, London</p>
   </section>
 
 
-  <section id="services" class="reveal">
+  <section id="services">
     <p class="section-label">Services</p>
     <div class="services-carousel">
       <div class="services-scroll" id="services-scroll">
@@ -1598,45 +1549,40 @@ MSc Forest Conservation, Imperial College, London</p>
   </section>
 
 
-  <section id="experience" class="reveal">
-    <p class="section-label">Selected Work</p>
-    <div class="experience-list">
-      <div class="exp-item">
-        <div class="exp-org">ADRA UK<br>Timor-Leste · 2026</div>
-        <div>
-          <p class="exp-role">Strategic Planning & Technical Writing</p>
-          <p class="exp-desc">Project concept note with log frame for an EU call for proposals to support the Directorate General of Forestry in Timor-Leste enhance institutional capacity for priority forestry projects.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">RECOFTC<br>Southeast Asia · 2024–2025</div>
-        <div>
-          <p class="exp-role">Policy Outreach & Gender Inclusion Capacity Development Coordination</p>
-          <p class="exp-desc">Research-to-policy strategy across seven Southeast Asian countries for the Sida-funded Explore Programme, coordinating National Advisory Committees with government representatives, academics, and civil society.</p>
-          <p class="exp-desc">Regional training and capacity-development programmes on Participatory Action Research, combining classroom training and field-based mentoring to strengthen science-policy engagement and governance reform.</p>
-          <p class="exp-desc">Gender inclusion strategy, ensuring gender equity and representation across research teams, advisory bodies, and capacity-development initiatives.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">RECOFTC / RMFN-Asia<br>Southeast Asia · 2024</div>
-        <div>
-          <p class="exp-role">Strategic Planning & Technical Writing</p>
-          <p class="exp-desc">Draft Regional Multi-stakeholder Forestry Network – Asia (RMFN-Asia) Strategic Plan 2025–2030.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">RECOFTC / FAO & Wyss Academy<br>Bangkok · 2023</div>
-        <div>
-          <p class="exp-role">Applied Research & Technical Writing</p>
-          <p class="exp-desc">Technical synthesis of sustainable forest management case studies across ten countries, examining two decades of change in forest management practices, tenure, policy, and community resilience for <em>Revisiting Exemplary Forest Management: In Search of Excellence</em>.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">RECOFTC & IIED<br>Southeast Asia · 2022–2023</div>
-        <div>
-          <p class="exp-role">Applied Research & Policy Advisory</p>
-          <p class="exp-desc">Scoping study for the FCDO-funded REDAA programme, identifying strategic priorities for environmental restoration and sustainable natural resource management across Southeast Asia.</p>
-        </div>
+  <section id="experience">
+    <p class="section-label">Selected Works</p>
+    <div class="selected-work-grid" aria-label="Selected work highlights">
+      <div class="selected-work-row top">
+        <article class="work-card">
+          <div class="work-image">
+            <img src="ADRA.jpg" alt="ADRA UK strategic planning workshop flipchart">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">ADRA UK · Timor-Leste · 2026</p>
+            <p class="work-role">Strategic Planning &amp; Technical Writing</p>
+            <p class="work-desc">Project concept note with logframe for an EU call to support Timor-Leste&apos;s Directorate General of Forestry in strengthening institutional capacity for priority forestry projects.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="Explore.webp" alt="RECOFTC National Advisory Committee meeting for Explore programme">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC · Southeast Asia · 2024–2025</p>
+            <p class="work-role">Policy Outreach &amp; Capacity Development</p>
+            <p class="work-desc">Research-to-policy strategy across seven Southeast Asian countries, coordinating National Advisory Committees and delivering regional participatory action research training.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="FAO.jpg" alt="FAO publication cover used for RECOFTC research and technical writing">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC / FAO &amp; Wyss Academy · 2023</p>
+            <p class="work-role">Applied Research &amp; Technical Writing</p>
+            <p class="work-desc">Technical synthesis of sustainable forest management case studies across ten countries, examining two decades of changes in tenure, policy, and community resilience.</p>
+          </div>
+        </article>
       </div>
       <div class="selected-work-row bottom">
         <article class="work-card">
@@ -1723,7 +1669,7 @@ MSc Forest Conservation, Imperial College, London</p>
   </section>
 
 
-  <section id="publications" class="reveal">
+  <section id="publications">
     <p class="section-label">Publications</p>
     <div class="publications-carousel">
       <div class="publications-scroll" id="publications-scroll" aria-label="Publications carousel">
@@ -1811,15 +1757,11 @@ MSc Forest Conservation, Imperial College, London</p>
   </section>
 
 
-  <section id="education" class="reveal">
-    <p class="section-label">Education & Research</p>
-    <div class="experience-list">
-      <div class="exp-item">
-        <div class="exp-org">Chulalongkorn University<br>Bangkok · 2022–2024</div>
-        <div>
-          <p class="exp-role">Postdoctoral Research Fellowship, Faculty of Political Science</p>
-          <p class="exp-desc">Qualitative field research on forest governance and land rights in Thailand, applying a political ecology framework to examine inequality in resource access under Thailand's Bio-Circular-Green Economic Model.</p>
-        </div>
+  <section id="education">
+    <p class="section-label">Geographic Focus</p>
+    <div class="geo-focus-wrap">
+      <div class="geo-map-panel">
+        <img src="Southeast_Asia_location_mapwhole4.svg" alt="Map of Southeast Asia showing the geographic focus area">
       </div>
       <div class="geo-info-panel">
         <p class="geo-active">Active across:</p>
@@ -1836,7 +1778,7 @@ MSc Forest Conservation, Imperial College, London</p>
   </section>
 
 
-  <section id="contact" class="reveal">
+  <section id="contact">
     <p class="section-label">Contact</p>
     <p class="contact-intro">Get in touch to start a discussion on consultations or collaboration with the Lab</p>
     <div class="contact-container">
@@ -2002,15 +1944,21 @@ const onScroll = () => {
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// Scroll reveal
-const revealEls = document.querySelectorAll('.reveal');
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-}, { threshold: 0.06, rootMargin: '0px 0px -50px 0px' });
-revealEls.forEach(el => revealObs.observe(el));
+const copyEmailBtn = document.getElementById('copy-email-btn');
+const copyEmailStatus = document.getElementById('copy-email-status');
+const contactEmail = 'contact@forest-governance-lab.org';
 
-// Frosted nav scrolled class
-window.addEventListener('scroll', () => { document.getElementById('sidebar') && document.getElementById('sidebar').classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+if (copyEmailBtn && copyEmailStatus) {
+  copyEmailBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(contactEmail);
+      copyEmailStatus.textContent = 'Email copied.';
+    } catch (error) {
+      copyEmailStatus.textContent = 'Copy failed — please copy manually.';
+    }
+  });
+}
+
 </script>
 </body>
 </html>
