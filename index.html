@@ -123,24 +123,8 @@
     white-space: nowrap;
   }
 
-  #sidebar nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    left: 14px;
-    right: 14px;
-    height: 1.5px;
-    background: #005C40;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  #sidebar nav ul li a:hover { color: #005C40; }
-  #sidebar nav ul li a:hover::after { transform: scaleX(1); }
-
-  #sidebar nav ul li a.active { color: #005C40; }
-  #sidebar nav ul li a.active::after { transform: scaleX(1); }
+  #sidebar nav ul li a:hover { opacity: 0.65; }
+  #sidebar nav ul li a.active { opacity: 0.65; }
 
   /* ── HEADER HERO ── */
   header {
@@ -1232,193 +1216,158 @@
   /* ── ABOUT SECTION ── */
   #about {
     background: #ffffff !important;
-    padding: clamp(80px, 10vw, 140px) 10% !important;
+    padding: clamp(60px, 8vw, 100px) 0 0 0 !important;
   }
 
-  .about-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+  .about-statement {
+    text-align: center;
+    padding: 0 10% 48px;
+    border-bottom: 1px solid rgba(0, 92, 64, 0.06);
+    margin-bottom: 0;
   }
 
-  /* Photo column */
-  .about-photo {
-    width: 100%;
+  .about-tag {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8A8477;
+    margin: 0 0 16px;
+  }
+
+  .about-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    font-weight: 400;
+    color: #1A2A20;
+    line-height: 1.4;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+
+  .about-split {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 0;
+    min-height: 360px;
+  }
+
+  .about-photo-col {
+    overflow: hidden;
+    background: #f0ece5;
     position: relative;
   }
 
-  .about-photo-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    border: 1px solid rgba(0, 92, 64, 0.25);
-    background: #f7faf8;
-    padding: 14px;
-  }
-
-  .about-photo-wrap img.about-portrait {
+  .about-photo-col img.about-portrait {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
     display: block;
   }
 
-  /* Text column */
-  .about-text {
-    position: relative;
-    padding: 0;
+  .about-bio-col {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    background: transparent;
-  }
-
-  .about-text .section-label {
-    color: var(--header-green);
-    margin-bottom: 14px;
-  }
-
-  .about-heading {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--forest-dark);
-    line-height: 1.45;
-    margin: 0 0 6px;
-    max-width: none;
+    justify-content: center;
+    padding: clamp(28px, 4vw, 56px) clamp(24px, 4vw, 56px);
+    gap: 16px;
   }
 
   .about-body {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 0.8rem;
-    color: var(--forest-dark);
-    line-height: 1.8;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+    color: #3D4F44;
+    line-height: 1.85;
     margin: 0;
     max-width: none;
   }
 
   .about-italic {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
     font-style: italic;
-    font-size: 0.8rem;
-    color: var(--forest-dark);
-    line-height: 1.8;
+    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+    color: #2D7A54;
+    line-height: 1.6;
     margin: 8px 0 0;
-    max-width: none;
   }
 
-  .about-divider {
-    margin: 10px 0 4px;
+  .about-cred-bar {
+    background: #f7f6f3;
+    padding: 20px clamp(24px, 4vw, 56px);
     display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
+    border-top: 1px solid rgba(0, 92, 64, 0.06);
   }
 
-  .about-divider::before,
-  .about-divider::after {
-    content: "";
-    height: 2px;
-    background: #005c40;
-    opacity: 0.6;
-  }
-
-  .about-divider::before {
-    width: 16px;
+  .cred-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8A8477;
     flex-shrink: 0;
   }
 
-  .about-divider::after {
-    flex: 1;
+  .cred-items {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
   }
 
-  .about-divider svg {
-    flex-shrink: 0;
+  .cred-item {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.92rem;
+    color: #3D4F44;
+    line-height: 1.5;
   }
 
-  .about-credentials-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--forest-dark);
-    margin: 0;
+  .cred-degree {
+    font-weight: 600;
+    color: #1A2A20;
   }
 
-  .about-credentials {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--forest-dark);
-    line-height: 1.8;
-    white-space: pre-line;
-    margin: 0;
+  .cred-divider {
+    color: #d0cec8;
+    font-size: 0.85rem;
   }
 
-  /* Desktop: side-by-side */
-  @media (min-width: 760px) {
-    .about-inner {
-      flex-direction: row;
+  @media (max-width: 760px) {
+    .about-statement {
+      padding: 0 24px 32px;
+    }
+    .about-headline {
+      font-size: clamp(1.3rem, 5vw, 1.8rem);
+    }
+    .about-split {
+      grid-template-columns: 1fr;
+    }
+    .about-photo-col {
+      min-height: 50vh;
+      max-height: 400px;
+    }
+    .about-bio-col {
+      padding: 28px 24px;
+    }
+    .about-cred-bar {
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px 24px;
       align-items: flex-start;
     }
-
-    .about-photo {
-      flex: 0 0 min(30vw, 410px);
-      max-width: min(30vw, 410px);
-      order: 2;
+    .cred-items {
+      flex-direction: column;
+      gap: 6px;
     }
-
-    .about-photo-wrap {
-      width: 100%;
-    }
-
-    .about-photo-wrap img.about-portrait {
-      width: 100%;
-      height: 100%;
-    }
-
-    .about-text {
-      flex: 1;
-      min-width: 0;
-      order: 1;
-      padding-right: 3.5rem;
-      justify-content: flex-start;
-      gap: 14px;
-    }
-
-    .about-text .section-label {
-      position: static;
-    }
-
-    .about-heading {
-      font-size: clamp(0.95rem, 1.3vw, 1.2rem);
-      margin: 0 0 6px;
-    }
-
-    .about-body {
-      font-size: clamp(0.8rem, 1.05vw, 0.95rem);
-      line-height: 1.65;
-      margin: 0;
-    }
-
-    .about-body + .about-italic {
-      margin-top: 6px;
-    }
-
-    .about-italic {
-      font-size: clamp(0.8rem, 1.05vw, 0.95rem);
-      line-height: 1.65;
-      margin: 0;
-    }
-
-    .about-credentials-title {
-      font-size: clamp(0.95rem, 1.3vw, 1.2rem);
-    }
-
-    .about-credentials {
-      font-size: clamp(0.8rem, 1.05vw, 0.95rem);
-      line-height: 1.7;
+    .cred-divider {
+      display: none;
     }
   }
 </style>
@@ -1458,32 +1407,37 @@
   </header>
 
   <section id="about" class="reveal">
-    <div class="about-inner">
 
-      <!-- Photo column -->
-      <div class="about-photo">
-        <div class="about-photo-wrap">
-          <img class="about-portrait" src="profile3.JPG" alt="Dr. Sophie Rose Lewis">
-        </div>
+    <!-- Zone 1: Centred statement banner -->
+    <div class="about-statement">
+      <p class="about-tag">About the lab</p>
+      <p class="about-headline">Forest Governance Lab is the independent consulting practice of Dr. Sophie Rose Lewis.</p>
+    </div>
+
+    <!-- Zone 2: Photo + bio side by side -->
+    <div class="about-split">
+      <div class="about-photo-col">
+        <img class="about-portrait" src="profile3.JPG" alt="Dr. Sophie Rose Lewis">
       </div>
-
-      <!-- Text column -->
-      <div class="about-text">
-        <p class="section-label">About</p>
-        <p class="about-heading">Forest Governance Lab is the independent consulting practice of Dr. Sophie Rose Lewis.</p>
+      <div class="about-bio-col">
         <p class="about-body">With over 15 years working across Southeast Asia, I specialise in forest governance, social forestry, resource rights and land tenure security — from the ground level through to policy.</p>
         <p class="about-body">I work with NGOs, governments, civil society organisations, Indigenous Peoples, and local communities, bringing both technical depth and practical understanding.</p>
         <p class="about-italic">I focus on outputs that are high-quality, grounded, and actionable.</p>
-        <div class="about-divider" aria-hidden="true">
-          <svg width="14" height="17" viewBox="0 0 10 12" fill="none"><path d="M5 1 Q9 6 5 11 Q1 6 5 1Z" stroke="#005c40" stroke-width="1.5" opacity="0.6"/></svg>
-        </div>
-        <p class="about-credentials-title">Credentials</p>
-        <p class="about-credentials">Postdoctoral, Faculty of Political Science. Chulalongkorn University, Bangkok, Thailand
-PhD Forestry, University of British Columbia, Vancouver Canada,
-MSc Forest Conservation, Imperial College, London</p>
       </div>
-
     </div>
+
+    <!-- Zone 3: Credentials bar -->
+    <div class="about-cred-bar">
+      <span class="cred-label">Credentials</span>
+      <div class="cred-items">
+        <span class="cred-item"><span class="cred-degree">Postdoctoral</span> · Chulalongkorn University, Bangkok</span>
+        <span class="cred-divider">|</span>
+        <span class="cred-item"><span class="cred-degree">PhD Forestry</span> · University of British Columbia</span>
+        <span class="cred-divider">|</span>
+        <span class="cred-item"><span class="cred-degree">MSc Forest Conservation</span> · Imperial College, London</span>
+      </div>
+    </div>
+
   </section>
 
 
