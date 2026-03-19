@@ -279,6 +279,10 @@
     position: relative;
   }
 
+  section + section {
+    border-top: 1pt solid var(--header-green);
+  }
+
   section:nth-of-type(even) {
     background: #005C40;
   }
@@ -346,7 +350,7 @@
     font-weight: 400;
     letter-spacing: 0.06em;
     text-transform: none;
-    color: #1e3d1e;
+    color: var(--header-green);
     margin-bottom: 32px;
     display: flex;
     align-items: center;
@@ -473,39 +477,276 @@
     top: 50%;
     transform: translateY(-50%);
     background: transparent;
-    border: none;
+    border: 2px solid #005C40;
+    opacity: 0.4;
+    transition: all 0.3s;
+  }
+
+  .work-dot.active {
+    background: #005C40;
+    opacity: 1;
+  }
+
+  /* PUBLICATIONS */
+  #publications {
+    background: #ffffff !important;
+  }
+
+  #publications .section-label {
     color: var(--header-green);
-    width: 48px;
-    height: 48px;
-    border-radius: 0;
-    font-size: 2.8rem;
-    font-weight: 700;
-    cursor: pointer;
+  }
+
+  #publications .publications-carousel {
+    margin-top: 12px;
+  }
+
+  #publications .publications-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 6px;
+  }
+
+  #publications .publications-scroll::-webkit-scrollbar { display: none; }
+
+  #publications .publication-card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    background: #ffffff;
+  }
+
+  #publications .publication-image {
+    width: 100%;
+    height: 424px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2;
-    transition: opacity 0.2s;
-    line-height: 1;
-    padding: 0;
   }
 
-  .services-arrow:hover { opacity: 0.5; }
+  #publications .publication-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
 
-  .services-arrow.prev { left: 0; }
-  .services-arrow.next { right: 0; }
+  #publications .publication-content {
+    padding-top: 12px;
+  }
 
-  .services-arrow.hidden { opacity: 0.2; pointer-events: none; }
+  #publications .pub-title {
+    font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin: 0 0 8px;
+  }
+
+  #publications .pub-title a {
+    color: var(--header-green);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  #publications .pub-title a:hover {
+    color: var(--sage);
+    text-decoration: none;
+  }
+
+  #publications .pub-meta,
+  #publications .pub-role {
+    font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--forest-dark);
+    margin: 0 0 8px;
+    max-width: none;
+  }
+#publications .pub-meta {
+  font-weight: 700;
+}
+  #publications .pub-role {
+    margin-bottom: 0;
+  }
+
+  #publications .publications-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  #publications .pub-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid #005C40;
+    opacity: 0.4;
+    transition: all 0.3s;
+  }
+
+  #publications .pub-dot.active {
+    background: #005C40;
+    opacity: 1;
+  }
+
+  @media (min-width: 1100px) {
+    .services-carousel {
+      padding: 0;
+    }
+
+    .services-scroll {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      overflow: visible;
+      scroll-snap-type: none;
+      max-width: calc((350px * 3) + (40px * 2));
+      margin: 0 auto;
+    }
+
+    .services-scroll .service-card {
+      flex: 0 0 350px;
+      scroll-snap-align: none;
+    }
+
+    .services-dots {
+      display: none;
+    }
+  }
 
   @media (max-width: 700px) {
-    .services-carousel { padding: 0 40px; }
-    .services-scroll { scroll-snap-type: x mandatory; padding: 2px 2px 4px; }
-    .service-card { flex: 0 0 calc(100% - 4px); scroll-snap-align: start; }
-    .services-arrow { font-size: 2.2rem; width: 36px; }
+    .services-carousel { padding: 0; }
+
+    .services-scroll {
+      gap: 12px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 0;
+    }
+
+    .service-card {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      min-height: 320px;
+      padding: 26px 20px 22px;
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+      line-height: 1.3;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .card-icon svg,
+    .card-icon img {
+      width: 42px;
+      height: 42px;
+    }
+
   }
 
   /* EXPERIENCE */
   .experience-list { display: flex; flex-direction: column; }
+
+  #experience .selected-work-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  #experience .selected-work-row {
+    display: grid;
+    gap: 16px;
+  }
+
+  #experience .selected-work-row.top {
+    grid-template-columns: repeat(3, minmax(0, 360px));
+    justify-content: center;
+  }
+
+  #experience .selected-work-row.bottom {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(62%, 700px);
+    margin: 0 auto;
+  }
+
+  #experience .selected-work-scroll {
+    display: none;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  #experience .selected-work-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  #experience .work-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e9e9e9;
+    background: #ffffff;
+  }
+
+  #experience .work-image {
+    height: 180px;
+    overflow: hidden;
+    background: #f5f5f0;
+  }
+
+  #experience .work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  #experience .work-content {
+    padding: 16px;
+  }
+
+  #experience .work-meta {
+    font-size: 16px;
+    color: #7f8a80;
+    margin: 0 0 4px;
+    line-height: 1.35;
+  }
+
+  #experience .work-role {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--header-green);
+    margin: 0 0 6px;
+    min-height: 34px;
+    line-height: 1.3;
+  }
+
+  #experience .work-desc {
+    font-size: 17px;
+    color: #444;
+    margin: 0;
+    line-height: 1.55;
+  }
+
 
   .exp-item {
     padding: 36px 0;
@@ -554,12 +795,89 @@
 
   .exp-desc:last-child { margin-bottom: 0; }
 
+  #education .geo-focus-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.75fr);
+    gap: 28px;
+    align-items: start;
+    margin-top: 6px;
+  }
+
+  #education .geo-map-panel,
+  #education .geo-info-panel {
+    background: #ffffff;
+    border: none;
+    border-radius: 10px;
+  }
+
+  #education .geo-map-panel {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #education .geo-map-panel img {
+    width: 100%;
+    max-height: clamp(420px, 72vh, 680px);
+    height: auto;
+    object-fit: contain;
+    display: block;
+    background: #ffffff;
+  }
+
+  #education .geo-info-panel {
+    padding: 18px;
+  }
+  #education .geo-active {
+    font-size: clamp(1.28rem, 1.18rem + 0.45vw, 1.42rem);
+    font-weight: 700;
+    color: var(--header-green);
+    margin: 0 0 10px;
+  }
+
+  #education .geo-country-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #education .geo-country-list li {
+    color: var(--forest-dark);
+    font-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.32rem);
+    line-height: 1.65;
+    margin: 0;
+  }
+
   /* REGIONS */
   .regions {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 18.5px;
+  }
+
+  #contact {
+    background: #ffffff !important;
+  }
+
+  #contact .section-label,
+  #contact p,
+  #contact label,
+  #contact h4,
+  #contact a,
+  #contact input,
+  #contact textarea {
+    color: var(--header-green);
+  }
+
+  #contact .contact-intro {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--header-green);
+    margin: 0;
+    max-width: 860px;
   }
 
   /* CONTACT */
@@ -648,23 +966,58 @@
     line-height: 1.6;
   }
 
+  .info-block a {
+    display: inline;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .email-link {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .info-block a:hover { color: var(--sage); }
 
   /* FOOTER */
   footer {
-    background: var(--forest-mid);
-    color: rgba(232,240,230,0.65);
-    text-align: center;
-    padding: 36px 56px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    border-radius: 0;
+    background: #005c40;
+    color: rgba(255,255,255,0.78);
+    padding: 30px 40px;
     margin-bottom: 0;
   }
 
-  footer a { color: var(--sage); text-decoration: none; }
-  footer a:hover { color: #edf5eb; }
+  .footer-inner {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .footer-logo {
+    width: auto;
+    height: 144px;
+    display: block;
+    max-width: 100%;
+    margin-left: 2cm;
+  }
+
+  .footer-copy {
+    margin-left: auto;
+    margin-right: 0.5cm;
+    text-align: right;
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    line-height: 1.3;
+    white-space: normal;
+    align-self: flex-end;
+  }
+
+  footer a { color: rgba(255,255,255,0.9); text-decoration: none; }
+  footer a:hover { color: #ffffff; }
 
   /* Tighter footer text */
   footer p { font-size: 14px; color: rgba(255,255,255,0.5); letter-spacing: 0.03em; font-family: 'Source Sans 3', sans-serif; }
@@ -786,16 +1139,106 @@
     #sidebar nav { display: none; }
   }
 
+
+  @media (max-width: 1024px) {
+    #experience .selected-work-grid {
+      gap: 0;
+      margin-top: 4px;
+    }
+
+    #experience .selected-work-row {
+      display: none;
+    }
+
+    #experience .selected-work-scroll {
+      display: flex;
+    }
+
+    #experience .selected-work-scroll .work-card {
+      flex: 0 0 min(85vw, 360px);
+      scroll-snap-align: start;
+    }
+
+    #experience .work-dots {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    footer {
+      padding: 30px 40px;
+    }
+
+    .footer-inner {
+      max-width: none;
+      margin: 0;
+    }
+
+    .footer-logo {
+      margin-left: 2cm;
+    }
+
+    .footer-copy {
+      margin-right: 0.5cm;
+      align-self: flex-end;
+    }
+  }
+
+
+  @media (max-width: 1024px) {
+    .footer-inner {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer-copy {
+      margin-left: 0;
+      text-align: center;
+      align-self: center;
+    }
+  }
+
   @media (max-width: 760px) {
     body { display: block; }
     #main-content { margin-top: calc(56px + env(safe-area-inset-top)); padding: 0; }
     header { padding: 0; margin: 0; width: 100%; overflow: visible; }
     section { padding: 28px 24px; scroll-margin-top: calc(56px + env(safe-area-inset-top)); }
     .exp-item { grid-template-columns: 1fr; gap: 10px; }
+    #education .geo-focus-wrap { grid-template-columns: 1fr; gap: 18px; }
+    #education .geo-info-panel { padding: 16px; }
+    #education .geo-map-panel img { max-height: clamp(280px, 52vh, 420px); }
+    #education .geo-country-list li { font-size: clamp(1.12rem, 1.03rem + 0.7vw, 1.24rem); }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
     .hero-image { height: auto; max-width: none; background: #ffffff; }
     .hero-image img { width: 100%; height: auto; object-fit: contain; object-position: center top; }
     .hero-overlay div { padding-left: 1rem !important; padding-right: 1rem !important; padding-bottom: 0.75rem !important; }
+
+    footer {
+      padding: 24px;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      height: auto;
+      width: min(240px, 75vw);
+      margin-left: 0;
+    }
+
+    .footer-copy {
+      margin-left: 0;
+      margin-right: 0;
+      text-align: center;
+      font-size: 1rem;
+    }
   }
 
   @media (max-width: 700px) {
@@ -811,16 +1254,17 @@
 
   /* ── ABOUT SECTION ── */
   #about {
-    background: #172009 !important;
-    padding: 0 !important;
+    background: #ffffff !important;
+    padding: 72px 10% !important;
   }
 
   .about-inner {
     display: flex;
     flex-direction: column;
+    gap: 32px;
   }
 
-  /* Photo column — mobile: full width, 4:3 crop */
+  /* Photo column */
   .about-photo {
     width: 100%;
     position: relative;
@@ -829,59 +1273,50 @@
   .about-photo-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border: 1px solid rgba(0, 92, 64, 0.25);
+    background: #f7faf8;
+    padding: 14px;
   }
 
   .about-photo-wrap img.about-portrait {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-
-  .about-icon {
-    position: absolute;
-    bottom: 0.2cm;
-    left: calc(20px + 0.5cm);
-  }
-
-  .about-icon img {
-    height: 112px;
-    width: auto;
+    object-fit: contain;
+    object-position: center;
     display: block;
   }
 
   /* Text column */
   .about-text {
     position: relative;
-    padding: 40px 24px 48px;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
     background: transparent;
   }
 
   .about-text .section-label {
-    color: #ffffff;
+    color: var(--header-green);
+    margin-bottom: 14px;
   }
 
   .about-heading {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 1.2rem;
-    color: #ffffff;
+    font-size: 0.95rem;
+    color: var(--forest-dark);
     line-height: 1.45;
-    margin: 0 0 10px;
+    margin: 0 0 6px;
     max-width: none;
   }
 
   .about-body {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 0.95rem;
-    color: #ffffff;
+    font-size: 0.8rem;
+    color: var(--forest-dark);
     line-height: 1.8;
     margin: 0;
     max-width: none;
@@ -891,74 +1326,122 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-style: italic;
-    font-size: 0.95rem;
-    color: #ffffff;
+    font-size: 0.8rem;
+    color: var(--forest-dark);
     line-height: 1.8;
-    margin: 10px 0 0;
+    margin: 8px 0 0;
     max-width: none;
+  }
+
+  .about-divider {
+    margin: 10px 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .about-divider::before,
+  .about-divider::after {
+    content: "";
+    height: 2px;
+    background: #005c40;
+    opacity: 0.6;
+  }
+
+  .about-divider::before {
+    width: 16px;
+    flex-shrink: 0;
+  }
+
+  .about-divider::after {
+    flex: 1;
+  }
+
+  .about-divider svg {
+    flex-shrink: 0;
+  }
+
+  .about-credentials-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--forest-dark);
+    margin: 0;
+  }
+
+  .about-credentials {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--forest-dark);
+    line-height: 1.8;
+    white-space: pre-line;
+    margin: 0;
   }
 
   /* Desktop: side-by-side */
   @media (min-width: 760px) {
     .about-inner {
       flex-direction: row;
-      height: calc(100vh - 110px);
+      align-items: flex-start;
     }
 
     .about-photo {
-      flex: 0 0 auto;
-      width: auto;
-      height: 100%;
+      flex: 0 0 min(30vw, 410px);
+      max-width: min(30vw, 410px);
+      order: 2;
     }
 
     .about-photo-wrap {
-      height: 100%;
-      width: auto;
+      width: 100%;
     }
 
     .about-photo-wrap img.about-portrait {
+      width: 100%;
       height: 100%;
-      width: auto;
-      object-fit: unset;
-    }
-
-    .about-icon img {
-      height: 120px;
     }
 
     .about-text {
       flex: 1;
       min-width: 0;
-      padding: 3.5cm 3cm 3.5cm 3cm;
-      justify-content: center;
-      gap: 0;
+      order: 1;
+      padding-right: 3.5rem;
+      justify-content: flex-start;
+      gap: 14px;
     }
 
     .about-text .section-label {
-      position: absolute;
-      top: 0.5cm;
-      left: 44px;
+      position: static;
     }
 
     .about-heading {
-      font-size: clamp(1.2rem, 1.8vw, 1.7rem);
-      margin: 0 0 48px;
+      font-size: clamp(0.95rem, 1.3vw, 1.2rem);
+      margin: 0 0 6px;
     }
 
     .about-body {
-      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+      font-size: clamp(0.8rem, 1.05vw, 0.95rem);
       line-height: 1.65;
-      margin: 0 0 16px;
+      margin: 0;
     }
 
     .about-body + .about-italic {
-      margin-top: 16px;
+      margin-top: 6px;
     }
 
     .about-italic {
-      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+      font-size: clamp(0.8rem, 1.05vw, 0.95rem);
       line-height: 1.65;
       margin: 0;
+    }
+
+    .about-credentials-title {
+      font-size: clamp(0.95rem, 1.3vw, 1.2rem);
+    }
+
+    .about-credentials {
+      font-size: clamp(0.8rem, 1.05vw, 0.95rem);
+      line-height: 1.7;
     }
   }
 </style>
@@ -968,7 +1451,7 @@
 <!-- MOBILE TOP BAR -->
 <div id="mobile-bar">
   <div class="mobile-logo">
-    <img src="drawingGREENONWHITE1NOSUBBG.svg" alt="Forest Governance Lab logo">
+    <img src="drawingGREENONWHITE1NOSUBNOBG.svg" alt="Forest Governance Lab logo">
   </div>
   <button id="toggle-btn" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
@@ -1014,6 +1497,13 @@
         <p class="about-body">With over 15 years working across Southeast Asia, I specialise in forest governance, social forestry, resource rights and land tenure security — from the ground level through to policy.</p>
         <p class="about-body">I work with NGOs, governments, civil society organisations, Indigenous Peoples, and local communities, bringing both technical depth and practical understanding.</p>
         <p class="about-italic">I focus on outputs that are high-quality, grounded, and actionable.</p>
+        <div class="about-divider" aria-hidden="true">
+          <svg width="14" height="17" viewBox="0 0 10 12" fill="none"><path d="M5 1 Q9 6 5 11 Q1 6 5 1Z" stroke="#005c40" stroke-width="1.5" opacity="0.6"/></svg>
+        </div>
+        <p class="about-credentials-title">Credentials</p>
+        <p class="about-credentials">Postdoctoral, Faculty of Political Science. Chulalongkorn University, Bangkok, Thailand
+PhD Forestry, University of British Columbia, Vancouver Canada,
+MSc Forest Conservation, Imperial College, London</p>
       </div>
 
     </div>
@@ -1023,7 +1513,6 @@
   <section id="services" class="reveal">
     <p class="section-label">Services</p>
     <div class="services-carousel">
-      <button class="services-arrow prev" aria-label="Scroll left">&lt;</button>
       <div class="services-scroll" id="services-scroll">
         <div class="service-card">
           <div class="card-header">
@@ -1047,7 +1536,7 @@
             <h3>Applied Research</h3>
           </div>
           <div class="card-shelf"><div style="width:16px;height:2px;background:#005c40;opacity:0.6;flex-shrink:0"></div><svg width="14" height="17" viewBox="0 0 10 12" style="flex-shrink:0" fill="none"><path d="M5 1 Q9 6 5 11 Q1 6 5 1Z" stroke="#005c40" stroke-width="1.5" opacity="0.6"/></svg><div style="flex:1;height:2px;background:#005c40;opacity:0.6"></div></div>
-          <p>Leading and delivering applied and participatory research.</p>
+          <p>Leading and delivering applied and participatory action research.</p>
           <p class="card-from">from scoping studies and literature reviews to qualitative fieldwork and peer-reviewed publications.</p>
         </div>
         <div class="service-card">
@@ -1094,11 +1583,10 @@
             <h3>Capacity Development</h3>
           </div>
           <div class="card-shelf"><div style="width:16px;height:2px;background:#005c40;opacity:0.6;flex-shrink:0"></div><svg width="14" height="17" viewBox="0 0 10 12" style="flex-shrink:0" fill="none"><path d="M5 1 Q9 6 5 11 Q1 6 5 1Z" stroke="#005c40" stroke-width="1.5" opacity="0.6"/></svg><div style="flex:1;height:2px;background:#005c40;opacity:0.6"></div></div>
-          <p>Building and facilitating capacity-development and training programmes for policymakers, researchers, NGOs, civil society, and community members.</p>
+          <p>Building and facilitating capacity-development and training programmes for diverse stakeholders and communities.</p>
           <p class="card-from">from needs assessment and training design to facilitation and learning evaluation.</p>
         </div>
       </div>
-      <button class="services-arrow next" aria-label="Scroll right">&gt;</button>
     </div>
     <div class="services-dots" id="services-dots">
       <span class="svc-dot active"></span>
@@ -1150,75 +1638,174 @@
           <p class="exp-desc">Scoping study for the FCDO-funded REDAA programme, identifying strategic priorities for environmental restoration and sustainable natural resource management across Southeast Asia.</p>
         </div>
       </div>
-      <div class="exp-item">
-        <div class="exp-org">Landesa<br>Thailand · 2022–2023</div>
-        <div>
-          <p class="exp-role">Applied Research & Technical Writing</p>
-          <p class="exp-desc">Applied research and technical land and natural resource rights profile for Thailand's Trang region, analysing palm oil supply chain risks related to tenure insecurity and inequitable access for Indigenous Peoples, women, and customary tenure communities.</p>
-        </div>
+      <div class="selected-work-row bottom">
+        <article class="work-card">
+          <div class="work-image">
+            <img src="REDAA.jpeg" alt="Community meeting image for REDAA scoping study in Southeast Asia">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC &amp; IIED · Southeast Asia · 2022–2023</p>
+            <p class="work-role">Applied Research &amp; Policy Advisory</p>
+            <p class="work-desc">Scoping study for the FCDO-funded REDAA programme, identifying research-to-action priorities for restoration and sustainable natural resource management across Southeast Asia.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="Thai_Oil_palm.jpg" alt="Palm oil landscape in Trang, Thailand for Landesa rights profile">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">Landesa · Thailand · 2022–2023</p>
+            <p class="work-role">Applied Research &amp; Technical Writing</p>
+            <p class="work-desc">Land and resource rights profile for Trang, Thailand, analysing palm oil supply chain risks linked to tenure insecurity for Indigenous Peoples and customary communities.</p>
+          </div>
+        </article>
       </div>
-      <div class="exp-item">
-        <div class="exp-org">RECOFTC Thailand<br>Thailand · 2020</div>
-        <div>
-          <p class="exp-role">Applied Research & Policy Outreach</p>
-          <p class="exp-desc">FAO-EU-FLEGT funded applied research examining opportunities and barriers for Thai civil society engagement in Voluntary Partnership Agreement implementation, producing technical reports for the Thai CSO-FLEGT Network.</p>
-        </div>
+      <div class="selected-work-scroll" aria-label="Selected work carousel">
+        <article class="work-card">
+          <div class="work-image">
+            <img src="ADRA.jpg" alt="ADRA UK strategic planning workshop flipchart">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">ADRA UK · Timor-Leste · 2026</p>
+            <p class="work-role">Strategic Planning &amp; Technical Writing</p>
+            <p class="work-desc">Project concept note with logframe for an EU call to support Timor-Leste&apos;s Directorate General of Forestry in strengthening institutional capacity for priority forestry projects.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="Explore.webp" alt="RECOFTC National Advisory Committee meeting for Explore programme">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC · Southeast Asia · 2024–2025</p>
+            <p class="work-role">Policy Outreach &amp; Capacity Development</p>
+            <p class="work-desc">Research-to-policy strategy across seven Southeast Asian countries, coordinating National Advisory Committees and delivering regional participatory action research training.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="FAO.jpg" alt="FAO publication cover used for RECOFTC research and technical writing">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC / FAO &amp; Wyss Academy · 2023</p>
+            <p class="work-role">Applied Research &amp; Technical Writing</p>
+            <p class="work-desc">Technical synthesis of sustainable forest management case studies across ten countries, examining two decades of changes in tenure, policy, and community resilience.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="REDAA.jpeg" alt="Community meeting image for REDAA scoping study in Southeast Asia">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">RECOFTC &amp; IIED · Southeast Asia · 2022–2023</p>
+            <p class="work-role">Applied Research &amp; Policy Advisory</p>
+            <p class="work-desc">Scoping study for the FCDO-funded REDAA programme, identifying research-to-action priorities for restoration and sustainable natural resource management across Southeast Asia.</p>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="work-image">
+            <img src="Thai_Oil_palm.jpg" alt="Palm oil landscape in Trang, Thailand for Landesa rights profile">
+          </div>
+          <div class="work-content">
+            <p class="work-meta">Landesa · Thailand · 2022–2023</p>
+            <p class="work-role">Applied Research &amp; Technical Writing</p>
+            <p class="work-desc">Land and resource rights profile for Trang, Thailand, analysing palm oil supply chain risks linked to tenure insecurity for Indigenous Peoples and customary communities.</p>
+          </div>
+        </article>
       </div>
+    </div>
+    <div class="work-dots" id="work-dots" aria-label="Selected work carousel progress">
+      <span class="work-dot active"></span>
+      <span class="work-dot"></span>
+      <span class="work-dot"></span>
+      <span class="work-dot"></span>
+      <span class="work-dot"></span>
     </div>
   </section>
 
 
   <section id="publications" class="reveal">
     <p class="section-label">Publications</p>
-    <div class="experience-list">
-      <div class="exp-item">
-        <div class="exp-org">FAO · 2025</div>
-        <div>
-          <p class="exp-role"><a href="https://openknowledge.fao.org/handle/20.500.14283/cd7052en" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">Exemplary forest management revisited – Insights from successes and challenges</a></p>
-          <p class="exp-desc">FAO, Rome. Contributing author, pp. 19–31.</p>
-        </div>
+    <div class="publications-carousel">
+      <div class="publications-scroll" id="publications-scroll" aria-label="Publications carousel">
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="FAO.jpg" alt="Cover page of Exemplary forest management revisited publication">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://openknowledge.fao.org/items/95e3fb5d-93c7-439c-ae6d-187ff0a543be" target="_blank" rel="noopener noreferrer">Exemplary forest management revisited</a></p>
+            <p class="pub-meta">FAO · 2025</p>
+            <p class="pub-role">Contributing author, pp. 19–31.</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="Safeguarding.png" alt="Cover page of Safeguarding customary forest tenure publication">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://www.tandfonline.com/doi/full/10.1080/1747423X.2023.2184513" target="_blank" rel="noopener noreferrer">Safeguarding customary forest tenure</a></p>
+            <p class="pub-meta">International Forestry Review · 2023</p>
+            <p class="pub-role">Lead Author</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="REDAAdoc.jpg" alt="Cover page of Research-to-action priorities in Southeast Asia report">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://www.redaa.org/scoping-study-research-action-priorities-redaa-programme-southeast-asia" target="_blank" rel="noopener noreferrer">Research-to-action priorities in Southeast Asia</a></p>
+            <p class="pub-meta">REDAA Programme Report · 2023</p>
+            <p class="pub-role">Lead Author</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="EU-FLEGT.png" alt="Cover page of The political logics of EU-FLEGT publication">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://journals.librarypublishing.arizona.edu/jpe/article/id/2398/" target="_blank" rel="noopener noreferrer">The political logics of EU-FLEGT</a></p>
+            <p class="pub-meta">Journal of Political Ecology · 2022</p>
+            <p class="pub-role">Lead Author</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="Thesis.png" alt="Cover page of The Political Ecology of Illegal Logging in Thailand thesis">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://open.library.ubc.ca/soa/cIRcle/collections/ubctheses/24/items/1.0406142" target="_blank" rel="noopener noreferrer">The Political Ecology of Illegal Logging in Thailand</a></p>
+            <p class="pub-meta">PhD Thesis · UBC · 2021</p>
+            <p class="pub-role">Lead Author</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="Assessing.png" alt="Cover page of Assessing forest governance in the Greater Mekong publication">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://www.mdpi.com/1999-4907/10/1/47" target="_blank" rel="noopener noreferrer">Assessing forest governance in the Greater Mekong</a></p>
+            <p class="pub-meta">Forests · 2019</p>
+            <p class="pub-role">Co-Author</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="publication-image">
+            <img src="uneven.png" alt="Cover page of Regulatory barriers to communities making a living from timber publication">
+          </div>
+          <div class="publication-content">
+            <p class="pub-title"><a href="https://www.mdpi.com/1999-4907/6/10/3433" target="_blank" rel="noopener noreferrer">Regulatory barriers to communities making a living from timber</a></p>
+            <p class="pub-meta">Forests · 2015</p>
+            <p class="pub-role">Co-Author</p>
+          </div>
+        </article>
       </div>
-      <div class="exp-item">
-        <div class="exp-org">International Forestry Review · 2023</div>
-        <div>
-          <p class="exp-role"><a href="https://doi.org/10.1080/1747423X.2023.2184513" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">Safeguarding customary forest tenure in the Mekong Region: a legal analysis</a></p>
-          <p class="exp-desc">Lewis, S.R., Faure, N., Leonard, S., Pen, R., Ba Ngai, N., & Phengsophaf, K.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">REDAA Programme Report · 2023</div>
-        <div>
-          <p class="exp-role"><a href="https://www.redaa.org/scoping-study-research-action-priorities-redaa-programme-southeast-asia" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">Research-to-action priorities for environmental restoration and sustainable natural resource management in Southeast Asia</a></p>
-          <p class="exp-desc">Lewis, S.R. (lead author)</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">Journal of Political Ecology · 2022</div>
-        <div>
-          <p class="exp-role"><a href="https://doi.org/10.2458/jpe.2398" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">The political logics of EU-FLEGT in Thailand's multistakeholder negotiations: Hegemony and resistance</a></p>
-          <p class="exp-desc">Lewis, S.R. & Bulkan, J.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">PhD Thesis · UBC · 2021</div>
-        <div>
-          <p class="exp-role"><a href="https://dx.doi.org/10.14288/1.0406142" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">The Political Ecology of Illegal Logging in Thailand: Forest Exploitation, Violence, and Anti-Politics</a></p>
-          <p class="exp-desc">Lewis, S.R.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">Forests · 2019</div>
-        <div>
-          <p class="exp-role"><a href="https://www.mdpi.com/1999-4907/10/1/47" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">Assessing forest governance in the countries of the Greater Mekong Subregion</a></p>
-          <p class="exp-desc">Gritten, D., Lewis, S.R., Breukink, G., Mo, K., Dang, T., & Delattre, E.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">Forests · 2015</div>
-        <div>
-          <p class="exp-role"><a href="https://www.mdpi.com/1999-4907/6/10/3433/htm" target="_blank" style="color:var(--header-green);text-decoration:none;border-bottom:1px solid rgba(61,140,53,0.3);">An uneven playing field: regulatory barriers to communities making a living from the timber from their forests</a></p>
-          <p class="exp-desc">Gritten, D., Greijmans, M., Lewis, S.R., et al.</p>
-        </div>
+      <div class="publications-dots" id="publications-dots" aria-label="Publications carousel progress">
+        <span class="pub-dot active"></span>
+        <span class="pub-dot"></span>
+        <span class="pub-dot"></span>
+        <span class="pub-dot"></span>
+        <span class="pub-dot"></span>
+        <span class="pub-dot"></span>
+        <span class="pub-dot"></span>
       </div>
     </div>
   </section>
@@ -1234,19 +1821,16 @@
           <p class="exp-desc">Qualitative field research on forest governance and land rights in Thailand, applying a political ecology framework to examine inequality in resource access under Thailand's Bio-Circular-Green Economic Model.</p>
         </div>
       </div>
-      <div class="exp-item">
-        <div class="exp-org">University of British Columbia<br>Vancouver · 2015–2021</div>
-        <div>
-          <p class="exp-role">Doctor of Philosophy, Forestry</p>
-          <p class="exp-desc">Investigated forest governance in Thailand across two scales: how governance structures shape livelihoods and resource access of Karen Pwo Indigenous communities adjacent to protected areas; and how competing actor interests influenced the reform of timber legality and smallholder tenure through Thailand's EU-FLEGT Voluntary Partnership Agreement process.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-org">Imperial College London<br>London · 2008–2009</div>
-        <div>
-          <p class="exp-role">Master of Science, Forest Conservation</p>
-          <p class="exp-desc">Reviewed literature and surveyed 26 EU states to assess climate change adaptation strategies for protected forests, providing policy recommendations for biodiversity policy.</p>
-        </div>
+      <div class="geo-info-panel">
+        <p class="geo-active">Active across:</p>
+        <ul class="geo-country-list" aria-label="Countries where work is active">
+          <li>Cambodia</li>
+          <li>Indonesia</li>
+          <li>Lao PDR</li>
+          <li>Timor-Leste</li>
+          <li>Thailand</li>
+          <li>Viet Nam</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -1254,16 +1838,16 @@
 
   <section id="contact" class="reveal">
     <p class="section-label">Contact</p>
+    <p class="contact-intro">Get in touch to start a discussion on consultations or collaboration with the Lab</p>
     <div class="contact-container">
-      <form class="contact-form" action="https://formspree.io/f/xlgwaong" method="POST">
+      <form class="contact-form" action="https://formspree.io/f/mwvrqrnz" method="POST">
         <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
         <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
         <div class="form-group"><label>Message</label><textarea name="message" rows="4" required></textarea></div>
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
       <div class="contact-details">
-        <div class="info-block"><h4>Email</h4><p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e6d716e76777b306c30727b69776d5e79737f7772307d7173">[email&#160;protected]</a></p></div>
-        <div class="info-block"><h4>Phone</h4><p>+66-61-940-0118</p></div>
+        <div class="info-block"><h4>Email</h4><p><a href="mailto:contact@forest-governance-lab.org" class="email-link" aria-label="Email contact@forest-governance-lab.org">contact@forest-governance-lab.org</a></p></div>
         <div class="info-block"><h4>Address</h4><p>Bangkok, Thailand</p></div>
         <div class="info-block"><h4>LinkedIn</h4><a href="https://www.linkedin.com/in/sophie-rose-lewis-843a1921a/" target="_blank">View Profile →</a></div>
       </div>
@@ -1271,7 +1855,10 @@
   </section>
 
   <footer>
-    <p>© 2026 Dr. Sophie Rose Lewis · Forest Governance Specialist</p>
+    <div class="footer-inner">
+      <img src="drawingwhiteongreen.svg" alt="Forest Governance Lab" class="footer-logo">
+      <p class="footer-copy">© 2026 Forest Governance Lab</p>
+    </div>
   </footer>
 
 </div>
@@ -1279,7 +1866,7 @@
 <!-- RIGHT SIDEBAR -->
 <aside id="sidebar">
   <div class="sidebar-avatar">
-    <img src="drawingGREENONWHITE1NOSUBBG.svg" alt="Forest Governance Lab" style="width:auto;height:86px;display:block;margin:0 auto;">
+    <img src="drawingGREENONWHITE1NOSUBNOBG.svg" alt="Forest Governance Lab" style="width:auto;height:86px;display:block;margin:0 auto;">
   </div>
 
 
@@ -1289,42 +1876,87 @@
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#experience">Experience</a></li>
+      <li><a href="#experience">Selected Works</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#education">Education</a></li>
+      <li><a href="#education">Geographic Focus</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 </aside>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-  // Services carousel arrows
+  // Services carousel dots
   const svcScroll = document.getElementById('services-scroll');
-  const svcPrev = document.querySelector('.services-arrow.prev');
-  const svcNext = document.querySelector('.services-arrow.next');
-  const svcStep = 390;
-
-  function updateSvcArrows() {
-    svcPrev.classList.toggle('hidden', svcScroll.scrollLeft <= 0);
-    svcNext.classList.toggle('hidden', svcScroll.scrollLeft + svcScroll.clientWidth >= svcScroll.scrollWidth - 2);
-  }
-
   const svcDots = document.querySelectorAll('.svc-dot');
 
   function updateSvcDots() {
-    const cardWidth = svcScroll.querySelector('.service-card').offsetWidth + 40;
-    const index = Math.round(svcScroll.scrollLeft / cardWidth);
+    const card = svcScroll.querySelector('.service-card');
+    if (!card || !svcDots.length) return;
+
+    const cardWidth = card.offsetWidth + 40;
+    const atEnd = svcScroll.scrollLeft + svcScroll.clientWidth >= svcScroll.scrollWidth - 2;
+    const lastIndex = svcDots.length - 1;
+    const index = atEnd
+      ? lastIndex
+      : Math.min(lastIndex, Math.max(0, Math.round(svcScroll.scrollLeft / cardWidth)));
+
     svcDots.forEach((dot, i) => {
       dot.classList.toggle('active', i <= index);
     });
   }
 
-  svcPrev.addEventListener('click', () => { svcScroll.scrollBy({ left: -svcStep, behavior: 'smooth' }); });
-  svcNext.addEventListener('click', () => { svcScroll.scrollBy({ left: svcStep, behavior: 'smooth' }); });
-  svcScroll.addEventListener('scroll', () => { updateSvcArrows(); updateSvcDots(); });
-  updateSvcArrows();
+  svcScroll.addEventListener('scroll', updateSvcDots);
   updateSvcDots();
+
+  const workScroll = document.querySelector('#experience .selected-work-scroll');
+  const workDots = document.querySelectorAll('.work-dot');
+
+  function updateWorkDots() {
+    if (!workScroll || !workDots.length) return;
+    const workCard = workScroll.querySelector('.work-card');
+    if (!workCard) return;
+
+    const cardWidth = workCard.offsetWidth + 16;
+    const atEnd = workScroll.scrollLeft + workScroll.clientWidth >= workScroll.scrollWidth - 2;
+    const lastIndex = workDots.length - 1;
+    const index = atEnd
+      ? lastIndex
+      : Math.min(lastIndex, Math.max(0, Math.round(workScroll.scrollLeft / cardWidth)));
+
+    workDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i <= index);
+    });
+  }
+
+  if (workScroll) {
+    workScroll.addEventListener('scroll', updateWorkDots);
+    updateWorkDots();
+  }
+
+  const pubScroll = document.getElementById('publications-scroll');
+  const pubDots = document.querySelectorAll('#publications .pub-dot');
+
+  function updatePubDots() {
+    if (!pubScroll || !pubDots.length) return;
+    const pubCard = pubScroll.querySelector('.publication-card');
+    if (!pubCard) return;
+
+    const cardWidth = pubCard.offsetWidth + 20;
+    const atEnd = pubScroll.scrollLeft + pubScroll.clientWidth >= pubScroll.scrollWidth - 2;
+    const lastIndex = pubDots.length - 1;
+    const index = atEnd
+      ? lastIndex
+      : Math.min(lastIndex, Math.max(0, Math.round(pubScroll.scrollLeft / cardWidth)));
+
+    pubDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i <= index);
+    });
+  }
+
+  if (pubScroll) {
+    pubScroll.addEventListener('scroll', updatePubDots);
+    updatePubDots();
+  }
 
   // Toggle sidebar on mobile
   const toggleBtn = document.getElementById('toggle-btn');
