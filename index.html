@@ -309,86 +309,88 @@
     line-height: 1.75;
   }
 
-  /* SERVICES TABS */
   /* SERVICES SCROLL */
   #services .services-carousel {
+    --svc-gap: 20px;
+    --svc-pad: 16px;
     position: relative;
     margin-top: 20px;
-    padding: 0 56px;
   }
 
   #services .services-scroll {
     display: flex;
-    gap: 40px;
+    gap: var(--svc-gap);
     overflow-x: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--svc-pad);
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding-bottom: 4px;
+    padding: 2px var(--svc-pad) 8px;
+    -webkit-overflow-scrolling: touch;
   }
 
   #services .services-scroll::-webkit-scrollbar { display: none; }
 
-  #services .service-card {
-    flex: 0 0 350px;
+  #services .card-c {
     background: #ffffff;
-    border: none;
-    padding: 38px 28px 28px;
-    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0,20,10,0.02), 0 4px 8px rgba(0,20,10,0.03), 0 16px 48px rgba(0,20,10,0.06);
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    width: 370px;
+    flex: 0 0 370px;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
+    transition: box-shadow 0.35s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
   }
 
-  #services .service-card h3 {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 1.47rem;
+  #services .card-c:hover {
+    box-shadow: 0 1px 1px rgba(0,20,10,0.03), 0 8px 16px rgba(0,20,10,0.05), 0 24px 56px rgba(0,20,10,0.09);
+    transform: translateY(-4px);
+  }
+
+  #services .card-c-icon {
+    background: #005C40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #services .card-c-icon svg {
+    width: 44px;
+    height: 44px;
+    opacity: 0.2;
+  }
+
+  #services .card-c-body {
+    padding: 32px 32px 32px 24px;
+  }
+
+  #services .card-c-title {
+    font-size: 18px;
     font-weight: 700;
-    color: var(--header-green);
-    margin-bottom: 12px;
-    line-height: 1.2;
+    color: #005C40;
+    margin: 0 0 10px;
+    line-height: 1.3;
   }
 
-  #services .service-card p {
-    font-size: 1.25rem;
-    color: var(--forest-dark);
+  #services .card-c-text {
+    font-size: 14.5px;
+    font-weight: 400;
+    color: #2a3a2a;
+    margin: 0 0 14px;
+    line-height: 1.7;
+  }
+
+  #services .card-c-meta {
+    font-size: 12px;
+    font-weight: 400;
+    color: #8a9a8a;
     margin: 0;
-    line-height: 1.75;
-  }
-  #services .card-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 0;
-  }
-
-  #services .card-header h3 {
-    margin-bottom: 0;
-  }
-
-  #services .card-icon {
-    display: flex;
-    flex-shrink: 0;
-    color: var(--header-green);
-  }
-
-  #services .card-icon svg, #services .card-icon img {
-    width: 52px;
-    height: 52px;
-  }
-
-  #services .service-card p:first-of-type {
-    font-weight: 550;
-  }
-  #services .service-card .card-from {
-    margin-top: 8px;
-  }
-
-  #services .card-shelf {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
-    margin: 10px 0 14px;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
   }
 
   #services .services-dots {
@@ -547,24 +549,22 @@
   }
 
   @media (min-width: 1100px) {
-    #services .services-carousel {
-      padding: 0;
-    }
-
     #services .services-scroll {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      --svc-pad: 0;
       gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
       overflow: visible;
       scroll-snap-type: none;
-      max-width: calc((350px * 3) + (40px * 2));
+      max-width: calc((370px * 3) + (40px * 2));
       margin: 0 auto;
+      padding: 2px 0 8px;
     }
 
-    #services .services-scroll .service-card {
-      flex: 0 0 350px;
+    #services .services-scroll .card-c {
+      flex: 0 0 370px;
       scroll-snap-align: none;
+      scroll-snap-stop: normal;
     }
 
     #services .services-dots {
@@ -573,36 +573,32 @@
   }
 
   @media (max-width: 700px) {
-    #services .services-carousel { padding: 0; }
-
     #services .services-scroll {
-      gap: 12px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 0;
+      --svc-gap: 12px;
+      --svc-pad: 0;
+      padding: 2px 0 8px;
     }
 
-    #services .service-card {
+    #services .card-c {
       flex: 0 0 100%;
-      scroll-snap-align: start;
-      min-height: 320px;
-      padding: 26px 20px 22px;
+      width: 100%;
+      border-radius: 14px;
     }
 
-    #services .service-card h3 {
-      font-size: 1.2rem;
-      line-height: 1.3;
+    #services .card-c-body {
+      padding: 26px 20px 24px;
     }
 
-    #services .service-card p {
-      font-size: 1rem;
-      line-height: 1.6;
+    #services .card-c-title {
+      font-size: 17px;
     }
 
-    #services .card-icon svg,
-    #services .card-icon img {
-      width: 42px;
-      height: 42px;
+    #services .card-c-text {
+      font-size: 14px;
+    }
+
+    #services .card-c-meta {
+      font-size: 11.5px;
     }
 
   }
@@ -1380,77 +1376,74 @@ MSc Forest Conservation, Imperial College, London</p>
     <p class="section-label">Services</p>
     <div class="services-carousel">
       <div class="services-scroll" id="services-scroll">
-        <div class="service-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg width="52" height="52" viewBox="0 0 38 38" fill="none" stroke="currentColor">
-                <path d="M10 32 L6 32 L6 28 L26 8 L30 12Z" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
-                <line x1="23" y1="11" x2="27" y2="15" stroke-width="1.2"/>
-              </svg>
-            </div>
-            <h3>Technical Writing & Editing</h3>
+        <div class="card-c">
+          <div class="card-c-icon">
+            <svg viewBox="0 0 38 38" fill="none" stroke="#ffffff">
+              <path d="M10 32 L6 32 L6 28 L26 8 L30 12Z" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+              <line x1="23" y1="11" x2="27" y2="15" stroke-width="1.1"/>
+            </svg>
           </div>
-          <div class="card-shelf"><div style="width:16px;height:2px;background:#005c40;opacity:0.6;flex-shrink:0"></div><svg width="14" height="17" viewBox="0 0 10 12" style="flex-shrink:0" fill="none"><path d="M5 1 Q9 6 5 11 Q1 6 5 1Z" stroke="#005c40" stroke-width="1.5" opacity="0.6"/></svg><div style="flex:1;height:2px;background:#005c40;opacity:0.6"></div></div>
-          <p>Producing and editing technical and communications outputs for diverse audiences.</p>
-          <p class="card-from">from policy briefs and donor reporting to knowledge products and strategic communications.</p>
+          <div class="card-c-body">
+            <p class="card-c-title">Technical Writing & Editing</p>
+            <p class="card-c-text">Producing and editing technical and communications outputs for diverse audiences.</p>
+            <p class="card-c-meta">Proposals · Concept notes · Policy briefs · Donor reporting · Knowledge products · Case studies</p>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <img src="rcion1.svg" alt="" width="52" height="52">
-            </div>
-            <h3>Applied Research</h3>
+        <div class="card-c">
+          <div class="card-c-icon">
+            <svg viewBox="0 0 38 38" fill="none" stroke="#ffffff">
+              <circle cx="19" cy="14" r="6" stroke-width="1.2"/>
+              <path d="M12 28 Q12 22 19 22 Q26 22 26 28" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="30" y1="10" x2="30" y2="20" stroke-width="1.0"/>
+              <line x1="25" y1="15" x2="35" y2="15" stroke-width="1.0"/>
+            </svg>
           </div>
-          <div class="card-shelf"><div style="width:16px;height:2px;background:#005c40;opacity:0.6;flex-shrink:0"></div><svg width="14" height="17" viewBox="0 0 10 12" style="flex-shrink:0" fill="none"><path d="M5 1 Q9 6 5 11 Q1 6 5 1Z" stroke="#005c40" stroke-width="1.5" opacity="0.6"/></svg><div style="flex:1;height:2px;background:#005c40;opacity:0.6"></div></div>
-          <p>Leading and delivering applied and participatory action research.</p>
-          <p class="card-from">from scoping studies and literature reviews to qualitative fieldwork and peer-reviewed publications.</p>
+          <div class="card-c-body">
+            <p class="card-c-title">Applied Research</p>
+            <p class="card-c-text">Leading and delivering applied and participatory action research.</p>
+            <p class="card-c-meta">FPIC processes · Scoping studies · Literature reviews · Field research · Journal articles</p>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg width="52" height="52" viewBox="0 0 38 38" fill="none" stroke="currentColor">
-                <path d="M6 8 L24 8 L24 18 L16 18 L12 22 L12 18 L6 18Z" stroke-width="1.3" stroke-linejoin="round"/>
-                <path d="M14 22 L32 22 L32 30 L28 30 L24 34 L24 30 L14 30Z" stroke-width="1.2" stroke-linejoin="round" opacity="0.6"/>
-              </svg>
-            </div>
-            <h3>Policy Outreach & Advocacy</h3>
+        <div class="card-c">
+          <div class="card-c-icon">
+            <svg viewBox="0 0 38 38" fill="none" stroke="#ffffff">
+              <path d="M6 8 L24 8 L24 18 L16 18 L12 22 L12 18 L6 18Z" stroke-width="1.3" stroke-linejoin="round"/>
+              <path d="M14 22 L32 22 L32 30 L28 30 L24 34 L24 30 L14 30Z" stroke-width="1.2" stroke-linejoin="round" opacity="0.6"/>
+            </svg>
           </div>
-          <div class="card-shelf"><div style="width:16px;height:2px;background:#005c40;opacity:0.6;flex-shrink:0"></div><svg width="14" height="17" viewBox="0 0 10 12" style="flex-shrink:0" fill="none"><path d="M5 1 Q9 6 5 11 Q1 6 5 1Z" stroke="#005c40" stroke-width="1.5" opacity="0.6"/></svg><div style="flex:1;height:2px;background:#005c40;opacity:0.6"></div></div>
-          <p>Designing and delivering research-to-policy engagement strategies.</p>
-          <p class="card-from">from stakeholder mapping and advocacy planning to evidence communication and science-policy dialogue.</p>
+          <div class="card-c-body">
+            <p class="card-c-title">Policy Outreach & Advocacy</p>
+            <p class="card-c-text">Designing and delivering research-to-policy engagement strategies.</p>
+            <p class="card-c-meta">Stakeholder mapping · Advocacy planning · Evidence communication · Science-policy dialogue</p>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg width="52" height="52" viewBox="0 0 38 38" fill="none" stroke="currentColor">
-                <circle cx="19" cy="19" r="14" stroke-width="1.3"/>
-                <circle cx="19" cy="19" r="2" fill="currentColor" opacity="0.6" stroke="none"/>
-                <path d="M19 6 L21 17 L19 19 L17 17Z" stroke-width="1.1" stroke-linejoin="round"/>
-                <path d="M19 32 L17 21 L19 19 L21 21Z" stroke-width="1.1" stroke-linejoin="round" opacity="0.4"/>
-                <path d="M6 19 L17 17 L19 19 L17 21Z" stroke-width="1.1" stroke-linejoin="round" opacity="0.4"/>
-                <path d="M32 19 L21 21 L19 19 L21 17Z" stroke-width="1.1" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3>Strategic Planning & Advisory</h3>
+        <div class="card-c">
+          <div class="card-c-icon">
+            <svg viewBox="0 0 38 38" fill="none" stroke="#ffffff">
+              <circle cx="19" cy="19" r="14" stroke-width="1.2"/>
+              <circle cx="19" cy="19" r="2" fill="#ffffff" opacity="0.5" stroke="none"/>
+              <path d="M19 6 L21 17 L19 19 L17 17Z" stroke-width="1.0" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <div class="card-shelf"><div style="width:16px;height:2px;background:#005c40;opacity:0.6;flex-shrink:0"></div><svg width="14" height="17" viewBox="0 0 10 12" style="flex-shrink:0" fill="none"><path d="M5 1 Q9 6 5 11 Q1 6 5 1Z" stroke="#005c40" stroke-width="1.5" opacity="0.6"/></svg><div style="flex:1;height:2px;background:#005c40;opacity:0.6"></div></div>
-          <p>Supporting organisations to translate vision into action.</p>
-          <p class="card-from">from strategic planning facilitation and programme design to theory of change and results framework development.</p>
+          <div class="card-c-body">
+            <p class="card-c-title">Strategic Planning & Advisory</p>
+            <p class="card-c-text">Supporting organisations to translate vision into action.</p>
+            <p class="card-c-meta">Programme design · Theory of change · Results frameworks · Strategic planning facilitation</p>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg width="52" height="52" viewBox="0 0 38 38" fill="none" stroke="currentColor">
-                <path d="M19 34 L19 18" stroke-width="1.4" stroke-linecap="round"/>
-                <path d="M19 22 Q12 14 6 8 Q12 8 19 16" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M19 16 Q26 8 32 4 Q30 12 19 18" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3>Capacity Development</h3>
+        <div class="card-c">
+          <div class="card-c-icon">
+            <svg viewBox="0 0 38 38" fill="none" stroke="#ffffff">
+              <path d="M19 34 L19 18" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M19 22 Q12 14 6 8 Q12 8 19 16" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19 16 Q26 8 32 4 Q30 12 19 18" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <div class="card-shelf"><div style="width:16px;height:2px;background:#005c40;opacity:0.6;flex-shrink:0"></div><svg width="14" height="17" viewBox="0 0 10 12" style="flex-shrink:0" fill="none"><path d="M5 1 Q9 6 5 11 Q1 6 5 1Z" stroke="#005c40" stroke-width="1.5" opacity="0.6"/></svg><div style="flex:1;height:2px;background:#005c40;opacity:0.6"></div></div>
-          <p>Building and facilitating capacity-development and training programmes for diverse stakeholders and communities.</p>
-          <p class="card-from">from needs assessment and training design to facilitation and learning evaluation.</p>
+          <div class="card-c-body">
+            <p class="card-c-title">Capacity Development</p>
+            <p class="card-c-text">Building and delivering training workshops, mentoring programmes, and capacity-development initiatives.</p>
+            <p class="card-c-meta">Needs assessment · Curriculum design · Facilitation · Learning evaluation</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1745,25 +1738,55 @@ MSc Forest Conservation, Imperial College, London</p>
   // Services carousel dots
   const svcScroll = document.getElementById('services-scroll');
   const svcDots = document.querySelectorAll('#services .svc-dot');
+  const svcCards = svcScroll ? Array.from(svcScroll.querySelectorAll('.card-c')) : [];
+  let svcTicking = false;
 
   function updateSvcDots() {
-    const card = svcScroll.querySelector('.service-card');
-    if (!card || !svcDots.length) return;
+    if (!svcScroll || !svcDots.length || !svcCards.length) return;
+    const viewportCenter = svcScroll.scrollLeft + (svcScroll.clientWidth / 2);
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
 
-    const cardWidth = card.offsetWidth + 40;
-    const atEnd = svcScroll.scrollLeft + svcScroll.clientWidth >= svcScroll.scrollWidth - 2;
-    const lastIndex = svcDots.length - 1;
-    const index = atEnd
-      ? lastIndex
-      : Math.min(lastIndex, Math.max(0, Math.round(svcScroll.scrollLeft / cardWidth)));
+    svcCards.forEach((card, index) => {
+      const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+      const distance = Math.abs(cardCenter - viewportCenter);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
 
     svcDots.forEach((dot, i) => {
-      dot.classList.toggle('active', i <= index);
+      dot.classList.toggle('active', i <= closestIndex);
     });
   }
 
-  svcScroll.addEventListener('scroll', updateSvcDots);
-  updateSvcDots();
+  function scheduleSvcDotUpdate() {
+    if (svcTicking) return;
+    svcTicking = true;
+    window.requestAnimationFrame(() => {
+      updateSvcDots();
+      svcTicking = false;
+    });
+  }
+
+  if (svcScroll) {
+    svcScroll.addEventListener('scroll', scheduleSvcDotUpdate, { passive: true });
+    window.addEventListener('resize', scheduleSvcDotUpdate);
+
+    svcDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        const targetCard = svcCards[index];
+        if (!targetCard) return;
+        svcScroll.scrollTo({
+          left: targetCard.offsetLeft,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    updateSvcDots();
+  }
 
   const workScroll = document.querySelector('#experience .selected-work-scroll');
   const workDots = document.querySelectorAll('.work-dot');
