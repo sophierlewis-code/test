@@ -276,21 +276,13 @@
 
   #services p { color: var(--forest-dark); }
 
-  .service-card {
+  #services .service-card {
     background: #ffffff;
     border: none;
   }
 
-  .service-card h3 { color: var(--header-green); }
-  .service-card p { color: var(--forest-dark); }
-
-  section:nth-of-type(even) .service-card {
-    background: #ffffff;
-    border: none;
-  }
-
-  section:nth-of-type(even) .service-card h3 { color: var(--header-green); }
-  section:nth-of-type(even) .service-card p { color: var(--forest-dark); }
+  #services .service-card h3 { color: var(--header-green); }
+  #services .service-card p { color: var(--forest-dark); }
 
   section:nth-of-type(even) .exp-item {
     border-bottom-color: rgba(255,255,255,0.15);
@@ -319,13 +311,13 @@
 
   /* SERVICES TABS */
   /* SERVICES SCROLL */
-  .services-carousel {
+  #services .services-carousel {
     position: relative;
     margin-top: 20px;
     padding: 0 56px;
   }
 
-  .services-scroll {
+  #services .services-scroll {
     display: flex;
     gap: 40px;
     overflow-x: auto;
@@ -336,9 +328,9 @@
     padding-bottom: 4px;
   }
 
-  .services-scroll::-webkit-scrollbar { display: none; }
+  #services .services-scroll::-webkit-scrollbar { display: none; }
 
-  .service-card {
+  #services .service-card {
     flex: 0 0 350px;
     background: rgba(255,255,255,0.07);
     border: none;
@@ -347,7 +339,7 @@
     scroll-snap-align: start;
   }
 
-  .service-card h3 {
+  #services .service-card h3 {
     font-family: 'Source Sans 3', sans-serif;
     font-size: 1.47rem;
     font-weight: 700;
@@ -356,42 +348,42 @@
     line-height: 1.2;
   }
 
-  .service-card p {
+  #services .service-card p {
     font-size: 1.25rem;
     color: rgba(255,255,255,0.85);
     margin: 0;
     line-height: 1.75;
   }
-  .card-header {
+  #services .card-header {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 0;
   }
 
-  .card-header h3 {
+  #services .card-header h3 {
     margin-bottom: 0;
   }
 
-  .card-icon {
+  #services .card-icon {
     display: flex;
     flex-shrink: 0;
     color: var(--header-green);
   }
 
-  .card-icon svg, .card-icon img {
+  #services .card-icon svg, #services .card-icon img {
     width: 52px;
     height: 52px;
   }
 
-  .service-card p:first-of-type {
+  #services .service-card p:first-of-type {
     font-weight: 550;
   }
-  .service-card .card-from {
+  #services .service-card .card-from {
     margin-top: 8px;
   }
 
-  .card-shelf {
+  #services .card-shelf {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -399,14 +391,14 @@
     margin: 10px 0 14px;
   }
 
-  .services-dots {
+  #services .services-dots {
     display: flex;
     justify-content: center;
     gap: 8px;
     margin-top: 20px;
   }
 
-  .svc-dot {
+  #services .svc-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -416,7 +408,7 @@
     transition: all 0.3s;
   }
 
-  .svc-dot.active {
+  #services .svc-dot.active {
     background: #005C40;
     opacity: 1;
   }
@@ -555,11 +547,11 @@
   }
 
   @media (min-width: 1100px) {
-    .services-carousel {
+    #services .services-carousel {
       padding: 0;
     }
 
-    .services-scroll {
+    #services .services-scroll {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -570,45 +562,45 @@
       margin: 0 auto;
     }
 
-    .services-scroll .service-card {
+    #services .services-scroll .service-card {
       flex: 0 0 350px;
       scroll-snap-align: none;
     }
 
-    .services-dots {
+    #services .services-dots {
       display: none;
     }
   }
 
   @media (max-width: 700px) {
-    .services-carousel { padding: 0; }
+    #services .services-carousel { padding: 0; }
 
-    .services-scroll {
+    #services .services-scroll {
       gap: 12px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       padding: 0;
     }
 
-    .service-card {
+    #services .service-card {
       flex: 0 0 100%;
       scroll-snap-align: start;
       min-height: 320px;
       padding: 26px 20px 22px;
     }
 
-    .service-card h3 {
+    #services .service-card h3 {
       font-size: 1.2rem;
       line-height: 1.3;
     }
 
-    .service-card p {
+    #services .service-card p {
       font-size: 1rem;
       line-height: 1.6;
     }
 
-    .card-icon svg,
-    .card-icon img {
+    #services .card-icon svg,
+    #services .card-icon img {
       width: 42px;
       height: 42px;
     }
@@ -1752,7 +1744,7 @@ MSc Forest Conservation, Imperial College, London</p>
 <script>
   // Services carousel dots
   const svcScroll = document.getElementById('services-scroll');
-  const svcDots = document.querySelectorAll('.svc-dot');
+  const svcDots = document.querySelectorAll('#services .svc-dot');
 
   function updateSvcDots() {
     const card = svcScroll.querySelector('.service-card');
