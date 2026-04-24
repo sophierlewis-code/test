@@ -6,15 +6,120 @@
 <title>Southeast Asia Map - Standalone</title>
 <style>
   :root {
+<<<<<<< codex/locate-southeast-asia-map-file
+    --forest: #005c40;
+    --forest-dark: #003326;
+    --parchment: #e8e1cd;
+    --paper: #f8f5ee;
+    --inactive-stroke: #d4cbb2;
+=======
     color-scheme: light;
     --bg: #efece4;
     --panel: #faf7f0;
     --ink: #0f2b22;
     --line: #d6cfbf;
+>>>>>>> main
   }
 
   * { box-sizing: border-box; }
 
+<<<<<<< codex/locate-southeast-asia-map-file
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--forest-dark);
+    font-family: Georgia, "Times New Roman", serif;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+
+  .sheet {
+    width: min(92vw, 860px);
+    background: var(--paper);
+    border: 1px solid rgba(0, 92, 64, 0.2);
+    padding: 28px 32px 40px;
+    position: relative;
+  }
+
+  .corner { position: absolute; width: 14px; height: 14px; }
+  .tl { left: 14px; top: 14px; border-left: 0.5px solid var(--forest); border-top: 0.5px solid var(--forest); }
+  .tr { right: 14px; top: 14px; border-right: 0.5px solid var(--forest); border-top: 0.5px solid var(--forest); }
+  .bl { left: 14px; bottom: 14px; border-left: 0.5px solid var(--forest); border-bottom: 0.5px solid var(--forest); }
+  .br { right: 14px; bottom: 14px; border-right: 0.5px solid var(--forest); border-bottom: 0.5px solid var(--forest); }
+
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  h1 { margin: 0; font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-style: italic; font-weight: 400; color: var(--forest-dark); }
+  .coords { margin: 0; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #7c745f; }
+
+  .map-frame { position: relative; margin-top: 20px; aspect-ratio: 700 / 620; width: 100%; }
+  .map-frame > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  .graticule line { stroke: var(--forest); stroke-opacity: 0.12; stroke-width: 0.3; }
+
+  .map-svg path {
+    fill: var(--parchment) !important;
+    stroke: var(--inactive-stroke) !important;
+    stroke-width: 0.35 !important;
+    stroke-opacity: 0.75 !important;
+  }
+
+  .map-svg #th path,
+  .map-svg #kh path,
+  .map-svg #vn path,
+  .map-svg #id path,
+  .map-svg #tl path,
+  .map-svg #tl- path,
+  .map-svg #la,
+  .map-svg #la-w path {
+    fill: var(--forest) !important;
+    stroke: var(--forest-dark) !important;
+    stroke-width: 0.35 !important;
+    stroke-opacity: 1 !important;
+  }
+
+  .map-svg #bn\. { display: none; }
+
+  .labels text {
+    fill: var(--forest-dark);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-anchor: middle;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .caption { margin-top: 16px; font-size: 12px; color: #526e62; line-height: 1.6; }
+</style>
+</head>
+<body>
+  <main class="sheet" aria-label="Southeast Asia map layout">
+    <span class="corner tl" aria-hidden="true"></span>
+    <span class="corner tr" aria-hidden="true"></span>
+    <span class="corner bl" aria-hidden="true"></span>
+    <span class="corner br" aria-hidden="true"></span>
+
+    <header class="heading">
+      <h1>Southeast Asia</h1>
+      <p class="coords">95°–140°E · 10°S–25°N</p>
+    </header>
+
+    <section class="map-frame" aria-label="Southeast Asia country map">
+      <svg class="graticule" viewBox="0 0 700 620" aria-hidden="true">
+        <line x1="0" y1="0" x2="700" y2="0" /><line x1="0" y1="52" x2="700" y2="52" /><line x1="0" y1="104" x2="700" y2="104" /><line x1="0" y1="156" x2="700" y2="156" /><line x1="0" y1="208" x2="700" y2="208" /><line x1="0" y1="260" x2="700" y2="260" /><line x1="0" y1="312" x2="700" y2="312" /><line x1="0" y1="364" x2="700" y2="364" /><line x1="0" y1="416" x2="700" y2="416" /><line x1="0" y1="468" x2="700" y2="468" /><line x1="0" y1="520" x2="700" y2="520" /><line x1="0" y1="572" x2="700" y2="572" /><line x1="0" y1="624" x2="700" y2="624" />
+        <line x1="0" y1="0" x2="0" y2="620" /><line x1="52" y1="0" x2="52" y2="620" /><line x1="104" y1="0" x2="104" y2="620" /><line x1="156" y1="0" x2="156" y2="620" /><line x1="208" y1="0" x2="208" y2="620" /><line x1="260" y1="0" x2="260" y2="620" /><line x1="312" y1="0" x2="312" y2="620" /><line x1="364" y1="0" x2="364" y2="620" /><line x1="416" y1="0" x2="416" y2="620" /><line x1="468" y1="0" x2="468" y2="620" /><line x1="520" y1="0" x2="520" y2="620" /><line x1="572" y1="0" x2="572" y2="620" /><line x1="624" y1="0" x2="624" y2="620" /><line x1="676" y1="0" x2="676" y2="620" /><line x1="728" y1="0" x2="728" y2="620" />
+      </svg>
+
+      <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg class="map-svg"
+=======
   html, body {
     margin: 0;
     min-height: 100%;
@@ -76,6 +181,7 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg
+>>>>>>> main
    version="1.1"
    id="svg1926"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
@@ -86,7 +192,11 @@
    y="0px"
    width="373.6604"
    height="342.49478"
+<<<<<<< codex/locate-southeast-asia-map-file
+   viewBox="1947 657 373 342"
+=======
    viewBox="1947.168 657.515 373.66041 342.49478"
+>>>>>>> main
    enable-background="new 1947.168 657.515 492.059 377.586"
    xml:space="preserve"
    inkscape:export-filename="Southeast_Asia_location_.png"
@@ -2643,8 +2753,27 @@
    d="m 2119.2884,869.9809 c -0.084,-0.03 -0.1074,-0.045 -0.2957,-0.1786 -1.234,-0.8785 -1.9709,-1.5177 -2.2646,-1.9643 -0.1471,-0.2237 -0.2343,-0.447 -0.3977,-1.0181 -0.062,-0.2161 -0.1279,-0.4363 -0.1468,-0.4893 -0.1082,-0.3039 -0.2385,-0.5248 -0.4174,-0.708 -0.047,-0.048 -0.078,-0.088 -0.071,-0.091 0.01,0 0.075,-0.02 0.1497,-0.038 0.5616,-0.1391 1.1451,-0.4125 1.7391,-0.815 0.3356,-0.2274 0.6022,-0.4346 1.2405,-0.9639 1.0751,-0.8915 1.546,-1.2188 2.1796,-1.5151 0.3082,-0.1442 0.5091,-0.2134 0.6018,-0.2074 h 0.051 v 0.087 c 0,0.1154 -0.042,0.2478 -0.1236,0.4179 -0.1369,0.2844 -0.231,0.3993 -0.4952,0.6047 -0.3453,0.2685 -0.4773,0.3808 -0.6454,0.5489 -0.1794,0.1794 -0.2729,0.3018 -0.3543,0.464 -0.096,0.1916 -0.1508,0.3899 -0.1757,0.6375 -0.016,0.1639 -0.01,0.688 0.016,0.9615 0.077,0.8873 0.093,1.9756 0.039,2.6795 -0.058,0.7518 -0.1837,1.2669 -0.3653,1.4977 -0.081,0.1024 -0.152,0.1259 -0.262,0.086 z"
    id="path36" /></svg>
 
+<<<<<<< codex/locate-southeast-asia-map-file
+
+      <svg class="labels" viewBox="1947 657 373 342" aria-hidden="true">
+        <text x="2030" y="820">THAILAND</text>
+        <text x="2073" y="825">CAMBODIA</text>
+        <text x="2100" y="770">VIET NAM</text>
+        <text x="2037" y="745">LAO PDR</text>
+        <text x="2000" y="760">MYANMAR</text>
+        <text x="2110" y="895">MALAYSIA</text>
+        <text x="2200" y="820">PHILIPPINES</text>
+        <text x="2180" y="960">INDONESIA</text>
+        <text x="2245" y="1020">TIMOR-LESTE</text>
+        <text x="2160" y="895">BRUNEI</text>
+      </svg>
+    </section>
+
+    <p class="caption">Active countries are shown in forest green; neighboring countries are shown in warm parchment.</p>
+=======
       </div>
     </section>
+>>>>>>> main
   </main>
 </body>
 </html>
