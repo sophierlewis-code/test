@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Southeast Asia Map — Variations</title>
+<style>
+  @font-face {
+    font-family: 'Alverata';
+    src: url('fonnts.com-Alverata-Md-.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Alverata';
+    src: url('fonnts.com-Alverata-Sb-.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Alverata';
+    src: url('alverata-informal.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: 'Alverata';
+    src: url('fonnts.com-Alverata-Lt-.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  :root {
+    --forest-dark: #001a0f;
+    --forest-mid: #003326;
+    --header-green: #005C40;
+    --sage: #2e8b6a;
+    --light-green: #3aaa80;
+    --mist: #f2f8f5;
+    --ink: #001a0f;
+    --parchment: #f5efe0;
+    --ivory: #faf5e8;
+    --gold: #b08a3e;
+  }
+  html, body { margin: 0; padding: 0; background: #efece4; font-family: 'Alverata', 'Cormorant Garamond', Georgia, serif; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+const { TweaksPanel, useTweaks, TweakSection, TweakToggle } = window;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "showNames": false,
+  "showDots": false
+}/*EDITMODE-END*/;
+
+// ─── Shared: load the source SVG once, then stamp into each variation with different styling ───
+const ACTIVE = new Set(['th','kh','vn','la','id','tl']);   // Cambodia, Indonesia, Lao, Timor-Leste, Thailand, Viet Nam
+const NEIGHBOR = new Set(['mm','my','ph','bn']);
+
+// Country display-name labels
+const LABELS = {
+  th: { name: 'THAILAND',      cx: 2030, cy: 820, size: 10 },
+  kh: { name: 'CAMBODIA',      cx: 2073, cy: 825, size: 7  },
+  vn: { name: 'VIET NAM',      cx: 2100, cy: 770, size: 8  },
+  la: { name: 'LAO PDR',       cx: 2037, cy: 745, size: 7  },
+  mm: { name: 'MYANMAR',       cx: 2000, cy: 760, size: 9  },
+  my: { name: 'MALAYSIA',      cx: 2110, cy: 895, size: 8  },
+  ph: { name: 'PHILIPPINES',   cx: 2200, cy: 820, size: 10 },
+  id: { name: 'INDONESIA',     cx: 2180, cy: 960, size: 13 },
+  tl: { name: 'TIMOR-LESTE',   cx: 2245, cy: 1020, size: 6 },
+  bn: { name: 'BRUNEI',        cx: 2160, cy: 895, size: 5 },
+};
+
+// Restyle the source SVG for a given variant. Returns an innerHTML string.
+function useStyledMap(variant) {
+  const [inner, setInner] = React.useState(null);
+  React.useEffect(() => {
+    fetch('Southeast_Asia_location_mapwhole4.svg')
+      .then(r => r.text())
+      .then(raw => setInner(transform(raw, variant)));
+  }, [variant]);
+  return inner;
+}
+
+// After mount, fix any <path> still rendering black (orphan root paths, etc.)
+function useFixBlackPaths(inner, variant) {
+  React.useEffect(() => {
+    if (!inner) return;
+    const t = setTimeout(() => {
+      document.querySelectorAll('svg[viewBox="1947 657 373 342"]').forEach(svg => {
+        svg.querySelectorAll('path').forEach(p => {
+          const cs = getComputedStyle(p);
+          if (cs.fill === 'rgb(0, 0, 0)') {
+            // Apply the variant's inactive style inline
+            switch (variant.key) {
+              case 'editorial':
+                p.style.fill = variant.inactiveFill;
+                p.style.stroke = variant.inactiveStroke;
+                p.style.strokeWidth = '0.4';
+                break;
+              case 'nocturne':
+                p.style.fill = variant.inactiveFill;
+                p.style.stroke = variant.inactiveStroke;
+                p.style.strokeWidth = '0.35';
+                p.style.strokeOpacity = '0.7';
+                break;
+              case 'topo':
+                p.style.fill = 'none';
+                p.style.stroke = variant.inactiveStroke;
+                p.style.strokeWidth = '0.3';
+                p.style.strokeOpacity = '0.8';
+                break;
+              case 'monogram':
+                p.style.fill = 'none';
+                p.style.stroke = variant.inactiveStroke;
+                p.style.strokeWidth = '0.3';
+                p.style.strokeOpacity = '0.55';
+                break;
+            }
+          }
+        });
+      });
+    }, 0);
+    return () => clearTimeout(t);
+  }, [inner, variant.key]);
+}
+
+function transform(raw, v) {
+  // Strip XML declaration + outer <svg>, keep inner content
+  const m = raw.match(/<svg[^>]*>([\s\S]*)<\/svg>/);
+  let body = m ? m[1] : raw;
+
+  // Remove <defs> and <namedview>
+  body = body.replace(/<defs[\s\S]*?<\/defs>/g, '').replace(/<namedview[\s\S]*?<\/namedview>/g, '');
+
+  // Inactive-country style (for orphan root-level paths — Borneo micro-islands etc.)
+  const orphanStyle = (() => {
+    switch (v.key) {
+      case 'editorial': return `fill:${v.inactiveFill};stroke:${v.inactiveStroke};stroke-width:0.4`;
+      case 'nocturne':  return `fill:${v.inactiveFill};stroke:${v.inactiveStroke};stroke-width:0.35;stroke-opacity:0.7`;
+      case 'topo':      return `fill:${v.inactiveFill};stroke:${v.inactiveStroke};stroke-width:0.3;stroke-opacity:0.8`;
+      case 'monogram':  return `fill:none;stroke:${v.inactiveStroke};stroke-width:0.3;stroke-opacity:0.55`;
+    }
+  })();
+  // Prepend an inline <style> that styles orphan root-level paths (not inside a group)
+  // by giving EVERY path that carries no explicit fill and whose parent isn't one of the
+  // country groups the inactive style.
+  body = `<style>
+    [data-variant-root] > path { ${orphanStyle}; }
+  </style>` + body;
+
+  const styleFor = (code) => {
+    const isActive = ACTIVE.has(code);
+    switch (v.key) {
+      case 'editorial':
+        return isActive
+          ? `fill:${v.activeFill};stroke:${v.activeStroke};stroke-width:0.4;stroke-opacity:1`
+          : `fill:${v.inactiveFill};stroke:${v.inactiveStroke};stroke-width:0.4;stroke-opacity:1`;
+      case 'nocturne':
+        return isActive
+          ? `fill:${v.activeFill};stroke:${v.activeStroke};stroke-width:0.35;stroke-opacity:1`
+          : `fill:${v.inactiveFill};stroke:${v.inactiveStroke};stroke-width:0.35;stroke-opacity:0.7`;
+      case 'topo':
+        return isActive
+          ? `fill:url(#topo-active);stroke:${v.activeStroke};stroke-width:0.45;stroke-opacity:1`
+          : `fill:${v.inactiveFill};stroke:${v.inactiveStroke};stroke-width:0.3;stroke-opacity:0.8`;
+      case 'monogram':
+        return isActive
+          ? `fill:${v.activeFill};stroke:${v.activeStroke};stroke-width:0.4;stroke-opacity:1`
+          : `fill:none;stroke:${v.inactiveStroke};stroke-width:0.3;stroke-opacity:0.55`;
+    }
+  };
+
+  // Replace style attribute on each top-level country group
+  body = body.replace(
+    /<g id="(id|th|mm|vn|my|ph|kh|tl|bn|tl-|bn-)"([^>]*)style="[^"]*"/g,
+    (_, code, rest) => {
+      const key = (code === 'tl-' ? 'tl' : code === 'bn-' ? 'bn' : code);
+      return `<g id="${code}" data-country="${key}"${rest}style="${styleFor(key)}"`;
+    }
+  );
+
+  // Some groups (bn, bn-) have no style attribute in the source — add one.
+  body = body.replace(
+    /<g id="(bn|bn-)"(?!\s[^>]*style=)([^>]*)>/g,
+    (_, code, rest) => `<g id="${code}" data-country="bn"${rest} style="${styleFor('bn')}">`
+  );
+
+  // path#bn. is an invisible marker dot (fill-opacity=0 in source). Force-hide it.
+  body = body.replace(
+    /<path id="bn\."([\s\S]*?)(?:\/>|><\/path>)/,
+    `<path id="bn." style="display:none" />`
+  );
+
+  // Wrap Laos FIRST (it's the lone root-level path) before any path-attr stripping.
+  // Accept both self-closing (`/>`) and explicit (`></path>`) forms.
+  body = body.replace(
+    /<path id="la"([\s\S]*?)(?:\/>|><\/path>)/,
+    (_, rest) => `<g id="la-w" data-country="la" style="${styleFor('la')}"><path id="la"${rest}/></g>`
+  );
+
+  // Strip all presentation attrs + inline style on inner paths so parent group style wins.
+  // Preserve the self-close form so wrap regexes elsewhere still work.
+  body = body.replace(/<path\b([^>]*?)(\/?)>/g, (whole, attrs, slash) => {
+    let a = attrs;
+    a = a.replace(/\s(fill|stroke|stroke-width|stroke-miterlimit|stroke-opacity|fill-opacity)="[^"]*"/g, '');
+    a = a.replace(/\sstyle="[^"]*"/g, '');
+    return `<path${a}${slash}>`;
+  });
+
+  return body;
+}
+
+// ─── Variation 1 · EDITORIAL ATLAS ────────────────────────────────────────
+function EditorialAtlas({ tweaks }) {
+  const variant = {
+    key: 'editorial',
+    activeFill: '#005C40',
+    activeStroke: '#ffffff',
+    inactiveFill: '#e8e1cd',
+    inactiveStroke: '#d4cbb2'
+  };
+  const inner = useStyledMap(variant);
+  useFixBlackPaths(inner, variant);
+  return (
+    <div style={{ width: 760, height: 820, background: '#faf5e8', position: 'relative', padding: '28px 32px', boxSizing: 'border-box', fontFamily: "'Alverata', Georgia, serif" }}>
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', borderBottom: '0.5px solid #1b2a1b', paddingBottom: 10 }}>
+        <div style={{ fontFamily: 'Alverata', fontWeight: 500, fontSize: 22, letterSpacing: '0.02em', color: '#003326' }}>Southeast Asia</div>
+        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.2em', color: '#1b2a1b', textTransform: 'uppercase' }}>Pl. I · Geographic Focus · 2010–2026</div>
+      </div>
+
+      {/* Sea with graticule */}
+      <div style={{ position: 'relative', marginTop: 18, width: '100%', height: 600, background: '#faf5e8' }}>
+        <svg viewBox="0 0 700 600" width="100%" height="100%" style={{ position: 'absolute', inset: 0 }}>
+          <defs>
+            <pattern id="sea-lines" width="6" height="6" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="6" x2="6" y2="0" stroke="#b8a87a" strokeWidth="0.25" opacity="0.35" />
+            </pattern>
+          </defs>
+          <rect x="0" y="0" width="700" height="600" fill="url(#sea-lines)" />
+          {/* lat/long */}
+          {[100, 200, 300, 400, 500].map(y => (
+            <line key={'h'+y} x1="0" y1={y} x2="700" y2={y} stroke="#1b2a1b" strokeOpacity="0.08" strokeWidth="0.3" strokeDasharray="1 3" />
+          ))}
+          {[100, 200, 300, 400, 500, 600].map(x => (
+            <line key={'v'+x} x1={x} y1="0" x2={x} y2="600" stroke="#1b2a1b" strokeOpacity="0.08" strokeWidth="0.3" strokeDasharray="1 3" />
+          ))}
+          <text x="10" y="14" fontFamily="DM Mono, monospace" fontSize="7" fill="#1b2a1b" opacity="0.5">20°N</text>
+          <text x="10" y="214" fontFamily="DM Mono, monospace" fontSize="7" fill="#1b2a1b" opacity="0.5">10°N</text>
+          <text x="10" y="414" fontFamily="DM Mono, monospace" fontSize="7" fill="#1b2a1b" opacity="0.5">0°</text>
+        </svg>
+
+        {/* The map itself */}
+        <svg viewBox="1947 657 373 342" width="100%" height="100%" style={{ position: 'absolute', inset: 0 }}
+             dangerouslySetInnerHTML={{ __html: (inner || '') + (tweaks.showNames ? `
+          <g font-family="Alverata, Georgia, serif" font-weight="500" pointer-events="none">
+            ${Object.entries(LABELS).map(([k,l]) => {
+              const active = ACTIVE.has(k);
+              const color = active ? '#003326' : '#8a7a4e';
+              const weight = active ? 600 : 400;
+              return `<text x="${l.cx}" y="${l.cy}" font-size="${l.size*0.85}" fill="${color}" font-weight="${weight}" text-anchor="middle" letter-spacing="1.4">${l.name}</text>`;
+            }).join('')}
+          </g>` : '') + `
+          <g stroke="#003326" stroke-width="0.4" fill="none">
+            <circle cx="2290" cy="700" r="12" />
+            <line x1="2290" y1="686" x2="2290" y2="714" />
+            <line x1="2276" y1="700" x2="2304" y2="700" />
+            <text x="2290" y="683" font-family="DM Mono, monospace" font-size="6" fill="#003326" text-anchor="middle">N</text>
+          </g>
+        ` }} />
+      </div>
+
+      {/* Footer legend */}
+      <div style={{ position: 'absolute', bottom: 28, left: 32, right: 32, display: 'flex', justifyContent: 'space-between', borderTop: '0.5px solid #1b2a1b', paddingTop: 12 }}>
+        <div style={{ display: 'flex', gap: 22, fontFamily: 'DM Mono, monospace', fontSize: 9, color: '#1b2a1b', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ width: 12, height: 12, background: '#005C40' }}></span> Active Engagement
+          </span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ width: 12, height: 12, background: '#e8e1cd', border: '0.5px solid #d4cbb2' }}></span> Regional Context
+          </span>
+        </div>
+        <div style={{ fontFamily: 'Alverata', fontStyle: 'italic', fontSize: 12, color: '#003326' }}>Forest Governance Lab</div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Variation 2 · NOCTURNE ──────────────────────────────────────────────
+function Nocturne({ tweaks }) {
+  const variant = {
+    key: 'nocturne',
+    activeFill: '#005C40',
+    activeStroke: '#003326',
+    inactiveFill: '#e8e1cd',
+    inactiveStroke: '#d4cbb2'
+  };
+  const inner = useStyledMap(variant);
+  useFixBlackPaths(inner, variant);
+  return (
+    <div style={{ width: 760, height: 820, background: '#f8f5ee', position: 'relative', padding: '28px 32px', boxSizing: 'border-box', fontFamily: "'Alverata', Georgia, serif", color: '#001a0f' }}>
+      {/* corner marks */}
+      {[['0','0'],['auto','0'],['0','auto'],['auto','auto']].map(([l,t],i) => (
+        <div key={i} style={{ position:'absolute', left:l==='0'?14:'auto', right:l==='auto'?14:'auto', top:t==='0'?14:'auto', bottom:t==='auto'?14:'auto', width:14, height:14, borderLeft: l==='0'?'0.5px solid #005C40':'none', borderRight:l==='auto'?'0.5px solid #005C40':'none', borderTop:t==='0'?'0.5px solid #005C40':'none', borderBottom:t==='auto'?'0.5px solid #005C40':'none' }}></div>
+      ))}
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+        <div style={{ fontFamily: 'Alverata', fontStyle: 'italic', fontWeight: 400, fontSize: 26, color: '#003326' }}>Southeast Asia</div>
+        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.22em', color: '#8a7a5a', textTransform: 'uppercase' }}>95°–140°E  ·  10°S–25°N</div>
+      </div>
+
+      <div style={{ position: 'relative', marginTop: 22, width: '100%', height: 620 }}>
+        <svg viewBox="0 0 700 620" width="100%" height="100%" style={{ position: 'absolute', inset: 0 }}>
+          {/* graticule */}
+          {Array.from({length: 13}).map((_,i) => (
+            <line key={'h'+i} x1="0" y1={i*52} x2="700" y2={i*52} stroke="#005C40" strokeOpacity="0.08" strokeWidth="0.3" />
+          ))}
+          {Array.from({length: 15}).map((_,i) => (
+            <line key={'v'+i} x1={i*52} y1="0" x2={i*52} y2="620" stroke="#005C40" strokeOpacity="0.08" strokeWidth="0.3" />
+          ))}
+        </svg>
+        <svg viewBox="1947 657 373 342" width="100%" height="100%" style={{ position: 'absolute', inset: 0 }}
+             dangerouslySetInnerHTML={{ __html: (inner || '') + `
+          <g font-family="Alverata, Georgia, serif" pointer-events="none">
+            ${tweaks.showNames ? Object.entries(LABELS).map(([k,l]) => {
+              const active = ACTIVE.has(k);
+              const color = active ? '#003326' : '#8a7a5a';
+              const weight = active ? 600 : 400;
+              return `<text x="${l.cx}" y="${l.cy}" font-size="${l.size*0.9}" fill="${color}" font-weight="${weight}" text-anchor="middle" letter-spacing="2">${l.name}</text>`;
+            }).join('') : ''}
+            ${tweaks.showDots ? Object.entries(LABELS).filter(([k]) => ACTIVE.has(k)).map(([k,l]) => {
+              return `<circle cx="${l.cx}" cy="${l.cy+5}" r="0.8" fill="#005C40"/>`;
+            }).join('') : ''}
+          </g>
+        ` }} />
+      </div>
+
+      <div style={{ position: 'absolute', bottom: 28, left: 32, right: 32, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+        <div style={{ fontFamily: 'Alverata', fontWeight: 300, fontSize: 12, color: '#5a7a6a', lineHeight: 1.6, maxWidth: 340 }}>
+          Active engagement in <span style={{ color: '#003326', fontWeight: 500 }}>Cambodia, Indonesia, Lao PDR,<br/>Thailand, Timor-Leste, Viet Nam.</span>
+        </div>
+        <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 8, color: '#8a7a5a', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+          Fig. 02 / Forest Governance Lab
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Variation 3 · TOPOGRAPHIC RISOGRAPH ─────────────────────────────────
+function Topographic({ tweaks }) {
+  const variant = {
+    key: 'topo',
+    activeStroke: '#c65d2f',
+    inactiveFill: 'none',
+    inactiveStroke: '#b8a57d'
+  };
+  const inner = useStyledMap(variant);
+  useFixBlackPaths(inner, variant);
+  return (
+    <div style={{ width: 760, height: 820, background: '#f2ede0', position: 'relative', padding: '28px 32px', boxSizing: 'border-box', fontFamily: "'Alverata', Georgia, serif" }}>
+      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end' }}>
+        <div>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 9, letterSpacing: '0.25em', color: '#c65d2f', textTransform:'uppercase', marginBottom: 4 }}>Regional Practice</div>
+          <div style={{ fontFamily: 'Alverata', fontWeight: 600, fontSize: 28, color: '#003326', letterSpacing: '-0.01em' }}>Southeast Asia</div>
+        </div>
+        <div style={{ fontFamily: 'Alverata', fontStyle: 'italic', fontSize: 12, color: '#003326', textAlign:'right', lineHeight: 1.4 }}>
+          Six active countries<br/>
+          <span style={{ fontStyle:'normal', fontFamily:'DM Mono, monospace', fontSize:9, letterSpacing:'0.15em' }}>N = 6 · 2010 — 2026</span>
+        </div>
+      </div>
+      <div style={{ height: 0.5, background: '#003326', margin: '14px 0 0' }}></div>
+
+      <div style={{ position:'relative', marginTop: 14, height: 610 }}>
+        <svg viewBox="1947 657 373 342" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"
+             style={{ position:'absolute', inset:0 }}
+             dangerouslySetInnerHTML={{ __html: `
+          <defs>
+            <pattern id="topo-active" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(0)">
+              <rect width="4" height="4" fill="#005C40"/>
+              <circle cx="2" cy="2" r="0.5" fill="#c65d2f" opacity="0.9"/>
+            </pattern>
+            <pattern id="topo-hatch" width="3" height="3" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="3" x2="3" y2="0" stroke="#c65d2f" stroke-width="0.35" opacity="0.35"/>
+            </pattern>
+          </defs>
+          ` + (inner || '') + (tweaks.showNames ? `
+          <g font-family="Alverata, Georgia, serif" pointer-events="none">
+            ${Object.entries(LABELS).map(([k,l]) => {
+              const active = ACTIVE.has(k);
+              const color = active ? '#c65d2f' : '#8a7a4e';
+              const weight = active ? 700 : 400;
+              return `<text x="${l.cx}" y="${l.cy}" font-size="${l.size*0.9}" fill="${color}" font-weight="${weight}" text-anchor="middle" letter-spacing="1.5">${l.name}</text>`;
+            }).join('')}
+          </g>` : '') + `
+        ` }} />
+      </div>
+
+      <div style={{ position: 'absolute', bottom: 28, left: 32, right: 32, display:'flex', justifyContent:'space-between', fontFamily: 'DM Mono, monospace', fontSize: 9, color: '#003326', letterSpacing: '0.15em', textTransform:'uppercase' }}>
+        <span>KH · ID · LA · TH · TL · VN</span>
+        <span style={{ color: '#c65d2f' }}>Forest Governance Lab</span>
+      </div>
+    </div>
+  );
+}
+
+// ─── Variation 4 · MINIMAL MONOGRAM ──────────────────────────────────────
+function Monogram({ tweaks }) {
+  const variant = {
+    key: 'monogram',
+    activeFill: '#005C40',
+    activeStroke: '#005C40',
+    inactiveStroke: '#a8b8ae'
+  };
+  const inner = useStyledMap(variant);
+  useFixBlackPaths(inner, variant);
+  return (
+    <div style={{ width: 760, height: 820, background: '#ffffff', position: 'relative', padding: '40px 48px', boxSizing: 'border-box', fontFamily: "'Alverata', Georgia, serif" }}>
+      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'baseline' }}>
+        <div style={{ fontFamily: 'Alverata', fontWeight: 300, fontSize: 13, letterSpacing: '0.3em', color:'#005C40', textTransform:'uppercase' }}>Geographic Focus</div>
+        <div style={{ fontFamily: 'Alverata', fontStyle:'italic', fontWeight: 400, fontSize: 14, color: '#8a9a8a' }}>no. vi</div>
+      </div>
+
+      <div style={{ marginTop: 18, display: 'grid', gridTemplateColumns: '1fr 200px', gap: 32, height: 680 }}>
+        <div style={{ position: 'relative' }}>
+          <svg viewBox="1947 657 373 342" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"
+               style={{ position:'absolute', inset:0 }}
+               dangerouslySetInnerHTML={{ __html: (inner || '') + (tweaks.showNames ? `
+            <g font-family="Alverata, Georgia, serif" pointer-events="none">
+              ${Object.entries(LABELS).filter(([k]) => ACTIVE.has(k)).map(([k,l]) => {
+                return `<text x="${l.cx}" y="${l.cy}" font-size="${l.size*1.05}" fill="#003326" font-weight="600" text-anchor="middle" letter-spacing="1.2">${l.name}</text>`;
+              }).join('')}
+            </g>` : '') }} />
+        </div>
+
+        {/* Side panel */}
+        <div style={{ display:'flex', flexDirection:'column', gap: 18, paddingTop: 8, borderLeft: '0.5px solid #005C40', paddingLeft: 24 }}>
+          <div style={{ fontFamily: 'Alverata', fontWeight: 600, fontSize: 18, color: '#005C40', lineHeight: 1.15 }}>Active across six nations</div>
+          <ol style={{ listStyle: 'none', margin: 0, padding: 0, fontFamily: 'Alverata', fontWeight: 400, fontSize: 15, color: '#001a0f', lineHeight: 2 }}>
+            {[
+              ['I', 'Cambodia'],
+              ['II', 'Indonesia'],
+              ['III', 'Lao PDR'],
+              ['IV', 'Thailand'],
+              ['V', 'Timor-Leste'],
+              ['VI', 'Viet Nam']
+            ].map(([num, name]) => (
+              <li key={name} style={{ display:'grid', gridTemplateColumns:'28px 1fr', alignItems:'baseline', borderBottom:'0.5px dotted #c8d1c8', paddingBottom:4 }}>
+                <span style={{ fontFamily:'DM Mono, monospace', fontSize:9, color:'#8a9a8a', letterSpacing:'0.1em' }}>{num}</span>
+                <span>{name}</span>
+              </li>
+            ))}
+          </ol>
+          {/* mini locator globe */}
+          <div style={{ marginTop: 'auto', display:'flex', flexDirection:'column', gap: 6 }}>
+            <svg viewBox="0 0 80 80" width="80" height="80">
+              <circle cx="40" cy="40" r="34" fill="none" stroke="#005C40" strokeWidth="0.6" />
+              {[10,20,30,40,50,60,70].map(y => (
+                <line key={y} x1="6" y1={y} x2="74" y2={y} stroke="#005C40" strokeWidth="0.3" opacity="0.35" />
+              ))}
+              {[10,20,30,40,50,60,70].map(x => (
+                <path key={x} d={`M ${x} 6 Q 40 40 ${x} 74`} fill="none" stroke="#005C40" strokeWidth="0.3" opacity="0.35" />
+              ))}
+              <circle cx="52" cy="40" r="3" fill="#005C40"/>
+            </svg>
+            <div style={{ fontFamily:'DM Mono, monospace', fontSize: 8, color:'#8a9a8a', letterSpacing:'0.2em', textTransform:'uppercase' }}>13.7°N · 100.5°E</div>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ position:'absolute', bottom: 32, left: 48, right: 48, display:'flex', justifyContent:'space-between', alignItems:'center', borderTop:'0.5px solid #005C40', paddingTop: 14, fontFamily:'Alverata', fontSize: 12, color: '#005C40', letterSpacing:'0.08em' }}>
+        <span style={{ fontStyle:'italic' }}>Forest Governance Lab</span>
+        <span style={{ fontFamily:'DM Mono, monospace', fontSize:9, letterSpacing:'0.2em', textTransform:'uppercase' }}>Dr. Sophie Rose Lewis</span>
+      </div>
+    </div>
+  );
+}
+
+// ─── Page ────────────────────────────────────────────────────────────────
+function App() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  return (
+    <>
+      <DesignCanvas title="Southeast Asia Map — High-end Variations" subtitle="Four directions · drop any one into the Geographic Focus section">
+        <DCSection id="variations" title="Four Directions">
+          <DCArtboard id="editorial" label="01 · Editorial Atlas" width={760} height={820}>
+            <EditorialAtlas tweaks={tweaks} />
+          </DCArtboard>
+          <DCArtboard id="nocturne" label="02 · Nocturne (Green on Ivory)" width={760} height={820}>
+            <Nocturne tweaks={tweaks} />
+          </DCArtboard>
+          <DCArtboard id="topographic" label="03 · Risograph Overlay" width={760} height={820}>
+            <Topographic tweaks={tweaks} />
+          </DCArtboard>
+          <DCArtboard id="monogram" label="04 · Editorial Index" width={760} height={820}>
+            <Monogram tweaks={tweaks} />
+          </DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Map labels">
+          <TweakToggle label="Show country names" value={tweaks.showNames} onChange={v => setTweak('showNames', v)} />
+          <TweakToggle label="Show active-country dots" value={tweaks.showDots} onChange={v => setTweak('showDots', v)} />
+        </TweakSection>
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
