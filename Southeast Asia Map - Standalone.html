@@ -6,15 +6,24 @@
 <title>Southeast Asia Map - Standalone</title>
 <style>
   :root {
+<<<<<<< codex/locate-southeast-asia-map-file
     --forest: #005c40;
     --forest-dark: #003326;
     --parchment: #e8e1cd;
     --paper: #f8f5ee;
     --inactive-stroke: #d4cbb2;
+=======
+    color-scheme: light;
+    --bg: #efece4;
+    --panel: #faf7f0;
+    --ink: #0f2b22;
+    --line: #d6cfbf;
+>>>>>>> main
   }
 
   * { box-sizing: border-box; }
 
+<<<<<<< codex/locate-southeast-asia-map-file
   body {
     margin: 0;
     min-height: 100vh;
@@ -110,6 +119,69 @@
       <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg class="map-svg"
+=======
+  html, body {
+    margin: 0;
+    min-height: 100%;
+    background: radial-gradient(circle at top, #f5f2ea 0%, var(--bg) 65%);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 12px 40px rgba(20, 30, 20, 0.08);
+  }
+
+  h1 {
+    margin: 0 0 10px;
+    font-size: clamp(1.3rem, 1.6vw, 1.8rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0 0 16px;
+    color: #345247;
+  }
+
+  .map-wrap {
+    overflow: auto;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px;
+    background: white;
+  }
+
+  .map-wrap svg {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    max-width: 1000px;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <h1>Southeast Asia Map</h1>
+      <p>This is a fully offline standalone file with the complete map embedded directly in the HTML.</p>
+      <div class="map-wrap" aria-label="Southeast Asia map">
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+>>>>>>> main
    version="1.1"
    id="svg1926"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
@@ -120,7 +192,11 @@
    y="0px"
    width="373.6604"
    height="342.49478"
+<<<<<<< codex/locate-southeast-asia-map-file
    viewBox="1947 657 373 342"
+=======
+   viewBox="1947.168 657.515 373.66041 342.49478"
+>>>>>>> main
    enable-background="new 1947.168 657.515 492.059 377.586"
    xml:space="preserve"
    inkscape:export-filename="Southeast_Asia_location_.png"
@@ -2677,6 +2753,7 @@
    d="m 2119.2884,869.9809 c -0.084,-0.03 -0.1074,-0.045 -0.2957,-0.1786 -1.234,-0.8785 -1.9709,-1.5177 -2.2646,-1.9643 -0.1471,-0.2237 -0.2343,-0.447 -0.3977,-1.0181 -0.062,-0.2161 -0.1279,-0.4363 -0.1468,-0.4893 -0.1082,-0.3039 -0.2385,-0.5248 -0.4174,-0.708 -0.047,-0.048 -0.078,-0.088 -0.071,-0.091 0.01,0 0.075,-0.02 0.1497,-0.038 0.5616,-0.1391 1.1451,-0.4125 1.7391,-0.815 0.3356,-0.2274 0.6022,-0.4346 1.2405,-0.9639 1.0751,-0.8915 1.546,-1.2188 2.1796,-1.5151 0.3082,-0.1442 0.5091,-0.2134 0.6018,-0.2074 h 0.051 v 0.087 c 0,0.1154 -0.042,0.2478 -0.1236,0.4179 -0.1369,0.2844 -0.231,0.3993 -0.4952,0.6047 -0.3453,0.2685 -0.4773,0.3808 -0.6454,0.5489 -0.1794,0.1794 -0.2729,0.3018 -0.3543,0.464 -0.096,0.1916 -0.1508,0.3899 -0.1757,0.6375 -0.016,0.1639 -0.01,0.688 0.016,0.9615 0.077,0.8873 0.093,1.9756 0.039,2.6795 -0.058,0.7518 -0.1837,1.2669 -0.3653,1.4977 -0.081,0.1024 -0.152,0.1259 -0.262,0.086 z"
    id="path36" /></svg>
 
+<<<<<<< codex/locate-southeast-asia-map-file
 
       <svg class="labels" viewBox="1947 657 373 342" aria-hidden="true">
         <text x="2030" y="820">THAILAND</text>
@@ -2693,6 +2770,10 @@
     </section>
 
     <p class="caption">Active countries are shown in forest green; neighboring countries are shown in warm parchment.</p>
+=======
+      </div>
+    </section>
+>>>>>>> main
   </main>
 </body>
 </html>
