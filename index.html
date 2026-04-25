@@ -1142,6 +1142,21 @@
     }
   }
 
+  @media (max-width: 1100px) {
+    #education .geo-focus-wrap {
+      grid-template-columns: minmax(0, 1.7fr) minmax(200px, 0.55fr);
+    }
+    #education .geo-focus-wrap .section-label {
+      grid-column: 1 / -1;
+      align-self: start;
+      text-align: left;
+      margin: 0 0 24px 0;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+    }
+    #education .geo-map-panel { grid-column: 1; }
+    #education .geo-info-panel { grid-column: 2; }
+  }
+
   @media (max-width: 760px) {
     body { display: block; }
     #main-content { margin-top: calc(56px + env(safe-area-inset-top)); padding: 0; }
