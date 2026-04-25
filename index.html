@@ -728,13 +728,16 @@
   #education .geo-focus-wrap {
     display: grid;
     grid-template-columns: minmax(200px, 0.55fr) minmax(0, 1.7fr) minmax(200px, 0.55fr);
-    gap: 32px;
+    grid-template-rows: auto auto;
+    column-gap: 32px;
+    row-gap: 24px;
     align-items: center;
     margin-top: 6px;
   }
 
   #education .geo-focus-wrap .section-label {
     grid-column: 1;
+    grid-row: 1;
     align-self: start;
     display: block;
     margin: 0;
@@ -746,20 +749,10 @@
 
   #education .geo-map-panel {
     grid-column: 2;
-  }
-
-  #education .geo-info-panel {
-    grid-column: 3;
-  }
-
-  #education .geo-map-panel,
-  #education .geo-info-panel {
+    grid-row: 1;
     background: #ffffff;
-    border-radius: 0;
-  }
-
-  #education .geo-map-panel {
     border: none;
+    border-radius: 0;
     padding: 0;
     display: flex;
     align-items: center;
@@ -768,39 +761,30 @@
 
   #education .geo-map-panel img {
     width: 100%;
-    max-height: clamp(540px, 90vh, 920px);
+    max-height: clamp(560px, 92vh, 960px);
     height: auto;
     object-fit: contain;
     display: block;
     background: #ffffff;
   }
 
-  #education .geo-info-panel {
-    padding: 0 0 0 8px;
-  }
-
-  #education .geo-active {
+  #education .geo-caption {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: center;
     font-family: 'Literata', Georgia, serif;
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--header-green);
-    margin: 0 0 16px;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--forest-dark);
+    line-height: 1.7;
+    margin: 0;
     max-width: none;
   }
 
-  #education .geo-country-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  #education .geo-country-list li {
-    font-family: 'Literata', Georgia, serif;
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: var(--forest-dark);
-    line-height: 1.9;
-    margin: 0;
+  #education .geo-caption-label {
+    color: var(--header-green);
+    font-weight: 500;
+    margin-right: 6px;
   }
 
   /* REGIONS */
@@ -1144,17 +1128,20 @@
 
   @media (max-width: 1100px) {
     #education .geo-focus-wrap {
-      grid-template-columns: minmax(0, 1.7fr) minmax(200px, 0.55fr);
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      row-gap: 20px;
     }
     #education .geo-focus-wrap .section-label {
-      grid-column: 1 / -1;
+      grid-column: 1;
+      grid-row: 1;
       align-self: start;
       text-align: left;
-      margin: 0 0 24px 0;
+      margin: 0 0 4px 0;
       font-size: clamp(1.8rem, 3vw, 2.4rem);
     }
-    #education .geo-map-panel { grid-column: 1; }
-    #education .geo-info-panel { grid-column: 2; }
+    #education .geo-map-panel { grid-column: 1; grid-row: 2; }
+    #education .geo-caption { grid-column: 1; grid-row: 3; }
   }
 
   @media (max-width: 760px) {
@@ -1163,12 +1150,11 @@
     header { padding: 0; margin: 0; width: 100%; overflow: visible; }
     section { padding: 28px 24px; scroll-margin-top: calc(56px + env(safe-area-inset-top)); }
     .exp-item { grid-template-columns: 1fr; gap: 10px; }
-    #education .geo-focus-wrap { grid-template-columns: 1fr; gap: 20px; align-items: start; }
-    #education .geo-focus-wrap .section-label { grid-column: 1; text-align: left; font-size: 2rem; margin-bottom: 12px; }
+    #education .geo-focus-wrap { grid-template-columns: 1fr; row-gap: 16px; align-items: start; }
+    #education .geo-focus-wrap .section-label { grid-column: 1; text-align: left; font-size: 2rem; margin-bottom: 4px; }
     #education .geo-map-panel { grid-column: 1; }
-    #education .geo-info-panel { grid-column: 1; padding: 0; }
-    #education .geo-map-panel img { max-height: clamp(300px, 55vh, 460px); }
-    #education .geo-country-list li { font-size: 1.05rem; }
+    #education .geo-caption { grid-column: 1; font-size: 0.95rem; line-height: 1.6; }
+    #education .geo-map-panel img { max-height: clamp(320px, 60vh, 480px); }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
     .hero-image { height: auto; max-width: none; background: #ffffff; }
     .hero-image img { width: 100%; height: auto; object-fit: contain; object-position: center top; }
@@ -1706,17 +1692,7 @@ MSc Forest Conservation, Imperial College, London</p>
       <div class="geo-map-panel">
         <img src="Southeast_Asia_location_mapwhole4.svg" alt="Map of Southeast Asia showing the geographic focus area">
       </div>
-      <div class="geo-info-panel">
-        <p class="geo-active">Active across:</p>
-        <ul class="geo-country-list" aria-label="Countries where work is active">
-          <li>Cambodia</li>
-          <li>Indonesia</li>
-          <li>Lao PDR</li>
-          <li>Timor-Leste</li>
-          <li>Thailand</li>
-          <li>Viet Nam</li>
-        </ul>
-      </div>
+      <p class="geo-caption"><span class="geo-caption-label">Active across:</span> Cambodia · Indonesia · Lao PDR · Timor-Leste · Thailand · Viet Nam</p>
     </div>
   </section>
 
