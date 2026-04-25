@@ -727,9 +727,9 @@
 
   #education .geo-focus-wrap {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.75fr);
+    grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.65fr);
     gap: 28px;
-    align-items: start;
+    align-items: end;
     margin-top: 6px;
   }
 
@@ -741,7 +741,7 @@
 
   #education .geo-map-panel {
     border: none;
-    padding: 12px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -757,7 +757,7 @@
   }
 
   #education .geo-info-panel {
-    padding: 18px;
+    padding: 0 0 0 8px;
   }
 
   #education .geo-active {
@@ -1129,9 +1129,9 @@
     header { padding: 0; margin: 0; width: 100%; overflow: visible; }
     section { padding: 28px 24px; scroll-margin-top: calc(56px + env(safe-area-inset-top)); }
     .exp-item { grid-template-columns: 1fr; gap: 10px; }
-    #education .geo-focus-wrap { grid-template-columns: 1fr; gap: 18px; }
-    #education .geo-info-panel { padding: 16px; }
-    #education .geo-map-panel img { max-height: clamp(320px, 60vh, 480px); }
+    #education .geo-focus-wrap { grid-template-columns: 1fr; gap: 20px; align-items: start; }
+    #education .geo-info-panel { padding: 0; }
+    #education .geo-map-panel img { max-height: clamp(300px, 55vh, 460px); }
     #education .geo-country-list li { font-size: 1.05rem; }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
     .hero-image { height: auto; max-width: none; background: #ffffff; }
