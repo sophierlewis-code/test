@@ -727,10 +727,18 @@
 
   #education .geo-focus-wrap {
     display: grid;
-    grid-template-columns: minmax(0, 1.7fr) minmax(200px, 0.55fr);
+    grid-template-columns: minmax(200px, 0.55fr) minmax(0, 1.7fr) minmax(200px, 0.55fr);
     gap: 32px;
-    align-items: end;
+    align-items: center;
     margin-top: 6px;
+  }
+
+  #education .geo-map-panel {
+    grid-column: 2;
+  }
+
+  #education .geo-info-panel {
+    grid-column: 3;
   }
 
   #education .geo-map-panel,
@@ -757,7 +765,7 @@
   }
 
   #education .geo-info-panel {
-    padding: 0 0 0.5cm 8px;
+    padding: 0 0 0 8px;
   }
 
   #education .geo-active {
@@ -1130,7 +1138,8 @@
     section { padding: 28px 24px; scroll-margin-top: calc(56px + env(safe-area-inset-top)); }
     .exp-item { grid-template-columns: 1fr; gap: 10px; }
     #education .geo-focus-wrap { grid-template-columns: 1fr; gap: 20px; align-items: start; }
-    #education .geo-info-panel { padding: 0; }
+    #education .geo-map-panel { grid-column: 1; }
+    #education .geo-info-panel { grid-column: 1; padding: 0; }
     #education .geo-map-panel img { max-height: clamp(300px, 55vh, 460px); }
     #education .geo-country-list li { font-size: 1.05rem; }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
