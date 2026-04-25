@@ -757,18 +757,15 @@
   }
 
   #education .geo-info-panel {
-    padding: 8px 18px 18px 32px;
-    border-left: 2px solid rgba(0, 92, 64, 0.35);
+    padding: 18px;
   }
 
   #education .geo-active {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--light-green);
-    margin: 0 0 24px;
+    font-family: 'Literata', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--header-green);
+    margin: 0 0 16px;
     max-width: none;
   }
 
@@ -779,18 +776,12 @@
   }
 
   #education .geo-country-list li {
-    color: var(--forest-dark);
     font-family: 'Literata', Georgia, serif;
-    font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.65rem);
+    font-size: 1.1rem;
     font-weight: 400;
-    line-height: 1;
+    color: var(--forest-dark);
+    line-height: 1.9;
     margin: 0;
-    padding: 18px 0;
-    border-bottom: 1px solid rgba(0, 92, 64, 0.15);
-  }
-
-  #education .geo-country-list li:first-child {
-    border-top: 1px solid rgba(0, 92, 64, 0.15);
   }
 
   /* REGIONS */
@@ -1139,9 +1130,9 @@
     section { padding: 28px 24px; scroll-margin-top: calc(56px + env(safe-area-inset-top)); }
     .exp-item { grid-template-columns: 1fr; gap: 10px; }
     #education .geo-focus-wrap { grid-template-columns: 1fr; gap: 18px; }
-    #education .geo-info-panel { padding: 16px 16px 16px 22px; }
+    #education .geo-info-panel { padding: 16px; }
     #education .geo-map-panel img { max-height: clamp(320px, 60vh, 480px); }
-    #education .geo-country-list li { font-size: clamp(1.12rem, 1.03rem + 0.7vw, 1.24rem); }
+    #education .geo-country-list li { font-size: 1.05rem; }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
     .hero-image { height: auto; max-width: none; background: #ffffff; }
     .hero-image img { width: 100%; height: auto; object-fit: contain; object-position: center top; }
