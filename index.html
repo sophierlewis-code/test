@@ -561,7 +561,7 @@
 
   #experience .experience-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 240px;
+    grid-template-columns: minmax(0, 1fr) clamp(280px, 26vw, 360px);
     gap: clamp(28px, 3.8vw, 62px);
     align-items: start;
   }
@@ -642,7 +642,7 @@
 
   #experience .visual-card img {
     width: 100%;
-    height: clamp(200px, 25vw, 280px);
+    height: clamp(280px, 30vw, 430px);
     object-fit: contain;
     object-position: center;
     display: block;
@@ -681,7 +681,7 @@
     #experience .work-visual-rail::-webkit-scrollbar { display: none; }
 
     #experience .visual-card {
-      flex: 0 0 min(62vw, 250px);
+      flex: 0 0 min(72vw, 320px);
       scroll-snap-align: start;
     }
   }
@@ -690,7 +690,7 @@
     #experience .recent-work h2 { margin: 0 0 28px; }
     #experience .work-entry { padding: 24px 0; gap: 8px; }
     #experience .visual-card {
-      flex-basis: min(75vw, 235px);
+      flex-basis: min(86vw, 330px);
     }
   }
 
