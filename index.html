@@ -897,28 +897,26 @@
     color: rgba(0, 62, 45, 0.5);
   }
 
-  .contact-form input::placeholder,
-  .contact-form textarea::placeholder {
-    color: rgba(255, 255, 255, 0.62);
-  }
-
   .submit-btn {
     align-self: flex-start;
-    background: #ffffff;
-    color: #003e2d;
-    padding: 12px 36px;
+    background: transparent;
+    color: #ffffff;
+    padding: 4px 0;
     font-family: 'DM Mono', monospace;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     font-size: 13px;
     border: none;
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.3s ease, opacity 0.3s ease;
     margin-top: 8px;
   }
 
   .submit-btn:hover {
-    opacity: 0.8;
+    color: var(--sage);
+    opacity: 1;
   }
 
   .contact-details {
@@ -1755,9 +1753,9 @@
     <p class="contact-intro">Get in touch to start a discussion on consultations or collaboration with the Lab</p>
     <div class="contact-container">
       <form class="contact-form" action="https://formspree.io/f/mwvrqrnz" method="POST">
-        <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
-        <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
-        <div class="form-group"><label>Message</label><textarea name="message" rows="4" required></textarea></div>
+        <div class="form-group"><input type="text" name="name" placeholder="Name" aria-label="Name" required></div>
+        <div class="form-group"><input type="email" name="email" placeholder="Email" aria-label="Email" required></div>
+        <div class="form-group"><textarea name="message" rows="4" placeholder="Message" aria-label="Message" required></textarea></div>
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
       <div class="contact-details">
