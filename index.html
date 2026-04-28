@@ -633,6 +633,16 @@
     margin-right: 0.5cm;
   }
 
+  @media (min-width: 1025px) {
+    #experience .work-visual-rail {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0, 92, 64, 0.34) transparent;
+      padding-right: 4px;
+    }
+  }
+
   #experience .visual-card {
     position: relative;
     background: #ffffff;
@@ -1840,6 +1850,32 @@ if (copyEmailBtn && copyEmailStatus) {
     }
   });
 }
+
+const syncExperienceRailHeight = () => {
+  const experienceSection = document.getElementById('experience');
+  if (!experienceSection) return;
+
+  const recentWork = experienceSection.querySelector('.recent-work');
+  const visualRail = experienceSection.querySelector('.work-visual-rail');
+  if (!recentWork || !visualRail) return;
+
+  if (window.innerWidth <= 1024) {
+    visualRail.style.maxHeight = '';
+    return;
+  }
+
+  visualRail.style.maxHeight = `${recentWork.offsetHeight}px`;
+};
+
+window.addEventListener('resize', syncExperienceRailHeight);
+window.addEventListener('load', syncExperienceRailHeight);
+requestAnimationFrame(syncExperienceRailHeight);
+
+document.querySelectorAll('#experience .work-visual-rail img').forEach((img) => {
+  if (img.complete) return;
+  img.addEventListener('load', syncExperienceRailHeight);
+  img.addEventListener('error', syncExperienceRailHeight);
+});
 
 </script>
 </body>
