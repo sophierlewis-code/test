@@ -447,6 +447,11 @@
     display: block;
   }
 
+  /* Remove divider line for the Exemplary forest management card only */
+  #publications .publication-card.exemplary-card .publication-image {
+    border-bottom: none;
+  }
+
   #publications .publication-content {
     padding: 12px 14px 14px;
   }
@@ -1383,7 +1388,7 @@ MSc Forest Conservation, Imperial College, London</p>
     <p class="section-label">Publications</p>
     <div class="publications-carousel">
       <div class="publications-scroll" id="publications-scroll" aria-label="Publications carousel">
-        <article class="publication-card">
+        <article class="publication-card exemplary-card">
           <a class="publication-link" href="https://openknowledge.fao.org/items/95e3fb5d-93c7-439c-ae6d-187ff0a543be" target="_blank" rel="noopener noreferrer" aria-label="Open publication: Exemplary forest management revisited">
             <div class="publication-image">
               <img src="FAO.jpg" alt="Cover page of Exemplary forest management revisited publication">
