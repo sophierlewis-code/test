@@ -844,7 +844,7 @@
   /* CONTACT */
   .contact-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.5fr 0.5fr;
     gap: 80px;
     margin-top: 32px;
   }
@@ -885,6 +885,20 @@
     color: #003e2d;
     outline: none;
     transition: border-color 0.3s ease;
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    overflow: auto;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  @media (min-width: 761px) {
+    .contact-form {
+      width: 75%;
+      justify-self: start;
+    }
   }
 
   .contact-form input:focus,
