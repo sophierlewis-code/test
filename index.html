@@ -410,16 +410,17 @@
     border-radius: 14px;
     overflow: hidden;
     border: 1px solid rgba(0, 26, 15, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   #publications .publication-link {
     display: block;
     color: inherit;
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  #publications .publication-link:hover {
+  #publications .publication-card:hover,
+  #publications .publication-card:focus-within {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 26, 15, 0.14);
   }
