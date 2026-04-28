@@ -900,6 +900,15 @@
     word-break: break-word;
   }
 
+  @media (min-width: 761px) {
+    .contact-details {
+      width: 50%;
+      justify-self: start;
+      min-height: clamp(300px, 33vw, 360px);
+      height: auto;
+    }
+  }
+
   .contact-form input:focus,
   .contact-form textarea:focus {
     border-color: var(--sage);
