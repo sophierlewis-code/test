@@ -853,10 +853,10 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    padding: clamp(20px, 2.6vw, 30px);
-    border-radius: 10px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
   }
 
   .form-group {
@@ -921,32 +921,37 @@
   .contact-details {
     display: flex;
     flex-direction: column;
-    gap: 28px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    padding: clamp(20px, 2.6vw, 30px);
+    gap: 12px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 92, 64, 0.2);
+    padding: clamp(10px, 1.4vw, 14px);
     border-radius: 10px;
+    align-self: start;
+    height: fit-content;
   }
 
-  .info-block h4 {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.78);
-    margin-bottom: 6px;
+  #contact .info-block h4 {
+    font-family: 'Literata', Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
+    color: var(--header-green);
+    margin-bottom: 0;
   }
 
   .info-block {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 0;
   }
 
-  .info-block p, .info-block a {
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--forest-dark);
+  #contact .info-block p,
+  #contact .info-block a {
+    font-family: 'Literata', Georgia, serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000000;
     text-decoration: none;
     line-height: 1.6;
   }
