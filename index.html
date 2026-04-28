@@ -559,6 +559,13 @@
   /* EXPERIENCE */
   .experience-list { display: flex; flex-direction: column; }
 
+  #experience .experience-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(240px, 22vw, 300px);
+    gap: clamp(28px, 3.8vw, 62px);
+    align-items: start;
+  }
+
   #experience .recent-work {
     margin: 0;
     background: #ffffff;
@@ -567,7 +574,7 @@
   @media (min-width: 1025px) {
     #experience .recent-work {
       margin: 0 0 0 0.5cm;
-      max-width: 60vw;
+      max-width: none;
     }
   }
 
@@ -619,9 +626,72 @@
     opacity: 0.78;
   }
 
+  #experience .work-visual-rail {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-right: 0.5cm;
+  }
+
+  #experience .visual-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid rgba(0, 92, 64, 0.14);
+    overflow: hidden;
+  }
+
+  #experience .visual-card img {
+    width: 100%;
+    height: clamp(210px, 24vw, 320px);
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background: #ffffff;
+    filter: saturate(0.95) contrast(1.02);
+  }
+
+  #experience .visual-card-caption {
+    margin: 0;
+    padding: 10px 12px 11px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(0, 26, 15, 0.68);
+    border-top: 1px solid rgba(0, 92, 64, 0.12);
+    background: #ffffff;
+  }
+
+  @media (max-width: 1024px) {
+    #experience .experience-layout {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    #experience .work-visual-rail {
+      margin-right: 0;
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    #experience .work-visual-rail::-webkit-scrollbar { display: none; }
+
+    #experience .visual-card {
+      flex: 0 0 min(62vw, 280px);
+      scroll-snap-align: start;
+    }
+  }
+
   @media (max-width: 760px) {
     #experience .recent-work h2 { margin: 0 0 28px; }
     #experience .work-entry { padding: 24px 0; gap: 8px; }
+    #experience .visual-card {
+      flex-basis: min(74vw, 285px);
+    }
   }
 
 
@@ -1491,30 +1561,46 @@
 
 
   <section id="experience">
-    <div class="recent-work">
-      <h2>Recent Work</h2>
-      <div class="work-list">
-        <article class="work-entry">
-          <p class="work-meta">ADRA UK · Timor-Leste · 2026</p>
-          <p class="work-desc">Concept note and logframe for an EU call supporting the Directorate General of Forestry.</p>
-        </article>
-        <article class="work-entry">
-          <p class="work-meta">RECOFTC · Southeast Asia · 2024&ndash;2025</p>
-          <p class="work-desc">Research-to-policy strategy across seven countries, developing and coordinating National Advisory Committees, workshops, and participatory action research training.</p>
-        </article>
-        <article class="work-entry">
-          <p class="work-meta">FAO &amp; Wyss Academy · Asia-Pacific · 2023</p>
-          <p class="work-desc">Technical synthesis of sustainable forest management across ten countries, examining two decades of changes in tenure, policy, and community resilience.</p>
-        </article>
-        <article class="work-entry">
-          <p class="work-meta">RECOFTC &amp; IIED · Southeast Asia · 2023</p>
-          <p class="work-desc">Scoping study for the Reversing Environmental Degradation in Africa and Asia (REDAA) programme on restoration and natural resource management priorities.</p>
-        </article>
-        <article class="work-entry">
-          <p class="work-meta">Landesa · Thailand · 2022</p>
-          <p class="work-desc">Land and resource rights profile examining palm oil supply chain risks for Indigenous and customary communities.</p>
-        </article>
+    <div class="experience-layout">
+      <div class="recent-work">
+        <h2>Recent Work</h2>
+        <div class="work-list">
+          <article class="work-entry">
+            <p class="work-meta">ADRA UK · Timor-Leste · 2026</p>
+            <p class="work-desc">Concept note and logframe for an EU call supporting the Directorate General of Forestry.</p>
+          </article>
+          <article class="work-entry">
+            <p class="work-meta">RECOFTC · Southeast Asia · 2024&ndash;2025</p>
+            <p class="work-desc">Research-to-policy strategy across seven countries, developing and coordinating National Advisory Committees, workshops, and participatory action research training.</p>
+          </article>
+          <article class="work-entry">
+            <p class="work-meta">FAO &amp; Wyss Academy · Asia-Pacific · 2023</p>
+            <p class="work-desc">Technical synthesis of sustainable forest management across ten countries, examining two decades of changes in tenure, policy, and community resilience.</p>
+          </article>
+          <article class="work-entry">
+            <p class="work-meta">RECOFTC &amp; IIED · Southeast Asia · 2023</p>
+            <p class="work-desc">Scoping study for the Reversing Environmental Degradation in Africa and Asia (REDAA) programme on restoration and natural resource management priorities.</p>
+          </article>
+          <article class="work-entry">
+            <p class="work-meta">Landesa · Thailand · 2022</p>
+            <p class="work-desc">Land and resource rights profile examining palm oil supply chain risks for Indigenous and customary communities.</p>
+          </article>
+        </div>
       </div>
+      <aside class="work-visual-rail" aria-label="Recent work visual highlights">
+        <figure class="visual-card">
+          <img src="Explore.webp" alt="Forest and field research documentation from recent consulting work">
+          <figcaption class="visual-card-caption">Policy meeting · 2025</figcaption>
+        </figure>
+        <figure class="visual-card">
+          <img src="IMG_5803.jpg" alt="Field research and engagement activities in 2023">
+          <figcaption class="visual-card-caption">Field work · 2023</figcaption>
+        </figure>
+        <figure class="visual-card">
+          <img src="REDAA.jpeg" alt="REDAA programme workshop and collaboration context">
+          <figcaption class="visual-card-caption">Synthesis workshop · 2023</figcaption>
+        </figure>
+      </aside>
     </div>
   </section>
 
