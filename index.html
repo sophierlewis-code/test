@@ -853,6 +853,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
+    min-width: 0;
     background: transparent;
     border: 0;
     padding: 0;
@@ -863,6 +865,8 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+    width: 100%;
+    min-width: 0;
   }
 
   .form-group label {
@@ -875,7 +879,9 @@
 
   .contact-form input,
   .contact-form textarea {
+    display: block;
     width: 100%;
+    max-width: 100%;
     padding: 14px 16px;
     border: 1px solid rgba(15, 43, 15, 0.24);
     border-radius: 4px;
@@ -885,6 +891,22 @@
     color: #003e2d;
     outline: none;
     transition: border-color 0.3s ease;
+  }
+
+  .contact-form textarea {
+    min-height: clamp(170px, 24vw, 240px);
+    resize: vertical;
+    overflow: auto;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  @media (min-width: 761px) {
+    .contact-form textarea,
+    .contact-details {
+      height: clamp(190px, 22vw, 220px);
+      min-height: clamp(190px, 22vw, 220px);
+    }
   }
 
   .contact-form input:focus,
