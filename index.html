@@ -379,11 +379,11 @@
 
   /* PUBLICATIONS */
   #publications {
-    background: #ffffff !important;
+    background: var(--header-green) !important;
   }
 
   #publications .section-label {
-    color: var(--header-green);
+    color: var(--paper);
   }
 
   #publications .publications-carousel {
@@ -404,19 +404,39 @@
   #publications .publications-scroll::-webkit-scrollbar { display: none; }
 
   #publications .publication-card {
-    flex: 0 0 300px;
+    flex: 0 0 330px;
     scroll-snap-align: start;
     background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 26, 15, 0.08);
+  }
+
+  #publications .publication-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  #publications .publication-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 26, 15, 0.14);
+  }
+
+  #publications .publication-link:focus-visible {
+    outline: 2px solid var(--light-green);
+    outline-offset: 2px;
   }
 
   #publications .publication-image {
     width: 100%;
     height: 424px;
     background: #ffffff;
-    border: 1px solid #e5e5e5;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 1px solid var(--header-green);
   }
 
   #publications .publication-image img {
@@ -428,7 +448,7 @@
   }
 
   #publications .publication-content {
-    padding-top: 12px;
+    padding: 12px 14px 14px;
   }
 
   #publications .pub-title {
@@ -439,15 +459,8 @@
     margin: 0 0 8px;
   }
 
-  #publications .pub-title a {
+  #publications .pub-title {
     color: var(--header-green);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  #publications .pub-title a:hover {
-    color: var(--sage);
-    text-decoration: none;
   }
 
   #publications .pub-meta,
@@ -478,13 +491,13 @@
     height: 8px;
     border-radius: 50%;
     background: transparent;
-    border: 2px solid #005C40;
+    border: 2px solid #ffffff;
     opacity: 0.4;
     transition: all 0.3s;
   }
 
   #publications .pub-dot.active {
-    background: #005C40;
+    background: #ffffff;
     opacity: 1;
   }
 
@@ -1371,64 +1384,76 @@ MSc Forest Conservation, Imperial College, London</p>
     <div class="publications-carousel">
       <div class="publications-scroll" id="publications-scroll" aria-label="Publications carousel">
         <article class="publication-card">
-          <div class="publication-image">
-            <img src="FAO.jpg" alt="Cover page of Exemplary forest management revisited publication">
-          </div>
-          <div class="publication-content">
-            <p class="pub-title"><a href="https://openknowledge.fao.org/items/95e3fb5d-93c7-439c-ae6d-187ff0a543be" target="_blank" rel="noopener noreferrer">Exemplary forest management revisited</a></p>
-            <p class="pub-meta">FAO · 2025</p>
-            <p class="pub-role">Contributing author, pp. 19–31.</p>
-          </div>
+          <a class="publication-link" href="https://openknowledge.fao.org/items/95e3fb5d-93c7-439c-ae6d-187ff0a543be" target="_blank" rel="noopener noreferrer" aria-label="Open publication: Exemplary forest management revisited">
+            <div class="publication-image">
+              <img src="FAO.jpg" alt="Cover page of Exemplary forest management revisited publication">
+            </div>
+            <div class="publication-content">
+              <p class="pub-title">Exemplary forest management revisited</p>
+              <p class="pub-meta">FAO · 2025</p>
+              <p class="pub-role">Contributing author, pp. 19–31.</p>
+            </div>
+          </a>
         </article>
         <article class="publication-card">
-          <div class="publication-image">
-            <img src="Safeguarding.png" alt="Cover page of Safeguarding customary forest tenure publication">
-          </div>
-          <div class="publication-content">
-            <p class="pub-title"><a href="https://www.tandfonline.com/doi/full/10.1080/1747423X.2023.2184513" target="_blank" rel="noopener noreferrer">Safeguarding customary forest tenure</a></p>
-            <p class="pub-meta">International Forestry Review · 2023</p>
-            <p class="pub-role">Lead Author</p>
-          </div>
+          <a class="publication-link" href="https://www.tandfonline.com/doi/full/10.1080/1747423X.2023.2184513" target="_blank" rel="noopener noreferrer" aria-label="Open publication: Safeguarding customary forest tenure">
+            <div class="publication-image">
+              <img src="Safeguarding.png" alt="Cover page of Safeguarding customary forest tenure publication">
+            </div>
+            <div class="publication-content">
+              <p class="pub-title">Safeguarding customary forest tenure</p>
+              <p class="pub-meta">International Forestry Review · 2023</p>
+              <p class="pub-role">Lead Author</p>
+            </div>
+          </a>
         </article>
         <article class="publication-card">
-          <div class="publication-image">
-            <img src="REDAAdoc.jpg" alt="Cover page of Research-to-action priorities in Southeast Asia report">
-          </div>
-          <div class="publication-content">
-            <p class="pub-title"><a href="https://www.redaa.org/scoping-study-research-action-priorities-redaa-programme-southeast-asia" target="_blank" rel="noopener noreferrer">Research-to-action priorities in Southeast Asia</a></p>
-            <p class="pub-meta">REDAA Programme Report · 2023</p>
-            <p class="pub-role">Lead Author</p>
-          </div>
+          <a class="publication-link" href="https://www.redaa.org/scoping-study-research-action-priorities-redaa-programme-southeast-asia" target="_blank" rel="noopener noreferrer" aria-label="Open publication: Research-to-action priorities in Southeast Asia">
+            <div class="publication-image">
+              <img src="REDAAdoc.jpg" alt="Cover page of Research-to-action priorities in Southeast Asia report">
+            </div>
+            <div class="publication-content">
+              <p class="pub-title">Research-to-action priorities in Southeast Asia</p>
+              <p class="pub-meta">REDAA Programme Report · 2023</p>
+              <p class="pub-role">Lead Author</p>
+            </div>
+          </a>
         </article>
         <article class="publication-card">
-          <div class="publication-image">
-            <img src="EU-FLEGT.png" alt="Cover page of The political logics of EU-FLEGT publication">
-          </div>
-          <div class="publication-content">
-            <p class="pub-title"><a href="https://journals.librarypublishing.arizona.edu/jpe/article/id/2398/" target="_blank" rel="noopener noreferrer">The political logics of EU-FLEGT</a></p>
-            <p class="pub-meta">Journal of Political Ecology · 2022</p>
-            <p class="pub-role">Lead Author</p>
+          <a class="publication-link" href="https://journals.librarypublishing.arizona.edu/jpe/article/id/2398/" target="_blank" rel="noopener noreferrer" aria-label="Open publication: The political logics of EU-FLEGT">
+            <div class="publication-image">
+              <img src="EU-FLEGT.png" alt="Cover page of The political logics of EU-FLEGT publication">
+            </div>
+            <div class="publication-content">
+              <p class="pub-title">The political logics of EU-FLEGT</p>
+              <p class="pub-meta">Journal of Political Ecology · 2022</p>
+              <p class="pub-role">Lead Author</p>
              </div>
+          </a>
         </article>
         <article class="publication-card">
-          <div class="publication-image">
-            <img src="Assessing.png" alt="Cover page of Assessing forest governance in the Greater Mekong publication">
-          </div>
-          <div class="publication-content">
-            <p class="pub-title"><a href="https://www.mdpi.com/1999-4907/10/1/47" target="_blank" rel="noopener noreferrer">Assessing forest governance in the Greater Mekong</a></p>
-            <p class="pub-meta">Forests · 2019</p>
-            <p class="pub-role">Co-Author</p>
-          </div>
+          <a class="publication-link" href="https://www.mdpi.com/1999-4907/10/1/47" target="_blank" rel="noopener noreferrer" aria-label="Open publication: Assessing forest governance in the Greater Mekong">
+            <div class="publication-image">
+              <img src="Assessing.png" alt="Cover page of Assessing forest governance in the Greater Mekong publication">
+            </div>
+            <div class="publication-content">
+              <p class="pub-title">Assessing forest governance in the Greater Mekong</p>
+              <p class="pub-meta">Forests · 2019</p>
+              <p class="pub-role">Co-Author</p>
+            </div>
+          </a>
         </article>
         <article class="publication-card">
-          <div class="publication-image">
-            <img src="uneven.png" alt="Cover page of Regulatory barriers to communities making a living from timber publication">
-          </div>
-          <div class="publication-content">
-            <p class="pub-title"><a href="https://www.mdpi.com/1999-4907/6/10/3433" target="_blank" rel="noopener noreferrer">Regulatory barriers to communities making a living from timber</a></p>
-            <p class="pub-meta">Forests · 2015</p>
-            <p class="pub-role">Co-Author</p>
-          </div>
+          <a class="publication-link" href="https://www.mdpi.com/1999-4907/6/10/3433" target="_blank" rel="noopener noreferrer" aria-label="Open publication: Regulatory barriers to communities making a living from timber">
+            <div class="publication-image">
+              <img src="uneven.png" alt="Cover page of Regulatory barriers to communities making a living from timber publication">
+            </div>
+            <div class="publication-content">
+              <p class="pub-title">Regulatory barriers to communities making a living from timber</p>
+              <p class="pub-meta">Forests · 2015</p>
+              <p class="pub-role">Co-Author</p>
+            </div>
+          </a>
         </article>
       </div>
       <div class="publications-dots" id="publications-dots" aria-label="Publications carousel progress">
