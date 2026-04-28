@@ -627,49 +627,53 @@
   }
 
   #experience .work-visual-rail {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
     gap: 16px;
     margin-right: 0.5cm;
+    height: var(--experience-rail-height, auto);
   }
 
   @media (min-width: 1025px) {
     #experience .work-visual-rail {
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(0, 92, 64, 0.34) transparent;
-      padding-right: 4px;
+      overflow: hidden;
     }
   }
 
   #experience .visual-card {
     position: relative;
-    background: #ffffff;
-    border: 1px solid rgba(0, 92, 64, 0.14);
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    background: transparent;
+    border: none;
     overflow: hidden;
   }
 
   #experience .visual-card img {
     width: 100%;
-    height: clamp(210px, 24vw, 320px);
+    height: 100%;
     object-fit: contain;
     object-position: center;
     display: block;
-    background: #ffffff;
+    background: transparent;
     filter: saturate(0.95) contrast(1.02);
+  }
+
+  #experience .work-visual-rail .visual-card:first-child img {
+    object-fit: cover;
+    object-position: center;
   }
 
   #experience .visual-card-caption {
     margin: 0;
-    padding: 10px 12px 11px;
+    padding: 10px 0 0;
     font-family: 'DM Mono', monospace;
     font-size: 0.7rem;
     letter-spacing: 0.08em;
-    text-transform: uppercase;
+    text-transform: none;
     color: rgba(0, 26, 15, 0.68);
-    border-top: 1px solid rgba(0, 92, 64, 0.12);
-    background: #ffffff;
+    border-top: none;
+    background: transparent;
   }
 
   @media (max-width: 1024px) {
@@ -680,7 +684,9 @@
 
     #experience .work-visual-rail {
       margin-right: 0;
+      height: auto;
       flex-direction: row;
+      display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       padding-bottom: 6px;
@@ -866,38 +872,47 @@
   .contact-form input,
   .contact-form textarea {
     width: 100%;
-    padding: 10px 0;
-    border: none;
-    border-bottom: 1px solid rgba(15,43,15,0.2);
-    background: transparent;
+    padding: 14px 16px;
+    border: 1px solid rgba(15, 43, 15, 0.24);
+    border-radius: 4px;
+    background: #ffffff;
     font-family: 'Literata', Georgia, serif;
     font-size: 1rem;
     color: var(--forest-dark);
     outline: none;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s ease;
   }
 
   .contact-form input:focus,
   .contact-form textarea:focus {
-    border-bottom: 1px solid var(--sage);
+    border-color: var(--sage);
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: rgba(15, 43, 15, 0.45);
   }
 
   .submit-btn {
     align-self: flex-start;
-    background: var(--forest-mid);
-    color: var(--paper);
+    background: #ffffff;
+    color: var(--header-green);
     padding: 12px 36px;
     font-family: 'DM Mono', monospace;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     font-size: 13px;
-    border: none;
+    border: 1px solid rgba(0, 92, 64, 0.35);
     cursor: pointer;
-    transition: background 0.3s;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
     margin-top: 8px;
   }
 
-  .submit-btn:hover { background: var(--header-green); }
+  .submit-btn:hover {
+    background: rgba(0, 92, 64, 0.08);
+    opacity: 1;
+  }
 
   .contact-details {
     display: flex;
@@ -914,8 +929,15 @@
     margin-bottom: 6px;
   }
 
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
   .info-block p, .info-block a {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    font-weight: 500;
     color: var(--forest-dark);
     text-decoration: none;
     line-height: 1.6;
@@ -1196,8 +1218,7 @@
     padding: 0 !important;
   }
 
-  #experience,
-  #contact {
+  #experience {
     background: #ffffff !important;
   }
 
@@ -1604,11 +1625,11 @@
         </figure>
         <figure class="visual-card">
           <img src="IMG_5803.jpg" alt="Field research and engagement activities in 2023">
-          <figcaption class="visual-card-caption">Field work · 2023</figcaption>
+          <figcaption class="visual-card-caption">Synthesis workshop · 2023</figcaption>
         </figure>
         <figure class="visual-card">
           <img src="REDAA.jpeg" alt="REDAA programme workshop and collaboration context">
-          <figcaption class="visual-card-caption">Synthesis workshop · 2023</figcaption>
+          <figcaption class="visual-card-caption">Field work · 2023</figcaption>
         </figure>
       </aside>
     </div>
@@ -1723,9 +1744,9 @@
     <p class="contact-intro">Get in touch to start a discussion on consultations or collaboration with the Lab</p>
     <div class="contact-container">
       <form class="contact-form" action="https://formspree.io/f/mwvrqrnz" method="POST">
-        <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
-        <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
-        <div class="form-group"><label>Message</label><textarea name="message" rows="4" required></textarea></div>
+        <div class="form-group"><input type="text" name="name" placeholder="Name" aria-label="Name" required></div>
+        <div class="form-group"><input type="email" name="email" placeholder="Email" aria-label="Email" required></div>
+        <div class="form-group"><textarea name="message" rows="4" placeholder="Message" aria-label="Message" required></textarea></div>
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
       <div class="contact-details">
@@ -1860,11 +1881,11 @@ const syncExperienceRailHeight = () => {
   if (!recentWork || !visualRail) return;
 
   if (window.innerWidth <= 1024) {
-    visualRail.style.maxHeight = '';
+    visualRail.style.removeProperty('--experience-rail-height');
     return;
   }
 
-  visualRail.style.maxHeight = `${recentWork.offsetHeight}px`;
+  visualRail.style.setProperty('--experience-rail-height', `${recentWork.offsetHeight}px`);
 };
 
 window.addEventListener('resize', syncExperienceRailHeight);
