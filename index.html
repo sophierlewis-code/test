@@ -847,16 +847,17 @@
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     margin-top: 32px;
+    align-items: stretch;
   }
 
   .contact-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    padding: clamp(20px, 2.6vw, 30px);
-    border-radius: 10px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
   }
 
   .form-group {
@@ -921,32 +922,38 @@
   .contact-details {
     display: flex;
     flex-direction: column;
-    gap: 28px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    padding: clamp(20px, 2.6vw, 30px);
+    gap: 12px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 92, 64, 0.2);
+    padding: clamp(10px, 1.4vw, 14px);
     border-radius: 10px;
+    align-self: stretch;
+    height: auto;
+    margin-bottom: calc(8px + 2.8em);
   }
 
-  .info-block h4 {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.78);
-    margin-bottom: 6px;
+  #contact .info-block h4 {
+    font-family: 'Literata', Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
+    color: var(--header-green);
+    margin-bottom: 0;
   }
 
   .info-block {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 0;
   }
 
-  .info-block p, .info-block a {
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--forest-dark);
+  #contact .info-block p,
+  #contact .info-block a {
+    font-family: 'Literata', Georgia, serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000000;
     text-decoration: none;
     line-height: 1.6;
   }
@@ -1179,6 +1186,10 @@
     #education .geo-text-overlay { position: static; text-align: left; margin-top: 16px; max-width: none; }
     #education .geo-country-line { font-size: 0.85rem; }
     .contact-container { grid-template-columns: 1fr; gap: 48px; }
+    .contact-details {
+      align-self: auto;
+      margin-bottom: 0;
+    }
     .hero-image { height: auto; max-width: none; background: #ffffff; }
     .hero-image img { width: 100%; height: auto; object-fit: contain; object-position: center top; }
     .hero-overlay div { padding-left: 1rem !important; padding-right: 1rem !important; padding-bottom: 0.75rem !important; }
