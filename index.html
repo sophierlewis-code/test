@@ -642,10 +642,12 @@
 
   #experience .visual-card img {
     width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
+    height: clamp(200px, 25vw, 280px);
+    object-fit: contain;
+    object-position: center;
     display: block;
-    filter: saturate(0.95) contrast(1.04);
+    background: #ffffff;
+    filter: saturate(0.95) contrast(1.02);
   }
 
   #experience .visual-card-caption {
@@ -658,22 +660,6 @@
     color: rgba(0, 26, 15, 0.68);
     border-top: 1px solid rgba(0, 92, 64, 0.12);
     background: #ffffff;
-  }
-
-  #experience .visual-card--placeholder {
-    min-height: 172px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-style: dashed;
-    border-color: rgba(0, 92, 64, 0.34);
-  }
-
-  #experience .visual-card--placeholder .visual-card-caption {
-    width: 100%;
-    text-align: center;
-    border-top: none;
-    background: rgba(0, 92, 64, 0.03);
   }
 
   @media (max-width: 1024px) {
@@ -1604,14 +1590,15 @@
       <aside class="work-visual-rail" aria-label="Recent work visual highlights">
         <figure class="visual-card">
           <img src="Explore.webp" alt="Forest and field research documentation from recent consulting work">
-          <figcaption class="visual-card-caption">Fieldwork · 2025</figcaption>
+          <figcaption class="visual-card-caption">Policy meeting · 2025</figcaption>
+        </figure>
+        <figure class="visual-card">
+          <img src="IMG_5803.jpg" alt="Field research and engagement activities in 2023">
+          <figcaption class="visual-card-caption">Field work · 2023</figcaption>
         </figure>
         <figure class="visual-card">
           <img src="REDAA.jpeg" alt="REDAA programme workshop and collaboration context">
-          <figcaption class="visual-card-caption">REDAA · 2023</figcaption>
-        </figure>
-        <figure class="visual-card visual-card--placeholder" aria-label="Space reserved for upcoming project image">
-          <figcaption class="visual-card-caption">Upcoming project visual</figcaption>
+          <figcaption class="visual-card-caption">Synthesis workshop · 2023</figcaption>
         </figure>
       </aside>
     </div>
