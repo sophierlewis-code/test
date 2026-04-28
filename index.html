@@ -877,7 +877,7 @@
   .contact-form textarea {
     width: 100%;
     padding: 14px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(15, 43, 15, 0.24);
     border-radius: 4px;
     background: #ffffff;
     font-family: 'Literata', Georgia, serif;
@@ -894,19 +894,19 @@
 
   .contact-form input::placeholder,
   .contact-form textarea::placeholder {
-    color: rgba(0, 62, 45, 0.5);
+    color: rgba(15, 43, 15, 0.45);
   }
 
   .submit-btn {
     align-self: flex-start;
     background: #ffffff;
-    color: #003e2d;
+    color: var(--header-green);
     padding: 12px 36px;
     font-family: 'DM Mono', monospace;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     font-size: 13px;
-    border: none;
+    border: 1px solid rgba(0, 92, 64, 0.35);
     cursor: pointer;
     text-decoration: none;
     transition: opacity 0.3s ease;
@@ -914,7 +914,8 @@
   }
 
   .submit-btn:hover {
-    opacity: 0.82;
+    background: rgba(0, 92, 64, 0.08);
+    opacity: 1;
   }
 
   .contact-details {
@@ -945,7 +946,7 @@
   .info-block p, .info-block a {
     font-size: 1.15rem;
     font-weight: 500;
-    color: #ffffff;
+    color: var(--forest-dark);
     text-decoration: none;
     line-height: 1.6;
   }
