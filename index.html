@@ -520,7 +520,13 @@
 
   #experience .recent-work {
     margin: 0;
-    padding: 0 clamp(0px, 4vw, 64px);
+  }
+
+  @media (min-width: 1025px) {
+    #experience .recent-work {
+      margin: 0 0 0 0.5cm;
+      max-width: 60vw;
+    }
   }
 
   #experience .recent-work h2 {
