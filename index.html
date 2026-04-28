@@ -1112,132 +1112,218 @@
   /* ── ABOUT SECTION ── */
   #about {
     background: #ffffff !important;
-    padding: 72px 10% !important;
+    padding: 0 !important;
   }
 
-  .about-inner {
+  #about .about-inner {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 72px 8%;
     display: flex;
     flex-direction: column;
+    gap: 57px;
+    align-items: center;
+  }
+
+  #about .label-box {
+    width: 100%;
+    background: var(--header-green);
+    color: #ffffff;
+    padding: 16px 48px;
+    text-align: center;
+    border-radius: 4px;
+    font-family: 'Literata', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+
+  #about .content-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  #about .content-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  #about .photo-column {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #about .photo-card {
+    position: relative;
+    width: 100%;
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 20px 60px rgba(0, 26, 15, 0.08), 0 8px 24px rgba(0, 26, 15, 0.04);
+    border-radius: 2px;
+    border: 1px solid rgba(0, 92, 64, 0.25);
+  }
+
+  #about .photo-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  #about .photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    filter: contrast(1.01) saturate(0.96);
+  }
+
+  #about .text-column {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  #about .heading {
+    margin: 0;
+    color: var(--forest-dark);
+    font-family: 'Literata', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  #about .body-text {
+    margin: 0;
+    color: rgba(0, 26, 15, 0.88);
+    font-family: 'Literata', Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.65;
+    max-width: none;
+  }
+
+  #about .italic-text {
+    margin: 0;
+    color: var(--forest-dark);
+    font-family: 'Literata', Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+    font-style: italic;
+    max-width: none;
+  }
+
+  #about .credentials-box {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  #about .credential-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: 32px;
   }
 
-  .about-photo {
-    width: 100%;
-    position: relative;
-  }
-
-  .about-photo-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    border: 1px solid rgba(0, 92, 64, 0.25);
-    background: #f7faf8;
-    padding: 14px;
-  }
-
-  .about-photo-wrap img.about-portrait {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-    display: block;
-  }
-
-  .about-text {
-    position: relative;
-    padding: 0;
+  #about .credential-text-wrap {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    background: transparent;
-  }
-
-  .about-text .section-label {
-    color: var(--header-green);
-    margin-bottom: 14px;
-  }
-
-  .about-heading {
-    font-family: 'Literata', Georgia, serif;
-    font-weight: 500;
-    font-size: 0.95rem;
-    color: var(--forest-dark);
-    line-height: 1.45;
-    margin: 0 0 6px;
-    max-width: none;
-  }
-
-  .about-body {
-    font-family: 'Literata', Georgia, serif;
-    font-weight: 400;
-    font-size: 0.8rem;
-    color: var(--forest-dark);
-    line-height: 1.8;
-    margin: 0;
-    max-width: none;
-  }
-
-  .about-italic {
-    font-family: 'Literata', Georgia, serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 0.8rem;
-    color: var(--forest-dark);
-    line-height: 1.8;
-    margin: 8px 0 0;
-    max-width: none;
-  }
-
-  .about-divider {
-    margin: 10px 0 4px;
-    display: flex;
+    gap: 4px;
     align-items: center;
-    gap: 10px;
   }
 
-  .about-divider::before,
-  .about-divider::after {
-    content: "";
-    height: 2px;
-    background: #005c40;
+  #about .credential-text {
+    margin: 0;
+    color: var(--forest-dark);
+    font-family: 'Literata', Georgia, serif;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  #about .credential-university {
+    margin: 0;
+    color: var(--forest-dark);
+    font-family: 'Literata', Georgia, serif;
+    font-size: 0.85rem;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    font-weight: 400;
+    text-align: center;
     opacity: 0.6;
   }
 
-  .about-divider::before { width: 16px; flex-shrink: 0; }
-  .about-divider::after { flex: 1; }
-  .about-divider svg { flex-shrink: 0; }
-
-  .about-credentials-title {
-    font-family: 'Literata', Georgia, serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--forest-dark);
-    margin: 0;
+  #about .separator {
+    width: 1px;
+    height: 24px;
+    background: var(--forest-dark);
+    opacity: 0.15;
+    flex-shrink: 0;
   }
 
-  .about-credentials {
-    font-family: 'Literata', Georgia, serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: var(--forest-dark);
-    line-height: 1.8;
-    white-space: pre-line;
-    margin: 0;
+  @media (max-width: 1024px) {
+    #about .content-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    #about .photo-column {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    #about .text-column {
+      padding-top: 0;
+      gap: 22px;
+    }
   }
 
-  @media (min-width: 760px) {
-    .about-inner { flex-direction: row; align-items: flex-start; }
-    .about-photo { flex: 0 0 min(30vw, 410px); max-width: min(30vw, 410px); order: 2; }
-    .about-photo-wrap { width: 100%; }
-    .about-photo-wrap img.about-portrait { width: 100%; height: 100%; }
-    .about-text { flex: 1; min-width: 0; order: 1; padding-right: 3.5rem; justify-content: flex-start; gap: 14px; }
-    .about-text .section-label { position: static; }
-    .about-heading { font-size: clamp(0.95rem, 1.3vw, 1.2rem); margin: 0 0 6px; }
-    .about-body { font-size: clamp(0.8rem, 1.05vw, 0.95rem); line-height: 1.65; margin: 0; }
-    .about-body + .about-italic { margin-top: 6px; }
-    .about-italic { font-size: clamp(0.8rem, 1.05vw, 0.95rem); line-height: 1.65; margin: 0; }
-    .about-credentials-title { font-size: clamp(0.95rem, 1.3vw, 1.2rem); }
-    .about-credentials { font-size: clamp(0.8rem, 1.05vw, 0.95rem); line-height: 1.7; }
+  @media (max-width: 760px) {
+    #about .about-inner {
+      gap: 2.5rem;
+      padding: 48px 24px;
+    }
+    #about .label-box {
+      font-size: 2rem;
+      padding: 14px 24px;
+    }
+    #about .photo-column {
+      order: -1;
+    }
+    #about .heading {
+      font-size: 1.2rem;
+    }
+    #about .body-text,
+    #about .italic-text {
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+    #about .credentials-box {
+      gap: 16px;
+      justify-content: center;
+    }
+    #about .credential-item {
+      gap: 16px;
+    }
   }
 </style>
 </head>
@@ -1277,30 +1363,50 @@
 
   <section id="about">
     <div class="about-inner">
+      <div class="label-box">About</div>
+      <div class="content-wrapper">
+        <div class="content-grid">
+          <div class="photo-column">
+            <div class="photo-card">
+              <div class="photo-wrap">
+                <img src="profile3.JPG" alt="Portrait of Dr. Sophie Rose Lewis" class="photo">
+              </div>
+            </div>
+          </div>
 
-      <!-- Photo column -->
-      <div class="about-photo">
-        <div class="about-photo-wrap">
-          <img class="about-portrait" src="profile3.JPG" alt="Dr. Sophie Rose Lewis">
+          <div class="text-column">
+            <p class="heading">Forest Governance Lab is the independent consulting practice of Dr. Sophie Rose Lewis.</p>
+            <p class="body-text">With over 15 years working across Southeast Asia, I specialise in forest governance, social forestry, resource rights and land tenure security — from the ground level through to policy.</p>
+            <p class="body-text">I work with NGOs, governments, civil society organisations, Indigenous Peoples, and local communities, bringing both technical depth and practical understanding.</p>
+            <p class="italic-text">I focus on outputs that are high-quality, grounded, and actionable.</p>
+          </div>
+        </div>
+
+        <div class="credentials-box">
+          <div class="credential-item">
+            <div class="credential-text-wrap">
+              <span class="credential-text">Postdoc, Political Science</span>
+              <span class="credential-university">Chulalongkorn University</span>
+            </div>
+            <div class="separator" aria-hidden="true"></div>
+          </div>
+
+          <div class="credential-item">
+            <div class="credential-text-wrap">
+              <span class="credential-text">PhD, Political Ecology</span>
+              <span class="credential-university">University of British Columbia</span>
+            </div>
+            <div class="separator" aria-hidden="true"></div>
+          </div>
+
+          <div class="credential-item">
+            <div class="credential-text-wrap">
+              <span class="credential-text">MSc, Forest Conservation</span>
+              <span class="credential-university">Imperial College London</span>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Text column -->
-      <div class="about-text">
-        <p class="section-label">About</p>
-        <p class="about-heading">Forest Governance Lab is the independent consulting practice of Dr. Sophie Rose Lewis.</p>
-        <p class="about-body">With over 15 years working across Southeast Asia, I specialise in forest governance, social forestry, resource rights and land tenure security — from the ground level through to policy.</p>
-        <p class="about-body">I work with NGOs, governments, civil society organisations, Indigenous Peoples, and local communities, bringing both technical depth and practical understanding.</p>
-        <p class="about-italic">I focus on outputs that are high-quality, grounded, and actionable.</p>
-        <div class="about-divider" aria-hidden="true">
-          <svg width="14" height="17" viewBox="0 0 10 12" fill="none"><path d="M5 1 Q9 6 5 11 Q1 6 5 1Z" stroke="#005c40" stroke-width="1.5" opacity="0.6"/></svg>
-        </div>
-        <p class="about-credentials-title">Credentials</p>
-        <p class="about-credentials">Postdoctoral, Faculty of Political Science. Chulalongkorn University, Bangkok, Thailand
-PhD Forestry, University of British Columbia, Vancouver Canada,
-MSc Forest Conservation, Imperial College, London</p>
-      </div>
-
     </div>
   </section>
 
