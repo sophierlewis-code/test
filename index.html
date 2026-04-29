@@ -305,42 +305,59 @@
   }
 
   /* SERVICES GRID */
+  #services .services-heading {
+    margin: 0 0 30px;
+    text-align: center;
+    font-family: 'Literata', Georgia, serif;
+    font-size: clamp(2.2rem, 3.2vw, 2.9rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: 0.01em;
+    color: var(--paper);
+  }
+
   #services .services-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-auto-rows: 1fr;
-    gap: 38px;
+    gap: 42px;
     margin: 0 auto;
   }
 
   #services .tile {
     min-height: 220px;
     background: #ffffff;
-    padding: 34px 28px 28px;
+    border-radius: 6px;
+    padding: 36px 30px 30px;
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 13px;
   }
 
-  #services .tile--intro { justify-content: flex-start; }
+  #services .tile--intro {
+    justify-content: center;
+    text-align: center;
+    padding: 40px 34px;
+  }
 
-  #services .tile--intro h2 {
+  #services .tile--intro p {
     margin: 0;
     font-family: 'Literata', Georgia, serif;
-    font-size: clamp(2.2rem, 3.2vw, 2.9rem);
-    font-weight: 600;
-    line-height: 1.08;
-    letter-spacing: 0.01em;
+    font-size: 1.33rem;
+    font-weight: 500;
+    line-height: 1.32;
+    letter-spacing: 0;
     color: var(--header-green);
+    max-width: none;
   }
 
   #services .tile__icon {
     position: absolute;
     top: 24px;
     right: 24px;
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     color: var(--header-green);
     pointer-events: none;
   }
@@ -351,7 +368,7 @@
     margin: 0;
     color: var(--header-green);
     font-family: 'Literata', Georgia, serif;
-    font-size: 1.25rem;
+    font-size: 1.33rem;
     font-weight: 500;
     line-height: 1.32;
     letter-spacing: 0;
@@ -362,7 +379,7 @@
     margin: 0;
     color: var(--forest-dark);
     line-height: 1.7;
-    font-size: 1rem;
+    font-size: 1.07rem;
     max-width: none;
   }
 
@@ -370,10 +387,15 @@
     margin-top: auto;
     padding-top: 32px;
     font-family: "DM Mono", ui-monospace, monospace;
-    font-size: 0.78rem;
+    font-size: 0.84rem;
     line-height: 1.65;
     letter-spacing: 0.06em;
     color: #7b8a7b;
+  }
+
+  #services .tile p.meta--emphasis {
+    font-size: 0.9rem;
+    font-weight: 500;
   }
 
 
@@ -545,14 +567,23 @@
       min-height: 0;
       padding: 26px 20px 22px;
     }
-    #services .tile--intro h2 {
+    #services .services-heading {
+      margin-bottom: 24px;
       font-size: 2rem;
     }
+    #services .tile--intro {
+      padding: 32px 24px;
+    }
+    #services .tile--intro p {
+      font-size: 1.18rem;
+      line-height: 1.32;
+      letter-spacing: 0;
+    }
     #services .tile h3 {
-      font-size: 1.12rem;
+      font-size: 1.18rem;
     }
     #services .tile p {
-      font-size: 0.96rem;
+      font-size: 1rem;
     }
   }
 
@@ -1562,9 +1593,10 @@
 
 
   <section id="services">
+    <h2 class="services-heading">Services</h2>
     <div class="services-grid" role="list">
-      <article class="tile tile--intro" role="listitem">
-        <h2>Services</h2>
+      <article class="tile tile--intro" role="listitem" aria-label="Services intro">
+        <p>Integrated research, advisory and facilitation services across forest governance and social forestry.</p>
       </article>
 
       <article class="tile" role="listitem" aria-label="Technical Writing & Editing">
@@ -1615,7 +1647,7 @@
         </div>
         <h3>Strategic Planning &amp; Advisory</h3>
         <p>Supporting organisations to translate vision into action.</p>
-        <p class="meta">Programme design · Theory of change · Strategic planning facilitation</p>
+        <p class="meta meta--emphasis">Programme design · Theory of change · Strategic planning facilitation</p>
       </article>
 
       <article class="tile" role="listitem" aria-label="Capacity Development">
