@@ -851,7 +851,7 @@
   /* CONTACT */
   .contact-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.5fr 0.5fr;
     gap: 80px;
     margin-top: 32px;
   }
@@ -860,6 +860,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
+    min-width: 0;
     background: transparent;
     border: 0;
     padding: 0;
@@ -870,6 +872,8 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+    width: 100%;
+    min-width: 0;
   }
 
   .form-group label {
@@ -882,7 +886,9 @@
 
   .contact-form input,
   .contact-form textarea {
+    display: block;
     width: 100%;
+    max-width: 100%;
     padding: 14px 16px;
     border: 1px solid rgba(15, 43, 15, 0.24);
     border-radius: 4px;
