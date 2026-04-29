@@ -703,6 +703,13 @@
   }
 
   @media (max-width: 760px) {
+    .contact-details,
+    .contact-details p,
+    .contact-details a {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
     #experience .recent-work h2 { margin: 0 0 28px; }
     #experience .work-entry { padding: 24px 0; gap: 8px; }
     #experience .visual-card {
@@ -887,6 +894,15 @@
     transition: border-color 0.3s ease;
   }
 
+  .contact-form textarea {
+    resize: vertical;
+    overflow: auto;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+
+
   .contact-form input:focus,
   .contact-form textarea:focus {
     border-color: var(--sage);
@@ -927,7 +943,7 @@
     padding: clamp(10px, 1.4vw, 14px);
     border-radius: 10px;
     align-self: start;
-    height: clamp(190px, 22vw, 220px);
+    height: auto;
   }
 
   #contact .info-block h4 {
