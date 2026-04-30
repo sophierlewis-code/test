@@ -70,7 +70,7 @@
 
   /* Avatar - hidden in top nav */
   .sidebar-avatar { display: flex; align-items: center; margin-left: 2cm; margin-bottom: 0; padding-top: 0; transform: none; }
-  .sidebar-avatar img { width: auto; height: 97px; display: block; margin: 0 auto; }
+  .sidebar-avatar img { width: auto; height: 86px; display: block; margin: 0 auto; }
 
   /* Name & Title */
   .sidebar-name {
@@ -1248,28 +1248,28 @@
     padding: 0 40px; /* matches sidebar padding */
     height: 110px; /* matches sidebar height */
     display: flex;
-    align-items: center;
+    align-items: center; /* keeps the inner wrapper vertically centered */
     margin-bottom: 0;
-    position: relative; /* REQUIRED FOR ABSOLUTE CENTERING */
   }
 
   .footer-inner {
     margin: 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end; /* forces bottom alignment */
     width: 100%;
+    position: relative; /* anchor for the back-to-top */
   }
 
   .footer-logo-wrap {
-    margin-left: 2cm; /* matches sidebar avatar margin */
+    margin-left: 2cm; 
     display: flex;
-    align-items: center;
+    align-items: flex-end;
   }
 
   .footer-logo {
     width: auto;
-    height: 97px; /* matches sidebar avatar img height */
+    height: 86px; /* perfectly matches top nav */
     display: block;
   }
 
@@ -1277,20 +1277,23 @@
   .back-to-top {
     position: absolute;
     left: 50%;
+    bottom: 6px; /* optically aligns the text baseline with the bottom of the logo */
     transform: translateX(-50%);
     font-family: 'DM Mono', monospace;
     font-size: 14px;
-    color: var(--brand-text);
+    font-weight: 400;
+    color: var(--forest-900); /* perfectly matches copyright */
     text-decoration: none;
     transition: opacity 0.2s;
   }
 
   .back-to-top:hover {
-    opacity: 0.7;
+    opacity: 0.6;
   }
 
   .footer-copy-wrap {
-    margin-right: 0.5cm; /* matches sidebar nav right margin */
+    margin-right: 0.5cm; 
+    padding-bottom: 6px; /* matches back-to-top alignment */
   }
 
   .footer-copy {
@@ -1298,6 +1301,8 @@
     color: var(--forest-900);
     font-family: 'DM Mono', monospace;
     font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
   }
 
   /* ── MOBILE TOP BAR ── */
@@ -1411,6 +1416,7 @@
     footer {
       height: auto;
       padding: 32px 24px; /* Left edge matches mobile-bar padding exactly */
+      align-items: flex-start;
     }
     .footer-inner {
       flex-direction: column;
@@ -1426,11 +1432,13 @@
     }
     .footer-copy-wrap {
       margin-right: 0;
+      padding-bottom: 0;
     }
     /* BREAKS ABSOLUTE POSITIONING ON MOBILE SO IT STACKS NATURALLY */
     .back-to-top {
       position: static;
       transform: none;
+      bottom: auto;
     }
   }
 
