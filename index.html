@@ -772,30 +772,39 @@
   }
 
   #experience .work-entry {
-    padding: 32px 0;
+    padding: 42px 0; /* ADDED BREATHING ROOM BETWEEN ITEMS */
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 16px; /* INCREASED GAP BETWEEN TEXT AND TAG */
+  }
+
+  #experience .work-entry:first-child {
+    padding-top: 8px; /* Keeps the first item close to the section title */
+  }
+
+  #experience .work-entry:last-child {
+    padding-bottom: 0; /* Keeps the bottom edge neat */
   }
 
   #experience .work-meta {
     font-family: 'Literata', Georgia, serif;
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
-    font-weight: 500; /* Medium weight */
-    line-height: 1.12;
+    font-size: 1.12rem;
+    font-weight: 400; /* Regular weight */
+    line-height: 1.5;
     letter-spacing: 0;
-    color: var(--header-green);
+    color: var(--brand-text);
     margin: 0;
-    max-width: none;
+    max-width: 82%;
   }
 
   #experience .work-desc {
     font-family: 'Literata', Georgia, serif;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    font-weight: 400; /* Regular weight */
     line-height: 1.6;
     color: var(--forest-900);
     margin: 0;
-    max-width: none;
+    max-width: 82%;
   }
 
   #experience .work-visual-rail {
@@ -854,6 +863,11 @@
       gap: 24px;
     }
 
+    #experience .work-desc,
+    #experience .work-meta {
+      max-width: 100%; /* Resets to full width beautifully on tablet/mobile */
+    }
+
     #experience .work-visual-rail {
       margin-right: 0;
       height: auto;
@@ -883,7 +897,16 @@
     }
 
     #experience .recent-work h2 { margin: 0 0 28px; }
-    #experience .work-entry { padding: 24px 0; gap: 8px; }
+    
+    #experience .work-entry { 
+      padding: 32px 0; /* MOBILE BREATHING ROOM */
+      gap: 12px; 
+    }
+    #experience .work-entry:first-child { padding-top: 4px; }
+    
+    #experience .work-desc { font-size: 1.15rem; }
+    #experience .work-meta { font-size: 1.05rem; }
+
     #experience .visual-card {
       flex-basis: min(74vw, 285px);
     }
@@ -1218,45 +1241,64 @@
 
   .info-block a:hover { color: var(--brand-text); }
 
-  /* FOOTER (White Background, Dark Ink Text) */
+  /* ── MIRRORED FOOTER ── */
   footer {
     background: var(--paper); 
     color: var(--forest-900); 
-    padding: 30px 40px;
+    padding: 0 40px; /* matches sidebar padding */
+    height: 110px; /* matches sidebar height */
+    display: flex;
+    align-items: center;
     margin-bottom: 0;
+    position: relative; /* REQUIRED FOR ABSOLUTE CENTERING */
   }
 
   .footer-inner {
     margin: 0;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    gap: 24px;
+    align-items: center;
     width: 100%;
+  }
+
+  .footer-logo-wrap {
+    margin-left: 2cm; /* matches sidebar avatar margin */
+    display: flex;
+    align-items: center;
   }
 
   .footer-logo {
     width: auto;
-    height: 108px;
+    height: 97px; /* matches sidebar avatar img height */
     display: block;
-    max-width: 100%;
-    margin-left: 2cm;
+  }
+
+  /* ABSOLUTE DEAD-CENTER ON DESKTOP */
+  .back-to-top {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--brand-text);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .back-to-top:hover {
+    opacity: 0.7;
+  }
+
+  .footer-copy-wrap {
+    margin-right: 0.5cm; /* matches sidebar nav right margin */
   }
 
   .footer-copy {
-    margin-left: auto;
-    margin-right: 0.5cm;
-    text-align: right;
+    margin: 0;
     color: var(--forest-900);
     font-family: 'DM Mono', monospace;
     font-size: 14px;
-    line-height: 1.3;
-    white-space: normal;
-    align-self: flex-end;
   }
-
-  footer a { color: var(--brand-text); text-decoration: none; }
-  footer a:hover { color: var(--forest-900); }
 
   /* ── MOBILE TOP BAR ── */
   #mobile-bar {
@@ -1364,42 +1406,31 @@
     body.nav-open #sidebar nav ul li a { text-align: right; }
     #sidebar { display: none; }
     #sidebar nav { display: none; }
-  }
 
-
-  @media (min-width: 1025px) {
+    /* FOOTER MIRRORING MOBILE TOP BAR */
     footer {
-      padding: 30px 40px;
+      height: auto;
+      padding: 32px 24px; /* Left edge matches mobile-bar padding exactly */
     }
-
-    .footer-inner {
-      max-width: none;
-      margin: 0;
-    }
-
-    .footer-logo {
-      margin-left: 2cm;
-    }
-
-    .footer-copy {
-      margin-right: 0.5cm;
-      align-self: flex-end;
-    }
-  }
-
-
-  @media (max-width: 1024px) {
     .footer-inner {
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      align-items: flex-start;
+      gap: 20px;
     }
-
-    .footer-copy {
+    .footer-logo-wrap {
       margin-left: 0;
-      text-align: center;
-      align-self: center;
+    }
+    .footer-logo {
+      height: 46px; /* Matches mobile-bar logo exactly */
+      width: auto;
+    }
+    .footer-copy-wrap {
+      margin-right: 0;
+    }
+    /* BREAKS ABSOLUTE POSITIONING ON MOBILE SO IT STACKS NATURALLY */
+    .back-to-top {
+      position: static;
+      transform: none;
     }
   }
 
@@ -1436,31 +1467,6 @@
     .hero-image { height: auto; max-width: none; background: transparent; }
     .hero-image img { width: 100%; height: auto; object-fit: contain; object-position: center top; }
     .hero-overlay div { padding-left: 1rem !important; padding-right: 1rem !important; padding-bottom: 0.75rem !important; }
-
-    footer {
-      padding: 24px;
-    }
-
-    .footer-inner {
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 16px;
-    }
-
-    .footer-logo {
-      height: auto;
-      width: min(180px, 60vw);
-      margin-left: 0;
-    }
-
-    .footer-copy {
-      margin-left: 0;
-      margin-right: 0;
-      text-align: center;
-      font-size: 1rem;
-    }
   }
 
   @media (max-width: 700px) {
@@ -1637,7 +1643,7 @@
         <h2>Recent Work</h2>
         <div class="work-list">
           <article class="work-entry">
-            <h3 class="work-desc">Concept note and logframe for an EU call supporting the Directorate General of Forestry.</p>
+            <p class="work-desc">Concept note and logframe for an EU call supporting the Directorate General of Forestry.</p>
             <p class="work-meta">ADRA UK · Timor-Leste · 2026</p>
           </article>
           <article class="work-entry">
@@ -1803,8 +1809,13 @@
 
   <footer>
     <div class="footer-inner">
-      <img src="drawingGREENONWHITE1NOSUBNOBG.svg" alt="Forest Governance Lab" class="footer-logo">
-      <p class="footer-copy">© 2026 Forest Governance Lab</p>
+      <div class="footer-logo-wrap">
+        <img src="drawingGREENONWHITE1NOSUBNOBG.svg" alt="Forest Governance Lab logo" class="footer-logo">
+      </div>
+      <a href="#" class="back-to-top" aria-label="Back to top">↑ Back to Top</a>
+      <div class="footer-copy-wrap">
+        <p class="footer-copy">© 2026 Forest Governance Lab</p>
+      </div>
     </div>
   </footer>
 
