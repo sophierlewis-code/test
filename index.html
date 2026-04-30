@@ -296,6 +296,7 @@
 
   #about .content-wrapper {
     width: 100%;
+    max-width: 960px;
     display: flex;
     flex-direction: column;
   }
@@ -303,29 +304,29 @@
   #about .content-grid {
     width: 100%;
     display: grid;
-    /* 1.6 to 1 ratio gives text room to stay on one line */
-    grid-template-columns: 1.6fr 1fr; 
-    gap: 6vw; 
-    align-items: center; /* Centers the grid row */
+    grid-template-columns: 1.6fr 1fr;
+    gap: 8vw;
+    align-items: stretch;
   }
 
   #about .text-column {
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    justify-content: space-between;
     width: 100%;
-    align-self: center; /* FORCES strict vertical centering */
+    min-width: 0;
+    padding-bottom: 0.3rem;
   }
 
   #about .heading {
-    margin: 0;
-    color: var(--forest-900); 
+    margin: 0 0 3.5rem 0;
+    color: var(--forest-900);
     font-family: 'Literata', Georgia, serif;
-    font-size: clamp(2.4rem, 3.8vw, 3.8rem); 
-    font-weight: 400; /* Thin, elegant weight */
+    font-size: clamp(2.4rem, 3.8vw, 3.8rem);
+    font-weight: 400;
     line-height: 1.25;
     letter-spacing: -0.02em;
-    max-width: 100%; /* Spans to the invisible right wall */
+    max-width: 100%;
   }
 
   /* Hide the breaks on mobile so text flows naturally */
@@ -347,12 +348,10 @@
   #about .photo-column {
     position: relative;
     width: 100%;
-    /* 25% SMALLER than previous: Down to 315px */
-    max-width: 315px; 
-    margin: 0 auto;
+    max-width: 300px;
+    margin: 0 0 0 auto;
     display: flex;
     flex-direction: column;
-    align-self: center; /* FORCES strict vertical centering */
   }
 
   #about .photo-card {
@@ -381,25 +380,21 @@
     filter: contrast(1.02) saturate(0.98);
   }
 
-  /* EDITORIAL CREDENTIALS BOX (Masthead Style) */
   #about .credentials-box {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 32px;
-    margin-top: 90px; /* Big breathing room from the grid */
-    opacity: 0.75; /* Soft dark charcoal look */
+    justify-content: flex-start;
+    gap: 1.5rem 2.5rem;
+    width: 100%;
+    opacity: 0.75;
   }
 
   #about .credential-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 4px;
-    flex: 1; /* Spreads them evenly across the bottom */
   }
 
   #about .credential-text {
@@ -408,7 +403,7 @@
     font-family: 'Literata', Georgia, serif;
     font-size: 1rem;
     font-weight: 500;
-    text-align: center;
+    text-align: left;
   }
 
   #about .credential-university {
@@ -416,23 +411,38 @@
     color: var(--forest-900);
     font-family: 'Literata', Georgia, serif;
     font-size: 0.95rem;
-    font-weight: 400; /* Regular, standard case, highly legible */
-    font-style: normal; /* No italics */
-    text-align: center;
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
   }
 
   /* ABOUT RESPONSIVE RULES */
   @media (max-width: 1024px) {
+    #about .heading {
+      margin-bottom: 2.5rem;
+    }
     #about .content-grid {
-      grid-template-columns: 1fr;
-      gap: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
     }
     #about .text-column {
-      order: -1; /* Forces text to sit on top of photo on mobile */
+      display: contents;
+    }
+    #about .body-text {
+      order: 1;
+      margin-bottom: 0;
+    }
+    #about .photo-column {
+      order: 2;
+      max-width: 228px;
+      margin: 1rem auto;
     }
     #about .credentials-box {
+      order: 3;
       flex-direction: column;
       gap: 32px;
+      margin-top: 0.5rem;
     }
   }
 
@@ -442,16 +452,17 @@
     }
     #about .heading {
       font-size: 2.2rem;
+      margin-bottom: 2rem;
     }
     #about .body-text {
       font-size: 1.05rem;
       line-height: 1.7;
     }
     #about .photo-column {
-      max-width: 100%;
+      max-width: 190px;
     }
     #about .photo-wrap {
-      aspect-ratio: 1 / 1; /* Shifts to square on mobile */
+      aspect-ratio: 1 / 1;
     }
   }
 
@@ -1537,41 +1548,39 @@
   <section id="about">
     <div class="about-inner">
       <div class="content-wrapper">
+
+        <h2 class="heading">
+          Forest Governance Lab is a consultancy<br class="desktop-break">
+          grounded in research and practice.
+        </h2>
+
         <div class="content-grid">
-          
-          <!-- TEXT MOVED TO THE LEFT -->
+
           <div class="text-column">
-            <h2 class="heading">
-              Forest Governance Lab is<br class="desktop-break">
-              a consultancy grounded in<br class="desktop-break">
-              research and practice.
-            </h2>
             <p class="body-text">Dr. Sophie Rose Lewis specialises in forest governance and social forestry across Southeast Asia. She collaborates with NGOs, governments and forest communities to conduct applied research, develop capacity, engage in policy advocacy, and provide strategic advisory services aimed at advancing land tenure security and resource rights.</p>
+
+            <div class="credentials-box">
+              <div class="credential-item">
+                <span class="credential-text">Postdoc, Political Science</span>
+                <span class="credential-university">Chulalongkorn University</span>
+              </div>
+              <div class="credential-item">
+                <span class="credential-text">PhD, Political Ecology</span>
+                <span class="credential-university">University of British Columbia</span>
+              </div>
+              <div class="credential-item">
+                <span class="credential-text">MSc, Forest Conservation</span>
+                <span class="credential-university">Imperial College London</span>
+              </div>
+            </div>
           </div>
 
-          <!-- PHOTO MOVED TO THE RIGHT -->
           <div class="photo-column">
             <div class="photo-card">
               <div class="photo-wrap">
                 <img src="profile3.JPG" alt="Portrait of Dr. Sophie Rose Lewis" class="photo">
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- RE-ADDED CREDENTIALS BOX -->
-        <div class="credentials-box">
-          <div class="credential-item">
-            <span class="credential-text">Postdoc, Political Science</span>
-            <span class="credential-university">Chulalongkorn University</span>
-          </div>
-          <div class="credential-item">
-            <span class="credential-text">PhD, Political Ecology</span>
-            <span class="credential-university">University of British Columbia</span>
-          </div>
-          <div class="credential-item">
-            <span class="credential-text">MSc, Forest Conservation</span>
-            <span class="credential-university">Imperial College London</span>
           </div>
         </div>
 
