@@ -1256,7 +1256,7 @@
     margin: 0;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; /* forces bottom alignment */
+    align-items: flex-end; /* Locks elements flush to the bottom baseline */
     width: 100%;
     position: relative; /* anchor for the back-to-top */
   }
@@ -1264,7 +1264,6 @@
   .footer-logo-wrap {
     margin-left: 2cm; 
     display: flex;
-    align-items: flex-end;
   }
 
   .footer-logo {
@@ -1277,14 +1276,17 @@
   .back-to-top {
     position: absolute;
     left: 50%;
-    bottom: 6px; /* optically aligns the text baseline with the bottom of the logo */
+    bottom: 0; /* Strict math: bottom baseline alignment */
     transform: translateX(-50%);
     font-family: 'DM Mono', monospace;
     font-size: 14px;
     font-weight: 400;
-    color: var(--forest-900); /* perfectly matches copyright */
+    color: var(--brand-text); /* perfectly matches logo brand color */
     text-decoration: none;
     transition: opacity 0.2s;
+    line-height: 1; /* Strict bounding box matching */
+    padding: 0;
+    margin: 0;
   }
 
   .back-to-top:hover {
@@ -1293,16 +1295,18 @@
 
   .footer-copy-wrap {
     margin-right: 0.5cm; 
-    padding-bottom: 6px; /* matches back-to-top alignment */
+    display: flex;
+    align-items: flex-end; /* forces bottom alignment */
   }
 
   .footer-copy {
     margin: 0;
-    color: var(--forest-900);
+    padding: 0;
+    color: var(--brand-text); /* perfectly matches logo brand color */
     font-family: 'DM Mono', monospace;
     font-size: 14px;
     font-weight: 400;
-    line-height: 1;
+    line-height: 1; /* Strict bounding box matching */
   }
 
   /* ── MOBILE TOP BAR ── */
@@ -1439,6 +1443,10 @@
       position: static;
       transform: none;
       bottom: auto;
+      line-height: 1.5; /* Restores readable height on mobile */
+    }
+    .footer-copy {
+      line-height: 1.5; /* Restores readable height on mobile */
     }
   }
 
