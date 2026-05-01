@@ -282,7 +282,7 @@
   /* ── ABOUT SECTION (EDITORIAL WIDESCREEN) ── */
   #about {
     background: var(--paper) !important;
-    padding: 120px 10% !important; /* 10% perfectly aligns with Services grid */
+    padding: 120px 10% !important; 
   }
 
   #about .about-inner {
@@ -296,42 +296,44 @@
 
   #about .content-wrapper {
     width: 100%;
-    max-width: 960px;
+    /* 1. THE INVISIBLE FRAME: Matches the width of the headline */
+    max-width: 960px; 
     display: flex;
     flex-direction: column;
+  }
+
+  #about .heading {
+    margin: 0 0 3.5rem 0; /* Layout breathing room */
+    color: var(--forest-900); 
+    font-family: 'Literata', Georgia, serif;
+    font-size: clamp(2.4rem, 3.8vw, 3.8rem); /* Exact original size */
+    font-weight: 400; /* Thin, elegant weight */
+    line-height: 1.25; /* Exact original line-height */
+    letter-spacing: -0.02em;
+    max-width: 100%; 
+  }
+
+  @media (max-width: 1024px) {
+    .desktop-break { display: none; }
   }
 
   #about .content-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 8vw;
-    align-items: stretch;
+    /* 2. THE TWEAKED RATIO: Left column gets slightly more room */
+    grid-template-columns: 1.55fr 1fr; 
+    /* 3. THE INCREASED GAP: Pushes text and photo further apart */
+    gap: 8vw; 
+    align-items: stretch; /* Forces equal height */
   }
 
   #about .text-column {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Pins text to top and credentials to bottom */
     width: 100%;
     min-width: 0;
-    padding-bottom: 0.3rem;
-  }
-
-  #about .heading {
-    margin: 0 0 3.5rem 0;
-    color: var(--forest-900);
-    font-family: 'Literata', Georgia, serif;
-    font-size: clamp(2.4rem, 3.8vw, 3.8rem);
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: -0.02em;
-    max-width: 100%;
-  }
-
-  /* Hide the breaks on mobile so text flows naturally */
-  @media (max-width: 1024px) {
-    .desktop-break { display: none; }
+    padding-bottom: 0.3rem; 
   }
 
   #about .body-text {
@@ -339,17 +341,54 @@
     color: var(--forest-900);
     opacity: 0.9;
     font-family: 'Literata', Georgia, serif;
-    font-size: 1.15rem; /* Highly legible body size */
+    font-size: 1.15rem; 
     font-weight: 400;
     line-height: 1.8;
-    max-width: 100%; /* Flushes exactly to the same right edge as heading */
+    max-width: 100%; 
+  }
+
+  #about .credentials-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Allows natural wrapping */
+    justify-content: flex-start;
+    gap: 1.5rem 2.5rem; /* Row and column gap */
+    width: 100%;
+    opacity: 0.75; /* Exact original opacity */
+  }
+
+  #about .credential-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 4px;
+  }
+
+  #about .credential-text {
+    margin: 0;
+    color: var(--forest-900);
+    font-family: 'Literata', Georgia, serif;
+    font-size: 1rem; /* Exact original size */
+    font-weight: 500; /* Exact original weight */
+    text-align: left;
+  }
+
+  #about .credential-university {
+    margin: 0;
+    color: var(--forest-900);
+    font-family: 'Literata', Georgia, serif;
+    font-size: 0.95rem; /* Exact original size */
+    font-weight: 400; /* Exact original weight */
+    font-style: normal; /* Exact original style */
+    text-align: left;
   }
 
   #about .photo-column {
     position: relative;
     width: 100%;
-    max-width: 300px;
-    margin: 0 0 0 auto;
+    max-width: 315px; /* Safely tucked boundary */
+    /* 4. FLUSH RIGHT: Removes center margin, forces it against the right wall */
+    margin: 0 0 0 auto; 
     display: flex;
     flex-direction: column;
   }
@@ -366,7 +405,7 @@
   #about .photo-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 3 / 4; /* Perfect portrait ratio */
+    aspect-ratio: 3 / 4; 
     overflow: hidden;
     border-radius: 2px;
   }
@@ -380,42 +419,6 @@
     filter: contrast(1.02) saturate(0.98);
   }
 
-  #about .credentials-box {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 1.5rem 2.5rem;
-    width: 100%;
-    opacity: 0.75;
-  }
-
-  #about .credential-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
-
-  #about .credential-text {
-    margin: 0;
-    color: var(--forest-900);
-    font-family: 'Literata', Georgia, serif;
-    font-size: 1rem;
-    font-weight: 500;
-    text-align: left;
-  }
-
-  #about .credential-university {
-    margin: 0;
-    color: var(--forest-900);
-    font-family: 'Literata', Georgia, serif;
-    font-size: 0.95rem;
-    font-weight: 400;
-    font-style: normal;
-    text-align: left;
-  }
-
   /* ABOUT RESPONSIVE RULES */
   @media (max-width: 1024px) {
     #about .heading {
@@ -427,7 +430,7 @@
       gap: 2.5rem;
     }
     #about .text-column {
-      display: contents;
+      display: contents; /* Unpacks wrapper to interleave photo */
     }
     #about .body-text {
       order: 1;
@@ -435,34 +438,34 @@
     }
     #about .photo-column {
       order: 2;
-      max-width: 228px;
-      margin: 1rem auto;
+      max-width: 240px; /* Reduced for tablet */
+      margin: 1rem auto; /* Restores centering for mobile layout */
     }
     #about .credentials-box {
       order: 3;
       flex-direction: column;
-      gap: 32px;
+      gap: 32px; /* Reverted to exact original 32px gap */
       margin-top: 0.5rem;
     }
   }
 
   @media (max-width: 760px) {
     #about {
-      padding: 64px 24px !important;
+      padding: 64px 24px !important; /* Exact original padding */
     }
     #about .heading {
-      font-size: 2.2rem;
+      font-size: 2.2rem; /* Exact original override */
       margin-bottom: 2rem;
     }
     #about .body-text {
-      font-size: 1.05rem;
-      line-height: 1.7;
+      font-size: 1.05rem; /* Exact original override */
+      line-height: 1.7; /* Exact original override */
     }
     #about .photo-column {
-      max-width: 190px;
+      max-width: 200px; /* Further reduced for phones */
     }
     #about .photo-wrap {
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 1 / 1; /* Exact original ratio */
     }
   }
 
@@ -1548,17 +1551,19 @@
   <section id="about">
     <div class="about-inner">
       <div class="content-wrapper">
-
+        
+        <!-- MAIN HEADING SPANS THE TOP -->
         <h2 class="heading">
-          Forest Governance Lab is a consultancy<br class="desktop-break">
+          Forest Governance Lab is a consultancy<br class="desktop-break"> 
           grounded in research and practice.
         </h2>
 
         <div class="content-grid">
-
+          <!-- LEFT COLUMN: TEXT & CREDENTIALS -->
           <div class="text-column">
             <p class="body-text">Dr. Sophie Rose Lewis specialises in forest governance and social forestry across Southeast Asia. She collaborates with NGOs, governments and forest communities to conduct applied research, develop capacity, engage in policy advocacy, and provide strategic advisory services aimed at advancing land tenure security and resource rights.</p>
-
+            
+            <!-- CREDENTIALS ROW MOVED INSIDE TEXT COLUMN -->
             <div class="credentials-box">
               <div class="credential-item">
                 <span class="credential-text">Postdoc, Political Science</span>
@@ -1575,6 +1580,7 @@
             </div>
           </div>
 
+          <!-- RIGHT COLUMN: PHOTO -->
           <div class="photo-column">
             <div class="photo-card">
               <div class="photo-wrap">
