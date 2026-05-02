@@ -52,10 +52,7 @@
        empspacing="5"
        enabled="false"
        visible="true" /></sodipodi:namedview><defs
-     id="defs1"><color-profile
-       name="_061F"
-       xlink:href="../../../../../WINDOWS/system32/spool/drivers/color/Dell_Inspiron_7501_IVO061F.icm"
-       id="color-profile2" /><rect
+     id="defs1"><rect
        x="443.35999"
        y="118.60586"
        width="28.239487"
