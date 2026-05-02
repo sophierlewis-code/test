@@ -296,19 +296,21 @@
 
   #about .content-wrapper {
     width: 100%;
-    /* 1. THE INVISIBLE FRAME: Matches the width of the headline */
-    max-width: 1200px; 
+    /* 1080px matches the width of the 3.8rem headline on one line */
+    max-width: 1080px; 
+    margin: 0 auto; 
     display: flex;
     flex-direction: column;
   }
 
   #about .heading {
-    margin: 0 0 3.5rem 0; /* Layout breathing room */
+    margin: 0 0 3.5rem 0; 
     color: var(--forest-900); 
     font-family: 'Literata', Georgia, serif;
-    font-size: clamp(2.4rem, 3.8vw, 3.8rem); /* Exact original size */
-    font-weight: 400; /* Thin, elegant weight */
-    line-height: 1.25; /* Exact original line-height */
+    /* Restored original exact size */
+    font-size: clamp(2.4rem, 3.8vw, 3.8rem); 
+    font-weight: 400; 
+    line-height: 1.25; 
     letter-spacing: -0.02em;
     max-width: 100%; 
   }
@@ -320,17 +322,17 @@
   #about .content-grid {
     width: 100%;
     display: grid;
-    /* 2. THE TWEAKED RATIO: Left column gets slightly more room */
-    grid-template-columns: 1.55fr 1fr; 
-    /* 3. THE INCREASED GAP: Pushes text and photo further apart */
-    gap: 8vw; 
-    align-items: stretch; /* Forces equal height */
+    /* Left side is flexible up to 610px, Right side is strictly 315px */
+    grid-template-columns: minmax(0, 610px) 315px; 
+    gap: 3rem; /* Minimum gap */
+    justify-content: space-between; 
+    align-items: stretch; 
   }
 
   #about .text-column {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pins text to top and credentials to bottom */
+    justify-content: space-between; 
     width: 100%;
     min-width: 0;
     padding-bottom: 0.3rem; 
@@ -350,11 +352,11 @@
   #about .credentials-box {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; /* Allows natural wrapping */
+    flex-wrap: wrap; 
     justify-content: flex-start;
-    gap: 1.5rem 2.5rem; /* Row and column gap */
+    gap: 1.5rem 2.5rem; 
     width: 100%;
-    opacity: 0.75; /* Exact original opacity */
+    opacity: 0.75; 
   }
 
   #about .credential-item {
@@ -368,8 +370,8 @@
     margin: 0;
     color: var(--forest-900);
     font-family: 'Literata', Georgia, serif;
-    font-size: 1rem; /* Exact original size */
-    font-weight: 500; /* Exact original weight */
+    font-size: 1rem; 
+    font-weight: 500; 
     text-align: left;
   }
 
@@ -377,20 +379,21 @@
     margin: 0;
     color: var(--forest-900);
     font-family: 'Literata', Georgia, serif;
-    font-size: 0.95rem; /* Exact original size */
-    font-weight: 400; /* Exact original weight */
-    font-style: normal; /* Exact original style */
+    font-size: 0.95rem; 
+    font-weight: 400; 
+    font-style: normal; 
     text-align: left;
   }
 
   #about .photo-column {
     position: relative;
     width: 100%;
-    max-width: 315px; /* Safely tucked boundary */
-    /* 4. FLUSH RIGHT: Removes center margin, forces it against the right wall */
-    margin: 0 0 0 auto; 
+    max-width: 315px; 
+    margin: 0; 
     display: flex;
     flex-direction: column;
+    /* THE SURGICAL NUDGE: Moves the photo ~0.75cm left to tuck it nicely */
+    transform: translateX(-28px); 
   }
 
   #about .photo-card {
@@ -430,7 +433,7 @@
       gap: 2.5rem;
     }
     #about .text-column {
-      display: contents; /* Unpacks wrapper to interleave photo */
+      display: contents; 
     }
     #about .body-text {
       order: 1;
@@ -438,41 +441,51 @@
     }
     #about .photo-column {
       order: 2;
-      max-width: 240px; /* Reduced for tablet */
-      margin: 1rem auto; /* Restores centering for mobile layout */
+      max-width: 240px; 
+      margin: 1rem auto; 
+      /* WIPES OUT THE NUDGE SO IT CENTERS PERFECTLY ON MOBILE */
+      transform: none; 
     }
     #about .credentials-box {
       order: 3;
       flex-direction: column;
-      gap: 32px; /* Reverted to exact original 32px gap */
+      align-items: center; 
+      gap: 32px; 
       margin-top: 0.5rem;
+    }
+    #about .credential-item {
+      align-items: center; 
+    }
+    #about .credential-text,
+    #about .credential-university {
+      text-align: center; 
     }
   }
 
   @media (max-width: 760px) {
     #about {
-      padding: 64px 24px !important; /* Exact original padding */
+      padding: 64px 24px !important; 
     }
     #about .heading {
-      font-size: 2.2rem; /* Exact original override */
+      font-size: 2.2rem; 
       margin-bottom: 2rem;
     }
     #about .body-text {
-      font-size: 1.05rem; /* Exact original override */
-      line-height: 1.7; /* Exact original override */
+      font-size: 1.05rem; 
+      line-height: 1.7; 
     }
     #about .photo-column {
-      max-width: 200px; /* Further reduced for phones */
+      max-width: 200px; 
     }
     #about .photo-wrap {
-      aspect-ratio: 1 / 1; /* Exact original ratio */
+      aspect-ratio: 1 / 1; 
     }
   }
 
   /* ── EDITORIAL SERVICES SECTION ── */
   #services {
     background: var(--brand-bg) !important;
-    padding: 72px 10%; /* Standard grid width aligns with About */
+    padding: 72px 10%; 
   }
 
   #services .services-heading {
@@ -483,22 +496,22 @@
     font-weight: 600;
     line-height: 1.08;
     letter-spacing: 0.01em;
-    color: var(--paper); /* White text on background */
+    color: var(--paper); 
   }
 
   #services .services-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-auto-rows: 1fr;  
-    gap: 52px; /* INCREASED GAP for luxurious breathing room */
+    gap: 52px; 
     margin: 0 auto;
-    align-items: stretch; /* Forces equal height */
+    align-items: stretch; 
   }
 
   #services .tile {
     background: #ffffff;
-    border-radius: 6px; /* WARM 6px CORNERS PRESERVED */
-    padding: 86px 32px 32px 32px; /* Padding accommodates top-left icon */
+    border-radius: 6px; 
+    padding: 86px 32px 32px 32px; 
     position: relative;
     display: flex;
     flex-direction: column;
@@ -506,39 +519,38 @@
   }
 
   #services .tile--intro {
-    padding: 34px 28px; /* Standard balanced padding, no icon */
+    padding: 34px 28px; 
    justify-content: center;
   }
 
-  /* HIGHLY SPECIFIC RULE: Makes Intro text elegant, left-aligned, and appropriately sized */
   #services .tile.tile--intro p {
     margin: 0;
     font-family: 'Literata', Georgia, serif;
-    font-size: 1.3rem; /* Dropped down ~4pt for elegance */
-    font-weight: 400; /* Lighter Regular weight */
+    font-size: 1.3rem; 
+    font-weight: 400; 
     line-height: 1.6;
-    color: var(--forest-900); /* Body color rule */
-    text-align: left; /* Left-aligned to match the grid */
+    color: var(--forest-900); 
+    text-align: left; 
     max-width: none;
   }
 
   #services .tile__icon {
     position: absolute;
     top: 28px;
-    left: 32px; /* Top-left corner */
-    width: 44px; /* Bold size */
+    left: 32px; 
+    width: 44px; 
     height: 44px;
-    color: var(--brand-text); /* British Racing Green */
+    color: var(--brand-text); 
     pointer-events: none;
   }
 
   #services .tile__icon svg { width: 100%; height: 100%; display: block; }
 
   #services .tile h3 {
-    margin: 0 0 16px 0; /* Breathing room before description */
-    color: var(--brand-text); /* British Racing Green */
+    margin: 0 0 16px 0; 
+    color: var(--brand-text); 
     font-family: 'Literata', Georgia, serif;
-    font-size: 1.5rem; /* Punchy size restored */
+    font-size: 1.5rem; 
     font-weight: 600;
     line-height: 1.32;
     letter-spacing: 0;
@@ -546,24 +558,23 @@
 
   #services .tile p {
     margin: 0;
-    color: var(--forest-900); /* Reading text */
+    color: var(--forest-900); 
     line-height: 1.7;
-    font-size: 1.12rem; /* Larger editorial size restored */
+    font-size: 1.12rem; 
     max-width: none;
   }
 
-  /* LEFT-ALIGNED BLACK TAGS WITH AIRY SPACING */
   #services .tile p.meta {
-    margin-top: auto; /* Pushes to exactly bottom of card */
+    margin-top: auto; 
     padding-top: 36px;
     font-family: 'Literata', Georgia, serif; 
-    font-size: 0.96rem; /* Restored to the larger tag size */
-    font-weight: 400; /* Sleek regular weight */
-    font-style: normal; /* No italics */
+    font-size: 0.96rem; 
+    font-weight: 400; 
+    font-style: normal; 
     line-height: 1.5;
-    letter-spacing: 0.03em; /* Slightly increased letter-spacing for airiness */
-    color: var(--forest-900); /* Body color rule */
-    text-align: left; /* Clean left alignment */
+    letter-spacing: 0.03em; 
+    color: var(--forest-900); 
+    text-align: left; 
   }
 
   /* PUBLICATIONS */
@@ -598,7 +609,7 @@
     background: #ffffff;
     border-radius: 6px;
     overflow: hidden;
-    border: 1px solid rgba(0, 66, 37, 0.08); /* British Racing Green border */
+    border: 1px solid rgba(0, 66, 37, 0.08); 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
@@ -647,7 +658,7 @@
   #publications .pub-title {
     font-family: 'Literata', Georgia, serif;
     font-size: 17px;
-    font-weight: 600; /* Bold weight */
+    font-weight: 600; 
     line-height: 1.35;
     letter-spacing: 0.005em;
     color: var(--brand-text);
@@ -691,7 +702,7 @@
 
   @media (min-width: 761px) {
     header {
-      background: var(--paper); /* Changed to pure white, no top green border */
+      background: var(--paper); 
     }
 
     #publications,
@@ -729,7 +740,7 @@
       padding: 32px 24px;
     }
     #services .tile.tile--intro p {
-      font-size: 1.15rem; /* Scaled down beautifully for mobile */
+      font-size: 1.15rem; 
     }
     #services .tile__icon {
       top: 24px;
@@ -773,7 +784,7 @@
   #experience .recent-work h2 {
     font-family: 'Literata', Georgia, serif;
     font-size: clamp(2rem, 4vw, 2.6rem);
-    font-weight: 600; /* Bold */
+    font-weight: 600; 
     color: var(--brand-text);
     margin: 0 0 48px;
     line-height: 1.08;
@@ -786,24 +797,24 @@
   }
 
   #experience .work-entry {
-    padding: 42px 0; /* ADDED BREATHING ROOM BETWEEN ITEMS */
+    padding: 42px 0; 
     display: flex;
     flex-direction: column;
-    gap: 16px; /* INCREASED GAP BETWEEN TEXT AND TAG */
+    gap: 16px; 
   }
 
   #experience .work-entry:first-child {
-    padding-top: 8px; /* Keeps the first item close to the section title */
+    padding-top: 8px; 
   }
 
   #experience .work-entry:last-child {
-    padding-bottom: 0; /* Keeps the bottom edge neat */
+    padding-bottom: 0; 
   }
 
   #experience .work-meta {
     font-family: 'Literata', Georgia, serif;
     font-size: 1.12rem;
-    font-weight: 400; /* Regular weight */
+    font-weight: 400; 
     line-height: 1.5;
     letter-spacing: 0;
     color: var(--brand-text);
@@ -879,7 +890,7 @@
 
     #experience .work-desc,
     #experience .work-meta {
-      max-width: 100%; /* Resets to full width beautifully on tablet/mobile */
+      max-width: 100%; 
     }
 
     #experience .work-visual-rail {
@@ -913,7 +924,7 @@
     #experience .recent-work h2 { margin: 0 0 28px; }
     
     #experience .work-entry { 
-      padding: 32px 0; /* MOBILE BREATHING ROOM */
+      padding: 32px 0; 
       gap: 12px; 
     }
     #experience .work-entry:first-child { padding-top: 4px; }
@@ -928,7 +939,7 @@
 
   .exp-item {
     padding: 36px 0;
-    border-bottom: 1px solid rgba(0, 66, 37, 0.15); /* British Racing Green */
+    border-bottom: 1px solid rgba(0, 66, 37, 0.15); 
     display: grid;
     grid-template-columns: 220px 1fr;
     gap: 60px;
@@ -948,7 +959,7 @@
   .exp-role {
     font-family: 'Literata', Georgia, serif;
     font-size: 1.15rem;
-    font-weight: 500; /* Medium */
+    font-weight: 500; 
     color: var(--brand-text);
     margin-bottom: 10px;
     letter-spacing: 0;
@@ -1035,7 +1046,6 @@
 
   /* ── SPECIFIC EDITS FOR CONTACT SECTION ── */
   #contact {
-    /* Flat solid color for premium look */
     background: var(--brand-bg) !important;
   }
 
@@ -1076,7 +1086,6 @@
 
   .contact-logo {
     display: block;
-    /* 5% LARGER ON MOBILE/TABLET */
     width: clamp(295px, 34vw, 440px);
     height: auto;
     margin: 56px auto 0;
@@ -1090,11 +1099,10 @@
     }
   }
 
-  /* This locks the logo bottom to the exact bottom of the contact grid on desktop */
   @media (min-width: 1200px) {
     .contact-content-wrapper {
       flex-direction: row;
-      align-items: flex-end; /* This aligns their bottoms flawlessly! */
+      align-items: flex-end; 
       justify-content: flex-start;
       gap: 60px;
     }
@@ -1104,10 +1112,8 @@
     }
     .contact-logo {
       flex: 0 0 auto;
-      /* 5% LARGER ON DESKTOP */
       width: clamp(295px, 25vw, 485px);
       margin: 0;
-      /* NUDGED UP EXACTLY 8 PIXELS HIGHER */
       margin-bottom: 63px; 
     }
   }
@@ -1148,7 +1154,7 @@
     padding: 14px 16px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 4px;
-    background: #ffffff; /* pure white inputs */
+    background: #ffffff; 
     font-family: 'Literata', Georgia, serif;
     font-size: 1rem;
     color: var(--forest-900);
@@ -1207,7 +1213,7 @@
     display: flex;
     flex-direction: column;
     gap: 0;
-    background: #ffffff; /* PURE WHITE FIX */
+    background: #ffffff; 
     border: none;
     border-radius: 10px;
     padding: 0 24px;
@@ -1218,7 +1224,7 @@
   #contact .info-block h4 {
     font-family: 'Literata', Georgia, serif;
     font-size: 15px;
-    font-weight: 600; /* Bold weight */
+    font-weight: 600; 
     text-transform: none;
     letter-spacing: normal;
     color: var(--brand-text);
@@ -1236,7 +1242,7 @@
   #contact .info-block a {
     font-family: 'Literata', Georgia, serif;
     font-size: 15px;
-    font-weight: 400; /* Regular weight */
+    font-weight: 400; 
     color: var(--forest-900);
     text-decoration: none;
     line-height: 1.6;
@@ -1259,10 +1265,10 @@
   footer {
     background: var(--paper); 
     color: var(--forest-900); 
-    padding: 0 40px; /* matches sidebar padding */
-    height: 110px; /* matches sidebar height */
+    padding: 0 40px; 
+    height: 110px; 
     display: flex;
-    align-items: center; /* keeps the inner wrapper vertically centered */
+    align-items: center; 
     margin-bottom: 0;
   }
 
@@ -1270,9 +1276,9 @@
     margin: 0;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; /* Locks elements flush to the bottom baseline */
+    align-items: flex-end; 
     width: 100%;
-    position: relative; /* anchor for the back-to-top */
+    position: relative; 
   }
 
   .footer-logo-wrap {
@@ -1282,7 +1288,7 @@
 
   .footer-logo {
     width: auto;
-    height: 86px; /* perfectly matches top nav */
+    height: 86px; 
     display: block;
   }
 
@@ -1290,16 +1296,16 @@
   .back-to-top {
     position: absolute;
     left: 50%;
-    bottom: 0; /* Strict math: bottom baseline alignment */
+    bottom: 0; 
     transform: translateX(-50%);
     font-family: 'DM Mono', monospace;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.04em;
-    color: var(--brand-text); /* perfectly matches logo brand color */
+    color: var(--brand-text); 
     text-decoration: none;
     transition: opacity 0.2s;
-    line-height: 1; /* Strict bounding box matching */
+    line-height: 1; 
     padding: 0;
     margin: 0;
   }
@@ -1311,18 +1317,18 @@
   .footer-copy-wrap {
     margin-right: 0.5cm; 
     display: flex;
-    align-items: flex-end; /* forces bottom alignment */
+    align-items: flex-end; 
   }
 
   .footer-copy {
     margin: 0;
     padding: 0;
-    color: var(--brand-text); /* perfectly matches logo brand color */
+    color: var(--brand-text); 
     font-family: 'DM Mono', monospace;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.04em; 
-    line-height: 1; /* Strict bounding box matching */
+    line-height: 1; 
   }
 
   /* ── MOBILE TOP BAR ── */
@@ -1335,7 +1341,6 @@
     z-index: 200;
     width: 100%;
     background: var(--paper);
-    /* Subtle British Racing Green border */
     border-bottom: 1px solid rgba(0, 66, 37, 0.15); 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -1392,7 +1397,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(11,34,23,0.45); /* forest-900 */
+    background: rgba(11,34,23,0.45); 
     z-index: 149;
     opacity: 0;
     transition: opacity 0.3s;
@@ -1402,7 +1407,6 @@
 
   /* RESPONSIVE */
 
-  /* Switch to hamburger nav when desktop nav can't fit */
   @media (max-width: 1024px) {
     #mobile-bar { display: flex; width: 100%; }
     body.nav-open #sidebar {
@@ -1432,10 +1436,9 @@
     #sidebar { display: none; }
     #sidebar nav { display: none; }
 
-    /* FOOTER MIRRORING MOBILE TOP BAR */
     footer {
       height: auto;
-      padding: 32px 24px; /* Left edge matches mobile-bar padding exactly */
+      padding: 32px 24px; 
       align-items: flex-start;
     }
     .footer-inner {
@@ -1447,22 +1450,21 @@
       margin-left: 0;
     }
     .footer-logo {
-      height: 46px; /* Matches mobile-bar logo exactly */
+      height: 46px; 
       width: auto;
     }
     .footer-copy-wrap {
       margin-right: 0;
       padding-bottom: 0;
     }
-    /* BREAKS ABSOLUTE POSITIONING ON MOBILE SO IT STACKS NATURALLY */
     .back-to-top {
       position: static;
       transform: none;
       bottom: auto;
-      line-height: 1.5; /* Restores readable height on mobile */
+      line-height: 1.5; 
     }
     .footer-copy {
-      line-height: 1.5; /* Restores readable height on mobile */
+      line-height: 1.5; 
     }
   }
 
