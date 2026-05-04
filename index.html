@@ -2030,12 +2030,16 @@ async function handleSubmit(event) {
       // ERROR: SHOW A SMALL ERROR MESSAGE ABOVE THE BUTTON
       response.json().then(data => {
         let msg = data.errors ? data.errors.map(e => e.message).join(", ") : "Oops! There was a problem.";
+        const existingErr = document.getElementById('form-err');
+        if (existingErr) existingErr.remove();
         button.insertAdjacentHTML('beforebegin', '<p id="form-err" style="color:white; font-size:14px; margin-bottom:10px;">' + msg + '</p>');
       });
       button.innerHTML = "Send Message";
       button.disabled = false;
     }
   }).catch(error => {
+    const existingErr = document.getElementById('form-err');
+    if (existingErr) existingErr.remove();
     button.insertAdjacentHTML('beforebegin', '<p id="form-err" style="color:white; font-size:14px; margin-bottom:10px;">Oops! There was a problem.</p>');
     button.innerHTML = "Send Message";
     button.disabled = false;
