@@ -1967,21 +1967,6 @@ const onScroll = () => {
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-const copyEmailBtn = document.getElementById('copy-email-btn');
-const copyEmailStatus = document.getElementById('copy-email-status');
-const contactEmail = 'contact@forest-governance-lab.org';
-
-if (copyEmailBtn && copyEmailStatus) {
-  copyEmailBtn.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(contactEmail);
-      copyEmailStatus.textContent = 'Email copied.';
-    } catch (error) {
-      copyEmailStatus.textContent = 'Copy failed — please copy manually.';
-    }
-  });
-}
-
 const syncExperienceRailHeight = () => {
   const experienceSection = document.getElementById('experience');
   if (!experienceSection) return;
