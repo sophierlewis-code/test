@@ -934,7 +934,7 @@
     #experience .work-visual-rail::-webkit-scrollbar { display: none; }
 
     #experience .visual-card {
-      flex: 0 0 min(62vw, 280px);
+      flex: 0 0 min(50vw, 225px);
       scroll-snap-align: start;
     }
 
@@ -964,7 +964,7 @@
     #experience .work-meta { font-size: 1.05rem; }
 
     #experience .visual-card {
-      flex-basis: min(74vw, 285px);
+      flex-basis: min(60vw, 230px);
     }
   }
 
@@ -1996,7 +1996,7 @@ const syncExperienceRailHeight = () => {
     return;
   }
 
-  visualRail.style.setProperty('--experience-rail-height', `${recentWork.offsetHeight}px`);
+  visualRail.style.setProperty('--experience-rail-height', `${recentWork.offsetHeight * 0.8}px`);
 };
 
 window.addEventListener('resize', syncExperienceRailHeight);
