@@ -863,7 +863,8 @@
 
   #experience .work-visual-rail {
     display: grid;
-    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, var(--experience-photo-cell, minmax(0, 1fr)));
+    align-content: space-between;
     gap: 16px;
     margin-right: 0.5cm;
     margin-top: var(--experience-rail-offset, 0);
@@ -1996,6 +1997,7 @@ const syncExperienceRailHeight = () => {
   if (window.innerWidth <= 1024) {
     visualRail.style.removeProperty('--experience-rail-height');
     visualRail.style.removeProperty('--experience-rail-offset');
+    visualRail.style.removeProperty('--experience-photo-cell');
     return;
   }
 
@@ -2005,8 +2007,12 @@ const syncExperienceRailHeight = () => {
   const lastRect = descs[descs.length - 1].getBoundingClientRect();
   const recentRect = recentWork.getBoundingClientRect();
 
+  // Preserve the prior photo cell size: (recent-work height * 0.8 - 32px gap budget) / 3.
+  const photoCell = Math.max(0, (recentWork.offsetHeight * 0.8 - 32) / 3);
+
   visualRail.style.setProperty('--experience-rail-offset', `${firstRect.top - recentRect.top}px`);
   visualRail.style.setProperty('--experience-rail-height', `${lastRect.bottom - firstRect.top}px`);
+  visualRail.style.setProperty('--experience-photo-cell', `${photoCell}px`);
 };
 
 window.addEventListener('resize', syncExperienceRailHeight);
