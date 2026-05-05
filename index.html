@@ -866,6 +866,7 @@
     grid-template-rows: repeat(3, minmax(0, 1fr));
     gap: 16px;
     margin-right: 0.5cm;
+    margin-top: var(--experience-rail-offset, 0);
     height: var(--experience-rail-height, auto);
   }
 
@@ -939,6 +940,7 @@
     }
 
     #experience .visual-card img {
+      height: auto;
       aspect-ratio: 4 / 3;
       object-fit: cover;
     }
@@ -1993,10 +1995,18 @@ const syncExperienceRailHeight = () => {
 
   if (window.innerWidth <= 1024) {
     visualRail.style.removeProperty('--experience-rail-height');
+    visualRail.style.removeProperty('--experience-rail-offset');
     return;
   }
 
-  visualRail.style.setProperty('--experience-rail-height', `${recentWork.offsetHeight * 0.8}px`);
+  const descs = recentWork.querySelectorAll('.work-desc');
+  if (!descs.length) return;
+  const firstRect = descs[0].getBoundingClientRect();
+  const lastRect = descs[descs.length - 1].getBoundingClientRect();
+  const recentRect = recentWork.getBoundingClientRect();
+
+  visualRail.style.setProperty('--experience-rail-offset', `${firstRect.top - recentRect.top}px`);
+  visualRail.style.setProperty('--experience-rail-height', `${lastRect.bottom - firstRect.top}px`);
 };
 
 window.addEventListener('resize', syncExperienceRailHeight);
