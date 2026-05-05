@@ -2002,9 +2002,10 @@ const syncExperienceRailHeight = () => {
   }
 
   const descs = recentWork.querySelectorAll('.work-desc');
-  if (!descs.length) return;
+  const metas = recentWork.querySelectorAll('.work-meta');
+  if (!descs.length || !metas.length) return;
   const firstRect = descs[0].getBoundingClientRect();
-  const lastRect = descs[descs.length - 1].getBoundingClientRect();
+  const lastRect = metas[metas.length - 1].getBoundingClientRect();
   const recentRect = recentWork.getBoundingClientRect();
 
   // Preserve the prior photo cell size: (recent-work height * 0.8 - 32px gap budget) / 3.
