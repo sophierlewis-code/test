@@ -884,15 +884,19 @@
     overflow: hidden;
   }
 
-  #experience .visual-card img {
+ #experience .visual-card img {
     width: 100%;
     height: 100%;
-    aspect-ratio: 4 / 3; /* Forces all 3 boxes to be exactly the same size on mobile */
-    object-fit: cover; /* Zooms in and crops the sides to fill the box perfectly */
+    object-fit: contain;
     object-position: center;
     display: block;
     background: transparent;
     filter: saturate(0.95) contrast(1.02);
+  }
+
+  #experience .work-visual-rail .visual-card:first-child img {
+    object-fit: cover;
+    object-position: center;
   }
 
   #experience .visual-card-caption {
@@ -935,6 +939,9 @@
     #experience .visual-card {
       flex: 0 0 min(62vw, 280px);
       scroll-snap-align: start;
+    }
+   #experience .visual-card img {
+      aspect-ratio: 4 / 3;
     }
   }
 
